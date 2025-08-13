@@ -1,0 +1,44 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Log files
+*.log
+logs/
+
+# Environment variables
+.env
+appsettings.local.json
+
+# Railway
+.railway/
+
+# Node modules (for future frontend)
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+errores/
+EOF < /dev/null

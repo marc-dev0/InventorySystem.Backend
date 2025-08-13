@@ -1,0 +1,1025 @@
+ Tienda , Código , Cod. barras , Nombre , Descripción , Categorias , Marca , Características , Impuestos , P. costo , Estado , Stock , Stock min , Ubicación , P. venta , Unidad , Nombre de lista de precio , Factor de conversión , Precio al por mayor , Cantidad mínima , Cantidad máxima 
+ Tienda Tantamayo , 2510100 ,  , 14*20 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510101 ,  , 5*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510101 ,  , 5*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510101 ,  , 5*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510101 ,  , 5*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510102 ,  , 7*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510102 ,  , 7*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510102 ,  , 7*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510102 ,  , 7*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510102 ,  , 7*10 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510103 ,  , 8*12 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510103 ,  , 8*12 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510103 ,  , 8*12 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 2510103 ,  , 8*12 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510103 ,  , 8*12 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510103 ,  , 8*12 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510104 ,  , 10*15 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510104 ,  , 10*15 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510104 ,  , 10*15 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 2510104 ,  , 10*15 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510104 ,  , 10*15 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510104 ,  , 10*15 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510105 ,  , 12*17 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510105 ,  , 12*17 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510105 ,  , 12*17 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510105 ,  , 12*17 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510105 ,  , 12*17 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510106 ,  , 3*6 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510106 ,  , 3*6 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510106 ,  , 3*6 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510106 ,  , 3*6 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510107 ,  , 3*8 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510107 ,  , 3*8 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510107 ,  , 3*8 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510107 ,  , 3*8 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510108 ,  , 4*8 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510108 ,  , 4*8 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510108 ,  , 4*8 ROLLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 109 ,  , 14*20 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 110 ,  , 5*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 110 ,  , 5*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 110 ,  , 5*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 110 ,  , 5*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 111 ,  , 7*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 111 ,  , 7*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 111 ,  , 7*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 111 ,  , 7*10 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 112 ,  , 8*12 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 112 ,  , 8*12 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 112 ,  , 8*12 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 112 ,  , 8*12 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510113 ,  , 12*13*100 ASITA NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510113 ,  , 12*13*100 ASITA NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510113 ,  , 12*13*100 ASITA NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510113 ,  , 12*13*100 ASITA NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510113 ,  , 12*13*100 ASITA NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 114 ,  , 12*17 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 114 ,  , 12*17 ROLLOMAS ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510115 ,  , 12*13*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510115 ,  , 12*13*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510115 ,  , 12*13*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510115 ,  , 12*13*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510115 ,  , 12*13*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510116 ,  , 12*13*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510116 ,  , 12*13*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510116 ,  , 12*13*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510117 ,  , 12*16*100 NE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510117 ,  , 12*16*100 NE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510117 ,  , 12*16*100 NE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510117 ,  , 12*16*100 NE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510118 ,  , 12*16*100 CO ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510118 ,  , 12*16*100 CO ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510118 ,  , 12*16*100 CO ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510119 ,  , 12*16*100 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510119 ,  , 12*16*100 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510119 ,  , 12*16*100 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510119 ,  , 12*16*100 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510119 ,  , 12*16*100 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510119 ,  , 12*16*100 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 2510119 ,  , 12*16*100 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510120 ,  , 19*20*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510120 ,  , 19*20*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510120 ,  , 19*20*100 ASITA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510121 ,  , P15 ALFA TR ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510121 ,  , P15 ALFA TR ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510122 ,  , 21*24 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510122 ,  , 21*24 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510122 ,  , 21*24 BL ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510123 ,  , 21*24 AM ASITA  ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510123 ,  , 21*24 AM ASITA  ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510123 ,  , 21*24 AM ASITA  ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510123 ,  , 21*24 AM ASITA  ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 2510123 ,  , 21*24 AM ASITA  ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510123 ,  , 21*24 AM ASITA  ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510123 ,  , 21*24 AM ASITA  ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510124 ,  , 21*24 AZ ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510124 ,  , 21*24 AZ ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510124 ,  , 21*24 AZ ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510125 ,  , 21*24 LU ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510125 ,  , 21*24 LU ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510126 ,  , 21*24 VE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510126 ,  , 21*24 VE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510126 ,  , 21*24 VE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510126 ,  , 21*24 VE ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510127 ,  , 21*24 RO ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510127 ,  , 21*24 RO ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510127 ,  , 21*24 RO ASITA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510128 ,  , 16*19*100 NE SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510128 ,  , 16*19*100 NE SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510128 ,  , 16*19*100 NE SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510128 ,  , 16*19*100 NE SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510129 ,  , 16*19*100 BL SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510129 ,  , 16*19*100 BL SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510129 ,  , 16*19*100 BL SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510129 ,  , 16*19*100 BL SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510129 ,  , 16*19*100 BL SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 2510129 ,  , 16*19*100 BL SOL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510130 ,  , 16*19 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510130 ,  , 16*19 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510130 ,  , 16*19 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510130 ,  , 16*19 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510130 ,  , 16*19 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510130 ,  , 16*19 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 2510131 ,  , 16*19*80 LORO CL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510131 ,  , 16*19*80 LORO CL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 132 ,  , 16*19*80 LORO NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 132 ,  , 16*19*80 LORO NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 132 ,  , 16*19*80 LORO NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510133 ,  , 16*19 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510133 ,  , 16*19 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510133 ,  , 16*19 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510133 ,  , 16*19 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510133 ,  , 16*19 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510134 ,  , 12*16 LORO NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510134 ,  , 12*16 LORO NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510134 ,  , 12*16 LORO NE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510135 ,  , 12*16 LORO CO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510135 ,  , 12*16 LORO CO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510135 ,  , 12*16 LORO CO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510136 ,  , 12*16*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510136 ,  , 12*16*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510136 ,  , 12*16*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510136 ,  , 12*16*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510136 ,  , 12*16*80 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510137 ,  , 12*16 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510137 ,  , 12*16 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510137 ,  , 12*16 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510138 ,  , 12*17*70 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510138 ,  , 12*17*70 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510138 ,  , 12*17*70 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510139 ,  , 10*15*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510139 ,  , 10*15*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510139 ,  , 10*15*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510139 ,  , 10*15*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510140 ,  , 13*19*80 CRISTAL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510140 ,  , 13*19*80 CRISTAL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510141 ,  , 8*12*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510141 ,  , 8*12*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510141 ,  , 8*12*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510141 ,  , 8*12*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510141 ,  , 8*12*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 142 ,  , 8*12*70 SOL AM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 142 ,  , 8*12*70 SOL AM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510143 ,  , 7*10*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510143 ,  , 7*10*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510143 ,  , 7*10*70 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510144 ,  , 6*6 ALFA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510144 ,  , 6*6 ALFA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510144 ,  , 6*6 ALFA BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510145 ,  , 6*6 ALFA CO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510145 ,  , 6*6 ALFA CO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510145 ,  , 6*6 ALFA CO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 146 ,  , 14*20*90 ALFA PREMIUM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 146 ,  , 14*20*90 ALFA PREMIUM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 146 ,  , 14*20*90 ALFA PREMIUM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 147 ,  , 12*17*90 ALFA PREMIUM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 147 ,  , 12*17*90 ALFA PREMIUM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 147 ,  , 12*17*90 ALFA PREMIUM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510148 ,  , 10*15 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510148 ,  , 10*15 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510148 ,  , 10*15 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510150 ,  , 7*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510150 ,  , 7*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510150 ,  , 7*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510150 ,  , 7*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510151 ,  , 5*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510151 ,  , 5*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510151 ,  , 5*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510151 ,  , 5*10 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510152 ,  , 14*20 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510152 ,  , 14*20 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510152 ,  , 14*20 LORO BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510153 ,  , 12*17*90 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510153 ,  , 12*17*90 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510153 ,  , 12*17*90 SOL BL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510154 ,  , 10*15*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510154 ,  , 10*15*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510154 ,  , 10*15*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510154 ,  , 10*15*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510154 ,  , 10*15*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510155 ,  , 5*32 ALFA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510155 ,  , 5*32 ALFA ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510156 ,  , 8*12*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510156 ,  , 8*12*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510156 ,  , 8*12*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510156 ,  , 8*12*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510156 ,  , 8*12*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 157 ,  , 8*12*90 SOL AM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 157 ,  , 8*12*90 SOL AM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 157 ,  , 8*12*90 SOL AM ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510158 ,  , 7*10*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510158 ,  , 7*10*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510158 ,  , 7*10*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510158 ,  , 7*10*90 SOL NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510159 ,  , 3*6*100 NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510159 ,  , 3*6*100 NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510160 ,  , 10*15 ARDI ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510160 ,  , 10*15 ARDI ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510160 ,  , 10*15 ARDI ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510160 ,  , 10*15 ARDI ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510161 ,  , 10*15 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510161 ,  , 10*15 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510161 ,  , 10*15 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510161 ,  , 10*15 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510162 ,  , 8*12 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510162 ,  , 8*12 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510162 ,  , 8*12 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510162 ,  , 8*12 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510163 ,  , 7*10 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510163 ,  , 7*10 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510163 ,  , 7*10 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510163 ,  , 7*10 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510164 ,  , 5*10 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510164 ,  , 5*10 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510165 ,  , 3OZ NAT ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510165 ,  , 3OZ NAT ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510165 ,  , 3OZ NAT ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510165 ,  , 3OZ NAT ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510166 ,  , 5OZ NAT ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510166 ,  , 5OZ NAT ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510167 ,  , 5.5OZ NA  ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510167 ,  , 5.5OZ NA  ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510168 ,  , CONFITERO 7 ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510168 ,  , CONFITERO 7 ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510168 ,  , CONFITERO 7 ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510169 ,  , CONFITERO 12 ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510169 ,  , CONFITERO 12 ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510169 ,  , CONFITERO 12 ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510170 ,  , 1L EC BLANCO ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510171 ,  , 9OZ NAT VASO ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510171 ,  , 9OZ NAT VASO ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510172 ,  , 1/2L EC TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510172 ,  , 1/2L EC TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510173 ,  , 1L EC TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510174 ,  , 6OZ SOL NAT ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510174 ,  , 6OZ SOL NAT ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510174 ,  , 6OZ SOL NAT ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510174 ,  , 6OZ SOL NAT ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510174 ,  , 6OZ SOL NAT ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510175 ,  , 6OZ EC TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510175 ,  , 6OZ EC TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510175 ,  , 6OZ EC TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510176 ,  , 8OZ EC TR ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510176 ,  , 8OZ EC TR ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510177 ,  , 12OZ ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510178 ,  , 8.5OZ VASO BL ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510178 ,  , 8.5OZ VASO BL ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510179 ,  , 9OZ BL VASO ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510179 ,  , 9OZ BL VASO ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510179 ,  , 9OZ BL VASO ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510180 ,  , 4*12 Brillosito ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510181 ,  , B5 SOL ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510181 ,  , B5 SOL ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510181 ,  , B5 SOL ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510182 ,  , TAPA 12OZ ALFA ,  , VASOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510183 ,  , PH20 BL ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510183 ,  , PH20 BL ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510183 ,  , PH20 BL ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510184 ,  , P15 ARDI ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510184 ,  , P15 ARDI ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510184 ,  , P15 ARDI ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510185 ,  , NAVI 21*24 ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510185 ,  , NAVI 21*24 ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510185 ,  , NAVI 21*24 ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 186 ,  , ERROR1 ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, ERROR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510187 ,  , 1L ER TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510187 ,  , 1L ER TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510187 ,  , 1L ER TR ALFA ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510188 ,  , 1/2L ER TR ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510188 ,  , 1/2L ER TR ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510189 ,  , B1 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510189 ,  , B1 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510189 ,  , B1 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510189 ,  , B1 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 2510189 ,  , B1 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 2510189 ,  , B1 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510190 ,  , B2 SOL NAT ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510190 ,  , B2 SOL NAT ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510190 ,  , B2 SOL NAT ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510190 ,  , B2 SOL NAT ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510191 ,  , B2 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510191 ,  , B2 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510191 ,  , B2 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510191 ,  , B2 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510192 ,  , B5 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510192 ,  , B5 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510192 ,  , B5 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510192 ,  , B5 JUNIOR ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510193 ,  , 14*20 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510193 ,  , 14*20 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510193 ,  , 14*20 BLANCOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510194 ,  , 10*15*80 CRISTAL OPACO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510194 ,  , 10*15*80 CRISTAL OPACO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510195 ,  , 8*12*80 CRISTAL OPACO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510195 ,  , 8*12*80 CRISTAL OPACO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510196 ,  , 7*10*100 CRISTAL AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510197 ,  , 7*10*80 CRISTAL OPACO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510197 ,  , 7*10*80 CRISTAL OPACO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510198 ,  , 6*12*100 CRISTAL AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510198 ,  , 6*12*100 CRISTAL AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510199 ,  , 4*8*100 CRISTAL AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510199 ,  , 4*8*100 CRISTAL AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510199 ,  , 4*8*100 CRISTAL AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510200 ,  , 4*8*200 CRISTAL VERDE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510200 ,  , 4*8*200 CRISTAL VERDE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510201 ,  , 3*8*200 CRISTAL VERDE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510201 ,  , 3*8*200 CRISTAL VERDE ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , MAZAMORRA ,0,0,0,0
+ Tienda Tantamayo , 2510202 ,  , 3*6*200 CRISTAL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510202 ,  , 3*6*200 CRISTAL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510202 ,  , 3*6*200 CRISTAL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510203 ,  , 3*6*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510203 ,  , 3*6*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510203 ,  , 3*6*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510204 ,  , 3*8*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510204 ,  , 3*8*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510205 ,  , 3*10*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510205 ,  , 3*10*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510207 ,  , 4*10*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510207 ,  , 4*10*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510208 ,  , 5*10*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510208 ,  , 5*10*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510208 ,  , 5*10*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 209 ,  , 4*8*100 ALFA NAT AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 209 ,  , 4*8*100 ALFA NAT AZUL ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510210 ,  , 5*10 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510210 ,  , 5*10 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510211 ,  , 5*12 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510211 ,  , 5*12 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510212 ,  , 6*12 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510212 ,  , 6*12 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510213 ,  , 7*10 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510213 ,  , 7*10 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510214 ,  , 8*12 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510214 ,  , 8*12 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510214 ,  , 8*12 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510215 ,  , 9*14 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510215 ,  , 9*14 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510216 ,  , 10*15 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510216 ,  , 10*15 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510217 ,  , 11*16 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510217 ,  , 11*16 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510218 ,  , 12*18 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510218 ,  , 12*18 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510219 ,  , 13*20 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510219 ,  , 13*20 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510220 ,  , 14*20 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510220 ,  , 14*20 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510221 ,  , 16*24 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510221 ,  , 16*24 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510222 ,  , 18*26 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510222 ,  , 18*26 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510223 ,  , 20*30 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510223 ,  , 20*30 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510224 ,  , 26*40 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510224 ,  , 26*40 BRILLOSITO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510225 ,  , 20*30 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510225 ,  , 20*30 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510225 ,  , 20*30 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510225 ,  , 20*30 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510225 ,  , 20*30 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510225 ,  , 20*30 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510226 ,  , 20*30 GUARNIZ NEGRO ,  , BOLSA , GUARNIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510226 ,  , 20*30 GUARNIZ NEGRO ,  , BOLSA , GUARNIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 227 ,  , 20X30 FUERTAZA COLOR ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510228 ,  , 26*40 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510228 ,  , 26*40 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510228 ,  , 26*40 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510228 ,  , 26*40 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510228 ,  , 26*40 FUERTAZA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 229 ,  , 26X40 GUARNIZ BAJA NEGRO ,  , BOLSA , GUARNIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 230 ,  , 26X40 FUERTAZA BAJA COLOR ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 231 ,  , 140 LT FUERTAZA BAJA NEGRO ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510232 ,  , 16*19*50 MILEN ,  , BOLSA , TORITO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510232 ,  , 16*19*50 MILEN ,  , BOLSA , TORITO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510232 ,  , 16*19*50 MILEN ,  , BOLSA , TORITO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510232 ,  , 16*19*50 MILEN ,  , BOLSA , TORITO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 233 ,  , 16*19*100 TORITO ,  , BOLSA , TORITO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 233 ,  , 16*19*100 TORITO ,  , BOLSA , TORITO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 233 ,  , 16*19*100 TORITO ,  , BOLSA , TORITO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510234 ,  , 20*30 MILEN NE ,  , BOLSA , MILENA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510234 ,  , 20*30 MILEN NE ,  , BOLSA , MILENA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510291 ,  , DOMO 92 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510292 ,  , 10OZ PET ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510293 ,  , TENEDOR 6 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510293 ,  , TENEDOR 6 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510293 ,  , TENEDOR 6 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510293 ,  , TENEDOR 6 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510293 ,  , TENEDOR 6 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510294 ,  , CUCHARA 6  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510294 ,  , CUCHARA 6  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510294 ,  , CUCHARA 6  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510294 ,  , CUCHARA 6  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510294 ,  , CUCHARA 6  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510235 ,  , TENEDOR 5  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510235 ,  , TENEDOR 5  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510235 ,  , TENEDOR 5  ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510236 ,  , CUCHARITA 5 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510236 ,  , CUCHARITA 5 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510236 ,  , CUCHARITA 5 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510236 ,  , CUCHARITA 5 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510295 ,  , TENEDOR ACRILICO TR 10 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510295 ,  , TENEDOR ACRILICO TR 10 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510295 ,  , TENEDOR ACRILICO TR 10 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510296 ,  , CUCHARA ACRILICA ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510296 ,  , CUCHARA ACRILICA ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510296 ,  , CUCHARA ACRILICA ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510297 ,  , P26 ACRILICO ,  , PLATOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510297 ,  , P26 ACRILICO ,  , PLATOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510298 ,  , DOMO 78 ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510237 ,  , P23 ACRILICO ,  , PLATOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510237 ,  , P23 ACRILICO ,  , PLATOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510238 ,  , 12OZ PET ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510239 ,  , 16OZ PET ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510240 ,  , 3OZ ACRILICO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510240 ,  , 3OZ ACRILICO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510241 ,  , 7OZ ACRILICO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510241 ,  , 7OZ ACRILICO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510242 ,  , DOMO 98 ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510243 ,  , 16OZ POLYPAPEL ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510244 ,  , 21OZ  POLYPAPEL ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510244 ,  , 21OZ  POLYPAPEL ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510244 ,  , 21OZ  POLYPAPEL ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , rapiña ,0,0,0,0
+ Tienda Tantamayo , 2510245 ,  , GENOVESA 8OZ ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510245 ,  , GENOVESA 8OZ ,  , CUBIERTO , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 246 ,  , SORBETE FLEXIBLE NE ,  , OTROS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510247 ,  , SORBETE FLEXIBLE BL ,  , OTROS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510247 ,  , SORBETE FLEXIBLE BL ,  , OTROS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510247 ,  , SORBETE FLEXIBLE BL ,  , OTROS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510248 ,  , SORBETE ENVOLTURA ,  , OTROS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510249 ,  , COPA ACRILICA ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510249 ,  , COPA ACRILICA ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510249 ,  , COPA ACRILICA ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510249 ,  , COPA ACRILICA ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510299 ,  , PORTA SANDWICH ,  , PLATOS , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510299 ,  , PORTA SANDWICH ,  , PLATOS , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 300 ,  , PAPEL TOALLA ROLLOSITO PARACAS ,  , PAPEL , PARACAS ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510301 ,  , PAPEL TOALLA NOVA ,  , PAPEL , NOVA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510301 ,  , PAPEL TOALLA NOVA ,  , PAPEL , NOVA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510250 ,  , LIZ AZ ROLLO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510250 ,  , LIZ AZ ROLLO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510251 ,  , LIZ RO ROLLO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510252 ,  , LIZ BL DOBLADO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510252 ,  , LIZ BL DOBLADO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510253 ,  , LIZ CO DOBLADO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510253 ,  , LIZ CO DOBLADO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510253 ,  , LIZ CO DOBLADO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510254 ,  , CORTADO PAPEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510254 ,  , CORTADO PAPEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510254 ,  , CORTADO PAPEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510254 ,  , CORTADO PAPEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510255 ,  , PULPINI SERVILLETA ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510255 ,  , PULPINI SERVILLETA ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510255 ,  , PULPINI SERVILLETA ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510256 ,  , PULPINI SERVILLETA GRANEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510256 ,  , PULPINI SERVILLETA GRANEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510256 ,  , PULPINI SERVILLETA GRANEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510256 ,  , PULPINI SERVILLETA GRANEL ,  , PAPEL , PULPINI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510257 ,  , BROCHETA 8 ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510257 ,  , BROCHETA 8 ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510258 ,  , BROCHETA 12 ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510258 ,  , BROCHETA 12 ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510259 ,  , MONDADIENTES ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510259 ,  , MONDADIENTES ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510260 ,  , 5*32 EL GATO ,  , BOLSA , EL GATO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510260 ,  , 5*32 EL GATO ,  , BOLSA , EL GATO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510260 ,  , 5*32 EL GATO ,  , BOLSA , EL GATO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510261 ,  ,  4*32 EL GATO ,  , BOLSA , EL GATO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510261 ,  ,  4*32 EL GATO ,  , BOLSA , EL GATO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510261 ,  ,  4*32 EL GATO ,  , BOLSA , EL GATO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510262 ,  , RHIN PAPEL ALUMINIO 8M ,  , OTROS , RHIN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510262 ,  , RHIN PAPEL ALUMINIO 8M ,  , OTROS , RHIN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510263 ,  , RHIN PAPEL ALUMINIO 10M ,  , OTROS , RHIN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510263 ,  , RHIN PAPEL ALUMINIO 10M ,  , OTROS , RHIN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510302 ,  , LIGA 1LB ALLEANZA ,  , OTROS , ALLEANZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510303 ,  , LIGA 1/4LB ALLEANZA ,  , OTROS , ALLEANZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CAJA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510303 ,  , LIGA 1/4LB ALLEANZA ,  , OTROS , ALLEANZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CAJA , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510264 ,  , PORTA CUPCAKE ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510265 ,  , RAYADO 5 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510265 ,  , RAYADO 5 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510266 ,  , RAYADO 6 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510266 ,  , RAYADO 6 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510267 ,  , RAYADO 7 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510267 ,  , RAYADO 7 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 268 ,  , INFLADOR MANUAL ,  , OTROS , FIESTA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510269 ,  , FILM 20 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510269 ,  , FILM 20 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510270 ,  , FILM 18 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510270 ,  , FILM 18 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510271 ,  , FILM 15 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510271 ,  , FILM 15 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510272 ,  , FILM 12 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510272 ,  , FILM 12 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510272 ,  , FILM 12 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , MAZAMORRA ,0,0,0,0
+ Tienda Tantamayo , 2510273 ,  , FILM 9 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510273 ,  , FILM 9 ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510274 ,  , CINTA 15 ,  , OTROS , YIMI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 275 ,  ," CINTA 742 HABANO 2""110YD PEGAFÁN ",  , OTROS , PEGAFÁN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510276 ,  , RAFIA 2.5KG ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510277 ,  , RAFIA 1KG AZUL ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 278 ,  , RAFIA 1KG ROJO ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 279 ,  , RAFIA 1KG VERDE ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510280 ,  , BOTELLA 500ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510280 ,  , BOTELLA 500ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510280 ,  , BOTELLA 500ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510304 ,  , TAPA MOLDE ALUMINIO 3/4 ,  , OTROS , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 281 ,  , SIN NOMBRE ,  , OTROS , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510282 ,  , MOLDE ALUMINIO 3/4 ,  , OTROS , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510283 ,  , RAYO 6OZ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510283 ,  , RAYO 6OZ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510283 ,  , RAYO 6OZ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510283 ,  , RAYO 6OZ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510284 ,  , 10*15 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510284 ,  , 10*15 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510284 ,  , 10*15 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510285 ,  , 8*12 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510285 ,  , 8*12 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510285 ,  , 8*12 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510286 ,  , 12*17 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510286 ,  , 12*17 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510286 ,  , 12*17 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510287 ,  , BOTELLA 400ML ,  , ENVASES , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510289 ,  , PALOS DE CHUPETE ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510289 ,  , PALOS DE CHUPETE ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510305 ,  , BISAGRA 32 OZ  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510305 ,  , BISAGRA 32 OZ  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510305 ,  , BISAGRA 32 OZ  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 306 ,  , B1 TR PET  ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 306 ,  , B1 TR PET  ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 306 ,  , B1 TR PET  ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 307 ,  , B2 TR PET ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0, 19.2 ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 307 ,  , B2 TR PET ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0, 19.2 ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 307 ,  , B2 TR PET ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0, 19.2 ,0, CAJA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 307 ,  , B2 TR PET ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0, 19.2 ,0, CAJA , MAZAMORRA ,0,0,0,0
+ Tienda Tantamayo , 2510308 ,  , B2 FIRME ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510308 ,  , B2 FIRME ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510308 ,  , B2 FIRME ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 309 ,  , BANDEJA 124 TR PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 309 ,  , BANDEJA 124 TR PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 309 ,  , BANDEJA 124 TR PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 310 ,  , BANDEJA 124 NE PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 310 ,  , BANDEJA 124 NE PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 311 ,  , errrorr ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 312 ,  , 5.5OZ VASO-T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 312 ,  , 5.5OZ VASO-T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 313 ,  , 10OZ T VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 314 ,  , 12OZ T VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510315 ,  , TAPA 8OZ BIO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 316 ,  , 5OZ T VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 316 ,  , 5OZ T VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 317 ,  , TROME TR ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510318 ,  , 6OZ EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510318 ,  , 6OZ EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510318 ,  , 6OZ EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510318 ,  , 6OZ EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510318 ,  , 6OZ EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , MAZAMORRA ,0,0,0,0
+ Tienda Tantamayo , 2510319 ,  , 8OZ EC CACER TR PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510319 ,  , 8OZ EC CACER TR PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510319 ,  , 8OZ EC CACER TR PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510319 ,  , 8OZ EC CACER TR PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , MAZAMORRA ,0,0,0,0
+ Tienda Tantamayo , 320 ,  , 1/2L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 320 ,  , 1/2L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 320 ,  , 1/2L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 320 ,  , 1/2L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 320 ,  , 1/2L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 320 ,  , 1/2L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 321 ,  , 1L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 321 ,  , 1L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 321 ,  , 1L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 321 ,  , 1L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 321 ,  , 1L EC TR CACER PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 322 ,  , AJICERO 2 OZ TS PS ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 322 ,  , AJICERO 2 OZ TS PS ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 323 ,  , 6 OZ CACER BL PS ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 324 ,  , ENVASE 8 OZ CACER BL PS ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510325 ,  , 1/2L EC BL CACER ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510325 ,  , 1/2L EC BL CACER ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510325 ,  , 1/2L EC BL CACER ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510325 ,  , 1/2L EC BL CACER ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 326 ,  , 1L EC BL CACER  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 326 ,  , 1L EC BL CACER  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 326 ,  , 1L EC BL CACER  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 326 ,  , 1L EC BL CACER  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 326 ,  , 1L EC BL CACER  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 327 ,  , SIN NOMBRE ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 327 ,  , SIN NOMBRE ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 328 ,  , 1/2L DELI SUPER FAST TR PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 329 ,  , ENVASE DELI 1/2 LT D2 SUPER FAST NE PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 330 ,  , 1L DELI TR SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 330 ,  , 1L DELI TR SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 330 ,  , 1L DELI TR SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 330 ,  , 1L DELI TR SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 331 ,  , 1L DELI NE SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 331 ,  , 1L DELI NE SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 331 ,  , 1L DELI NE SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 331 ,  , 1L DELI NE SUPER FAST PP ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 332 ,  , DOMO PB2 TR PET ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 332 ,  , DOMO PB2 TR PET ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , MAZAMORRA ,0,0,0,0
+ Tienda Tantamayo , 333 ,  , CONTENEDOR 3 BIOFORM CARTON P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 333 ,  , CONTENEDOR 3 BIOFORM CARTON P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 333 ,  , CONTENEDOR 3 BIOFORM CARTON P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 333 ,  , CONTENEDOR 3 BIOFORM CARTON P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CAJA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 334 ,  , eeeerrrr ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 334 ,  , eeeerrrr ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 335 ,  , CT5 PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 335 ,  , CT5 PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 336 ,  , B2 BB SOL ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 336 ,  , B2 BB SOL ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 337 ,  , 8OZ BIOFORM VASO P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 337 ,  , 8OZ BIOFORM VASO P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 338 , 7750078006512 , 12OZ BIO NATUTAL P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 338 , 7750078006512 , 12OZ BIO NATUTAL P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 338 , 7750078006512 , 12OZ BIO NATUTAL P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 338 , 7750078006512 , 12OZ BIO NATUTAL P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 339 ,  , CONTENEDOR BURGER 1 BIOFORM NATURAL CARTON BAGAZO CANA GR ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 340 ,  , PLATO 15 BIOFORM BLANCO CARTON P0S (P) ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 341 ,  , PLATO 15 BIOFORM NATURAL CARTON BAGAZO CANA GR (P) ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 342 ,  , PLATO 22 BIOFORM BLANCO CARTON P0S COATING (P) ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510343 ,  , 1/2L EC TR CACER PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510343 ,  , 1/2L EC TR CACER PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 344 ,  , BANDEJA 1 BIOFORM BLANCO CARTON P0S (P) ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510345 ,  , P17 PET ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510346 ,  , B1 BIO P1S ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510346 ,  , B1 BIO P1S ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510347 ,  , B2 BIOFORM NATURAL ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510347 ,  , B2 BIOFORM NATURAL ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 348 ,  , CONTENEDOR 3 D1 BIOFORM NATURAL CARTON BAGAZO CANA P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 349 ,  , CONTENEDOR 4 BIOFORM NATURAL CARTON BAGAZO CANA GR ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510350 ,  , C5 BIO NATURAL ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510350 ,  , C5 BIO NATURAL ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 351 ,  , C1 BIOFORM NATURAL CARTON  ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 351 ,  , C1 BIOFORM NATURAL CARTON  ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 351 ,  , C1 BIOFORM NATURAL CARTON  ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 351 ,  , C1 BIOFORM NATURAL CARTON  ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CAJA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 352 ,  , CONTENEDOR 1 H100 BIOFORM CARTON BAGAZO CANA P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510353 ,  , FILM 12 x 30 m SUPER FAST CUTTER BOX ,  , OTROS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510354 ,  , FILM 6 ,  , OTROS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510354 ,  , FILM 6 ,  , OTROS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 355 ,  , CONTENEDOR DELI 13 BIOFORM BLANCO CARTON P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 356 ,  , CONTENEDOR DELI 15 BIOFORM BLANCO CARTON P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 357 ,  , CONTENEDOR ORIENTAL 36 oz BIOFORM NATURAL CARTON BAGAZO CANA P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 358 ,  , CONTENEDOR 7 BIOFORM NATURAL CARTON BAGAZO CANA P1S ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510359 ,  , CD13 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510359 ,  , CD13 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510359 ,  , CD13 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 2510360 ,  , CD15 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510360 ,  , CD15 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510360 ,  , CD15 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510360 ,  , CD15 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510360 ,  , CD15 BIO ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , COMBO1 ,0,0,0,0
+ Tienda Tantamayo , 361 ,  , CONTENEDOR BURGER 1 D2 BIOFORM NATURAL CARTON BAGAZO CANA GR ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 362 ,  , P15 BIOFORM  ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 362 ,  , P15 BIOFORM  ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 363 ,  , VASO 8 OZ D2 BIOFORM TAZA NATURAL CARTON BAGAZO CANA P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 364 ,  , 8OZ ONDA VERDE VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 365 ,  , VASO 8 oz D2 BIOFORM NATURAL CARTON BAGAZO CANA P1S (E2) ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 366 ,  , VASO 12 oz BIOFORM ECO NATURAL CARTON BAGAZO CANA P2S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 367 ,  , CONTENEDOR 1 BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 368 ,  , PLATO 15 BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 369 , 7750078004280 , P22 BIOFORM BLANCO FIBRA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 369 , 7750078004280 , P22 BIOFORM BLANCO FIBRA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 369 , 7750078004280 , P22 BIOFORM BLANCO FIBRA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 370 ,  , PLATO 26 S/D BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 371 ,  , PLATO 26 C/D BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 372 ,  , CONTENEDOR 5 BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 373 ,  , CONTENEDOR 3 BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 374 ,  , CONTENEDOR 4 BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 375 ,  , PLATO HONDO 16 BIOFORM BLANCO FIBRA BAGAZO CANA P0S KS ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 376 ,  , PH20 BLANCO FIBRA P0S KS ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510149 ,  , 8*12 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510149 ,  , 8*12 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510149 ,  , 8*12 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510149 ,  , 8*12 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510149 ,  , 8*12 ALFA NAT ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , ANA ,0,0,0,0
+ Tienda Tantamayo , 2510206 ,  , 4*8*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510206 ,  , 4*8*50 CRISTAL ROJO ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510290 ,  , 16*19 LA ECONÓMICA NE ,  , BOLSA , LA ECONOMICA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510290 ,  , 16*19 LA ECONÓMICA NE ,  , BOLSA , LA ECONOMICA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510290 ,  , 16*19 LA ECONÓMICA NE ,  , BOLSA , LA ECONOMICA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510377 ,  , 6*6 ME PAPEL ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510377 ,  , 6*6 ME PAPEL ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510377 ,  , 6*6 ME PAPEL ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510378 ,  , CHOCOTEJA MOLDE ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510378 ,  , CHOCOTEJA MOLDE ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510U01 ,  , 20*30*1 FUERTAZA NE ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U01 ,  , 20*30*1 FUERTAZA NE ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U01 ,  , 20*30*1 FUERTAZA NE ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, DOCENA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U02 ,  , 26*40 FUERTAZA NE ,  , BOLSA , FUERTAZA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U03 ,  , 140L UNIDAD ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U03 ,  , 140L UNIDAD ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U03 ,  , 140L UNIDAD ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 111111111111 ,  , errror ,  , BOLSA , MILEN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 111111111111 ,  , errror ,  , BOLSA , MILEN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 111111111111 ,  , errror ,  , BOLSA , MILEN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 99999 ,  , 8OZ TERMIX ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 99998 ,  , 10OZ TERMIX ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 99997 ,  , SOPERO ALFA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 99997 ,  , SOPERO ALFA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 99996 ,  , REPOSTERO 12 ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U04 ,  , PORTASANDWICH UNI ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510382 ,  , BOTELLA 300ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510382 ,  , BOTELLA 300ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510382 ,  , BOTELLA 300ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510382 ,  , BOTELLA 300ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510382 ,  , BOTELLA 300ML ,  , OTROS , NN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 383 ,  , 8OZ EC BIOFORM KRAFT P1S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 383 ,  , 8OZ EC BIOFORM KRAFT P1S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 383 ,  , 8OZ EC BIOFORM KRAFT P1S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510384 ,  , SORBETE NORMAL ,  , OTROS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510384 ,  , SORBETE NORMAL ,  , OTROS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510384 ,  , SORBETE NORMAL ,  , OTROS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510385 ,  , CUCHARITA COLOR ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510385 ,  , CUCHARITA COLOR ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510386 ,  , PICADOR COLOR ,  , CUBIERTO , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510386 ,  , PICADOR COLOR ,  , CUBIERTO , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 387 ,  , BANDEJA 130 TR PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 387 ,  , BANDEJA 130 TR PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 387 ,  , BANDEJA 130 TR PP ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 388 , 7750078005478 , 16OZ EC KRAFT P1S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 388 , 7750078005478 , 16OZ EC KRAFT P1S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510389 ,  , CHOCOTEJA ENVOLTURA ,  , PAPEL , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510389 ,  , CHOCOTEJA ENVOLTURA ,  , PAPEL , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 390 ,  , 1l DELI  ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 390 ,  , 1l DELI  ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 391 , 7750078002828 , 6.5OZ VASO 3B ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 391 , 7750078002828 , 6.5OZ VASO 3B ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 391 , 7750078002828 , 6.5OZ VASO 3B ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 391 , 7750078002828 , 6.5OZ VASO 3B ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 392 ,  , 1/2L EC BL TERMOPACK ,  , ENVASES , TERMOPACK ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 392 ,  , 1/2L EC BL TERMOPACK ,  , ENVASES , TERMOPACK ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 392 ,  , 1/2L EC BL TERMOPACK ,  , ENVASES , TERMOPACK ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510393 ,  , PALO DE ANTICUCHO ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510393 ,  , PALO DE ANTICUCHO ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510393 ,  , PALO DE ANTICUCHO ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , MAZAMORRA ,0,0,0,0
+ Tienda Tantamayo , 379 ,  , PISO TORTA 22 ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 381 ,  , PISO TORTA 31 ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 394 , 7750078001302 , 6.5OZ VASO T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 394 , 7750078001302 , 6.5OZ VASO T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 394 , 7750078001302 , 6.5OZ VASO T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 394 , 7750078001302 , 6.5OZ VASO T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , ELIZABETH AVICOLA ,0,0,0,0
+ Tienda Tantamayo , 394 , 7750078001302 , 6.5OZ VASO T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , LOURDES ,0,0,0,0
+ Tienda Tantamayo , 394 , 7750078001302 , 6.5OZ VASO T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 394 , 7750078001302 , 6.5OZ VASO T TR PP ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510395 , 2050000113376 , CINTA 70 ,  , OTROS , YIMI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510395 , 2050000113376 , CINTA 70 ,  , OTROS , YIMI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, DOCENA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 396 , 7754005000055 , CINTA 110 RO PEGAFAN ,  , OTROS , PEGAFÁN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 396 , 7754005000055 , CINTA 110 RO PEGAFAN ,  , OTROS , PEGAFÁN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, DOCENA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510397 , 7754005007726 , CINTA 110 AZ PEGAFAN ,  , OTROS , PEGAFÁN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510397 , 7754005007726 , CINTA 110 AZ PEGAFAN ,  , OTROS , PEGAFÁN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, DOCENA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510398 ,  , BOTELLA 1L ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PLANCHA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510398 ,  , BOTELLA 1L ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PLANCHA , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510399 ,  , BAMBI ECO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510399 ,  , BAMBI ECO ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 400 ,  , BAMBI ROLLO BL ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 400 ,  , BAMBI ROLLO BL ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 400 ,  , BAMBI ROLLO BL ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PLANCHA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 401 , 7750078004273 , P15 FIBRA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 401 , 7750078004273 , P15 FIBRA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510402 ,  , TROME BL ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510402 ,  , TROME BL ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510402 ,  , TROME BL ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 403 ,  , FUENTE 30 ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 403 ,  , FUENTE 30 ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510404 ,  , 7OZ VE ACRILICO ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510404 ,  , 7OZ VE ACRILICO ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 380 ,  , PT27 ,  , OTROS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 380 ,  , PT27 ,  , OTROS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510405 ,  , 9OZ BIO NATURAL P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510405 ,  , 9OZ BIO NATURAL P1S ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510U05 ,  , DOMO 92 U ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510406 ,  , B2 P0S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510406 ,  , B2 P0S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510406 ,  , B2 P0S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510406 ,  , B2 P0S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510406 ,  , B2 P0S ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CAJA , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510u06 ,  , 1l ER UNIDAD ,  , ENVASES , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , U07 ,  , CAJAS UNIDAD ,  , OTROS , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 407 ,  , PT22 PET PLUS ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 408 ,  , PT27 PET PLUS ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510409 ,  , CT5 EL ORIGINAL ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510409 ,  , CT5 EL ORIGINAL ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510409 ,  , CT5 EL ORIGINAL ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510410 ,  , LONCHERITA ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510410 ,  , LONCHERITA ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510410 ,  , LONCHERITA ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510U08 ,  , DOMO 98 U ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510411 ,  , DELI 800 ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510411 ,  , DELI 800 ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510411 ,  , DELI 800 ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510412 ,  , 6OZ EURO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510412 ,  , 6OZ EURO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510413 ,  , Lapicero Azul ,  , OTROS , faber castell ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 414 ,  , 1l DELI THERMOPACK ,  , ENVASES , TERMOPACK ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 414 ,  , 1l DELI THERMOPACK ,  , ENVASES , TERMOPACK ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510415 ,  , B3 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510415 ,  , B3 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , POLLERÍA ,0,0,0,0
+ Tienda Tantamayo , 2510415 ,  , B3 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510416 ,  , P26 C HAWAI ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510416 ,  , P26 C HAWAI ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 417 ,  , 21*24 MILEN ,  , BOLSA , MILEN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 417 ,  , 21*24 MILEN ,  , BOLSA , MILEN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 417 ,  , 21*24 MILEN ,  , BOLSA , MILEN ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, FARDO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510u09 ,  , 21*24 unidad ,  , BOLSA , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510u010 ,  , 16*19 unidad ,  , BOLSA , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , u011 ,  , 19*20 unidad ,  , BOLSA , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , G01 ,  , 21*24 ,  , BOLSA , S/M ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510418 ,  , P22 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510418 ,  , P22 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510418 ,  , P22 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , U012 ,  , 8OZ KRAFT ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , U013 ,  , 16OZ KRAFT ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510419 ,  , TAPA 9-12OZ BIO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510420 ,  , DELI 1L  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510420 ,  , DELI 1L  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510420 ,  , DELI 1L  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510420 ,  , DELI 1L  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510420 ,  , DELI 1L  ,  , ENVASES , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510421 ,  , BANDEJA BB PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510422 ,  , P26 S/DIVISIóN PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510422 ,  , P26 S/DIVISIóN PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510422 ,  , P26 S/DIVISIóN PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510423 ,  , P26 C/DIVISIóN PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510423 ,  , P26 C/DIVISIóN PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510423 ,  , P26 C/DIVISIóN PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510424 ,  , P17 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510424 ,  , P17 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510424 ,  , P17 PP ALFA ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510425 ,  , SORBETON ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510425 ,  , SORBETON ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 426 ,  , P15 PET FIESTA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 426 ,  , P15 PET FIESTA ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510446 ,  , B2 SOL BLANCO ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510446 ,  , B2 SOL BLANCO ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510446 ,  , B2 SOL BLANCO ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510446 ,  , B2 SOL BLANCO ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510427 ,  , SALCHIFIRME PET ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510427 ,  , SALCHIFIRME PET ,  , PLATOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510428 ,  , 1/2L EC ALFA BL ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510428 ,  , 1/2L EC ALFA BL ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510428 ,  , 1/2L EC ALFA BL ,  , PLATOS , ALFA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , U015 ,  , C5 UNI ,  , CONTENEDOR , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 429 ,  , LIZ NAVI ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 429 ,  , LIZ NAVI ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 429 ,  , LIZ NAVI ,  , PAPEL , LIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510430 ,  , 5OZ ACRILICO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510430 ,  , 5OZ ACRILICO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510430 ,  , 5OZ ACRILICO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , U016 ,  , PORTATORTA 31 ,  , OTROS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 431 ,  , 12oz SAN GABRIEL ,  , VASOS , SAN GABRIEL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 432 ,  , TAPA SAN GABRIEL ,  , VASOS , SAN GABRIEL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510433 ,  , 16*19 LA ECONOMICA BL ,  , BOLSA , LA ECONOMICA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510433 ,  , 16*19 LA ECONOMICA BL ,  , BOLSA , LA ECONOMICA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510433 ,  , 16*19 LA ECONOMICA BL ,  , BOLSA , LA ECONOMICA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 434 ,  , 12OZ CTAPA SAN GABRIEL ,  , VASOS , SAN GABRIEL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 435 ,  , REP 7 ,  , PLATOS , SAN GABRIEL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 435 ,  , REP 7 ,  , PLATOS , SAN GABRIEL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 436 ,  , REP 12 ,  , PLATOS , SAN GABRIEL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U017 ,  , 12OZ PET DOMO ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U018 ,  , 16OZ PET DOMO ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510U019 ,  , SORBETON UNI ,  , OTROS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510437 ,  , P26 HAWAI ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510437 ,  , P26 HAWAI ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510438 ,  , 8OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510438 ,  , 8OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510438 ,  , 8OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510439 ,  , PISQUERO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510439 ,  , PISQUERO ,  , VASOS , EUROPEA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510440 ,  , 10OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510440 ,  , 10OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510440 ,  , 10OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510441 ,  , 12OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510441 ,  , 12OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510441 ,  , 12OZ EUROGOLD ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510442 ,  , 1OZ AJICERO ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510442 ,  , 1OZ AJICERO ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510443 ,  , 2OZ AJICERO ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510443 ,  , 2OZ AJICERO ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510444 ,  , 4OZ AJICERO ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510444 ,  , 4OZ AJICERO ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510445 ,  , 26*40 GUARNIZ ,  , BOLSA , GUARNIZ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510447 ,  , 1*1 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510447 ,  , 1*1 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510448 ,  , 1.5*1.*5 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510448 ,  , 1.5*1.*5 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510449 ,  , 6*6 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510450 ,  , 7*10 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510451 ,  , 8*12 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510452 ,  , 9*14 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510453 ,  , 10*15 ZIPLOC ,  , ZIPLOC , ZIPLOC ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510454 ,  , TRIANGULO ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510455 ,  , P22 HAWAI ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510455 ,  , P22 HAWAI ,  , PLATOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510456 ,  , PROTOGO 1L ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510456 ,  , PROTOGO 1L ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510457 ,  , PROTOGO 800ml ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510457 ,  , PROTOGO 800ml ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510458 ,  , PROTOGO DIVISON 1L ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510458 ,  , PROTOGO DIVISON 1L ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510459 ,  , PROTOGO OVALADO ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510459 ,  , PROTOGO OVALADO ,  , CONTENEDOR , DARNELL ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510460 ,  , ALU 4OZ EC ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510460 ,  , ALU 4OZ EC ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510461 ,  , ALU 3/4 ER ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510461 ,  , ALU 3/4 ER ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 251462 ,  , AL 1/2 ER ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 251462 ,  , AL 1/2 ER ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, DESACTIVADO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510462 ,  , ALU 1/2 ER ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510462 ,  , ALU 1/2 ER ,  , ENVASES , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510463 ,  , BROCHETA 10 ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510463 ,  , BROCHETA 10 ,  , OTROS , XIONGMAO ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510464 ,  , ALU POLLIPAVO ,  , OTROS , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510464 ,  , ALU POLLIPAVO ,  , OTROS , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510465 ,  , ALU OVALADO 8KG ,  , OTROS , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510465 ,  , ALU OVALADO 8KG ,  , OTROS , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510466 ,  , ALU RECTANGULAR 7KG ,  , OTROS , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510466 ,  , ALU RECTANGULAR 7KG ,  , OTROS , RIACORP ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510467 ,  , 1/2L DELI HAWAI ,  , ENVASES , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510467 ,  , 1/2L DELI HAWAI ,  , ENVASES , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, UNIDAD , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510468 ,  , NAVI 7OZ VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510468 ,  , NAVI 7OZ VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510468 ,  , NAVI 7OZ VASO ,  , VASOS , PAMOLSA ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510469 ,  , 10OZ AMARILLO ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510470 ,  , 10OZ VERDE ,  , VASOS , HAWAI ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510471 ,  , 5*10 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510471 ,  , 5*10 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510471 ,  , 5*10 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510472 ,  , 7*10 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510472 ,  , 7*10 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510472 ,  , 7*10 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510473 ,  , 3*6 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510473 ,  , 3*6 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510473 ,  , 3*6 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510474 ,  , 3*8 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510474 ,  , 3*8 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510474 ,  , 3*8 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510475 ,  , 4*8 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510475 ,  , 4*8 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510475 ,  , 4*8 ROLLOMIQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, MILLAR , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510476 ,  , 12*13 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510476 ,  , 12*13 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510476 ,  , 12*13 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510477 ,  , 12*16 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510477 ,  , 12*16 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510477 ,  , 12*16 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510478 ,  , 12*16 REAL CO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510478 ,  , 12*16 REAL CO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510478 ,  , 12*16 REAL CO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510479 ,  , 16*19 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510479 ,  , 16*19 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510479 ,  , 16*19 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510480 ,  , 16*19 REAL NE ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510480 ,  , 16*19 REAL NE ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510480 ,  , 16*19 REAL NE ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510481 ,  , 19*20 REAL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510481 ,  , 19*20 REAL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510481 ,  , 19*20 REAL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510482 ,  , 21*24 REAL AM ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510482 ,  , 21*24 REAL AM ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510482 ,  , 21*24 REAL AM ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510482 ,  , 21*24 REAL AM ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, CIENTO , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510483 ,  , 12*16 TUCAN BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510483 ,  , 12*16 TUCAN BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510483 ,  , 12*16 TUCAN BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510484 ,  , 12*16 TUCAN CO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510484 ,  , 12*16 TUCAN CO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510484 ,  , 12*16 TUCAN CO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510485 ,  , 12*16 TUCAN NE ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510485 ,  , 12*16 TUCAN NE ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510485 ,  , 12*16 TUCAN NE ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510486 ,  , 16*19 TUCAN BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510486 ,  , 16*19 TUCAN BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510486 ,  , 16*19 TUCAN BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510487 ,  , 16*19 REALCITO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510487 ,  , 16*19 REALCITO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510487 ,  , 16*19 REALCITO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510488 ,  , 4*8*100 CRISTAL PLMQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510488 ,  , 4*8*100 CRISTAL PLMQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510489 ,  , 4*8*200 CRISTAL PLMQ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510490 ,  , 13*20 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510490 ,  , 13*20 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510491 ,  , 16*19 TUCAN CO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510492 ,  , 9*20 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510492 ,  , 9*20 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510493 ,  , 10*15 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510493 ,  , 10*15 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510494 ,  , 11*16 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510494 ,  , 11*16 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510495 ,  , 14*20 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510495 ,  , 14*20 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510496 ,  , B5 LUCHO ,  , CONTENEDOR , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510497 ,  , P15 RAYO ,  , PLATOS , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510497 ,  , P15 RAYO ,  , PLATOS , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510497 ,  , P15 RAYO ,  , PLATOS , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510498 ,  , 10*15 RAYO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510498 ,  , 10*15 RAYO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510498 ,  , 10*15 RAYO ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510499 ,  , 16*24 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510500 ,  , 18*26 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510501 ,  , 21*24 REAL AZ ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510502 ,  , 21*24 REAL BL ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510503 ,  , 21*24 REAL LU ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510504 ,  , 12*18 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510504 ,  , 12*18 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
+ Tienda Tantamayo , 2510505 ,  , 26*40 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , Lista de precios por defecto ,0,0,0,0
+ Tienda Tantamayo , 2510505 ,  , 26*40 BRPLAST ,  , BOLSA , PLASTIMIQ ,  , IGV IMPUESTO GENERAL A LAS VENTAS ,0, ACTIVO ,0,0,  ,0, PAQUETE , VIEJA ,0,0,0,0
