@@ -52,6 +52,7 @@ builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
 builder.Services.AddScoped<IInventoryMovementRepository, InventoryMovementRepository>();
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IProductStockRepository, ProductStockRepository>();
+builder.Services.AddScoped<IImportBatchRepository, ImportBatchRepository>();
 
 // Register services
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -61,6 +62,8 @@ builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 builder.Services.AddScoped<ITandiaImportService, TandiaImportService>();
+builder.Services.AddScoped<IStockInitialService, StockInitialService>();
+builder.Services.AddScoped<ISalesImportTrackingService, SalesImportTrackingService>();
 
 var app = builder.Build();
 

@@ -10,11 +10,15 @@ public class Sale : BaseEntity
     public decimal Taxes { get; set; }
     public decimal Total { get; set; }
     public string? Notes { get; set; }
+    public DateTime? ImportedAt { get; set; } // Para trackear cargas
+    public string? ImportSource { get; set; } // "TANDIA_EXCEL", "MANUAL", etc.
     
     // Foreign keys
     public int? CustomerId { get; set; }
+    public int? ImportBatchId { get; set; }
     
     // Relationships
     public virtual Customer? Customer { get; set; }
+    public virtual ImportBatch? ImportBatch { get; set; }
     public virtual ICollection<SaleDetail> Details { get; set; } = new List<SaleDetail>();
 }

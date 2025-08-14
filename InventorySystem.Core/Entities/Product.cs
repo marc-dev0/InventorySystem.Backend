@@ -17,10 +17,12 @@ public class Product : BaseEntity
     // Foreign keys
     public int CategoryId { get; set; }
     public int? SupplierId { get; set; }
+    public int? ImportBatchId { get; set; }
     
     // Relationships
     public virtual Category Category { get; set; } = null!;
     public virtual Supplier? Supplier { get; set; }
+    public virtual ImportBatch? ImportBatch { get; set; }
     public virtual ICollection<SaleDetail> SaleDetails { get; set; } = new List<SaleDetail>();
     public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; } = new List<PurchaseDetail>();
     public virtual ICollection<InventoryMovement> InventoryMovements { get; set; } = new List<InventoryMovement>();

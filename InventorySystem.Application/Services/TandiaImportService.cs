@@ -17,6 +17,7 @@ public class TandiaImportService : ITandiaImportService
     private readonly IInventoryMovementRepository _inventoryMovementRepository;
     private readonly IStoreRepository _storeRepository;
     private readonly IProductStockRepository _productStockRepository;
+    private readonly IImportBatchRepository _importBatchRepository;
 
     public TandiaImportService(
         IProductRepository productRepository,
@@ -26,7 +27,8 @@ public class TandiaImportService : ITandiaImportService
         ISaleRepository saleRepository,
         IInventoryMovementRepository inventoryMovementRepository,
         IStoreRepository storeRepository,
-        IProductStockRepository productStockRepository)
+        IProductStockRepository productStockRepository,
+        IImportBatchRepository importBatchRepository)
     {
         _productRepository = productRepository;
         _categoryRepository = categoryRepository;
@@ -36,6 +38,7 @@ public class TandiaImportService : ITandiaImportService
         _inventoryMovementRepository = inventoryMovementRepository;
         _storeRepository = storeRepository;
         _productStockRepository = productStockRepository;
+        _importBatchRepository = importBatchRepository;
     }
 
     public async Task<List<TandiaProductDto>> ValidateProductsExcelAsync(Stream excelStream)
@@ -139,6 +142,30 @@ public class TandiaImportService : ITandiaImportService
         return sales;
     }
 
+    private async Task<string> GenerateUniqueBatchCodeAsync(string type)
+    {
+        var today = DateTime.UtcNow.ToString("yyyyMMdd");
+        var prefix = $"{type}_{today}";
+        
+        // Buscar TODOS los batches existentes con este prefijo (incluyendo eliminados)
+        var allBatches = await _importBatchRepository.GetAllAsync();
+        var todayBatchCodes = allBatches
+            .Where(b => b.BatchCode.StartsWith(prefix))
+            .Select(b => b.BatchCode)
+            .ToList();
+        
+        // Buscar el próximo número secuencial disponible
+        int sequence = 1;
+        string candidateCode;
+        do
+        {
+            candidateCode = $"{prefix}_{sequence:D3}";
+            sequence++;
+        } while (todayBatchCodes.Contains(candidateCode));
+        
+        return candidateCode; // Ej: SALES_20250814_002 si 001 ya existe
+    }
+
     public async Task<BulkUploadResultDto> ImportProductsFromExcelAsync(Stream excelStream, string fileName)
     {
         var startTime = DateTime.Now;
@@ -146,8 +173,29 @@ public class TandiaImportService : ITandiaImportService
         
         try
         {
+            // Crear ImportBatch con código único
+            var batchCode = await GenerateUniqueBatchCodeAsync("PRODUCTS");
+            var importBatch = new ImportBatch
+            {
+                BatchCode = batchCode,
+                BatchType = "PRODUCTS",
+                FileName = fileName,
+                ImportDate = DateTime.UtcNow,
+                ImportedBy = "SYSTEM", // Podrías parametrizar esto
+                TotalRecords = 0, // Se actualizará al final
+                SuccessCount = 0,
+                SkippedCount = 0,
+                ErrorCount = 0
+            };
+            
+            // Guardar batch para obtener ID
+            await _importBatchRepository.AddAsync(importBatch);
+            
             var tandiaProducts = await ValidateProductsExcelAsync(excelStream);
             result.TotalRecords = tandiaProducts.Count;
+            
+            // Actualizar total records
+            importBatch.TotalRecords = tandiaProducts.Count;
             
             foreach (var tandiaProduct in tandiaProducts)
             {
@@ -158,57 +206,59 @@ public class TandiaImportService : ITandiaImportService
                     
                     if (existingProduct != null)
                     {
-                        // Update existing product
-                        existingProduct.Name = tandiaProduct.Name;
-                        existingProduct.Description = tandiaProduct.Description;
-                        existingProduct.PurchasePrice = tandiaProduct.CostPrice;
-                        existingProduct.SalePrice = tandiaProduct.SalePrice;
-                        existingProduct.Stock = tandiaProduct.Stock;
-                        existingProduct.MinimumStock = tandiaProduct.MinStock;
-                        existingProduct.Unit = tandiaProduct.Unit;
-                        existingProduct.Active = tandiaProduct.Status.ToUpper() == "ACTIVO";
-                        
-                        await _productRepository.UpdateAsync(existingProduct);
-                    }
-                    else
-                    {
-                        // Get or create category
-                        var category = await GetOrCreateCategoryAsync(tandiaProduct.Categories);
-                        
-                        // Get or create supplier
-                        Supplier? supplier = null;
-                        if (!string.IsNullOrWhiteSpace(tandiaProduct.Brand))
-                        {
-                            supplier = await GetOrCreateSupplierAsync(tandiaProduct.Brand);
-                        }
-                        
-                        // Create new product
-                        var newProduct = new Product
-                        {
-                            Code = tandiaProduct.Code,
-                            Name = tandiaProduct.Name,
-                            Description = tandiaProduct.Description,
-                            PurchasePrice = tandiaProduct.CostPrice,
-                            SalePrice = tandiaProduct.SalePrice,
-                            Stock = tandiaProduct.Stock,
-                            MinimumStock = tandiaProduct.MinStock,
-                            Unit = tandiaProduct.Unit,
-                            CategoryId = category.Id,
-                            SupplierId = supplier?.Id,
-                            Active = tandiaProduct.Status.ToUpper() == "ACTIVO"
-                        };
-                        
-                        await _productRepository.AddAsync(newProduct);
+                        // Skip existing product - no update
+                        result.SkippedCount++;
+                        importBatch.SkippedCount++;
+                        continue;
                     }
                     
+                    // Get or create category
+                    var category = await GetOrCreateCategoryAsync(tandiaProduct.Categories);
+                    
+                    // Get or create supplier
+                    Supplier? supplier = null;
+                    if (!string.IsNullOrWhiteSpace(tandiaProduct.Brand))
+                    {
+                        supplier = await GetOrCreateSupplierAsync(tandiaProduct.Brand);
+                    }
+                    
+                    // Create new product
+                    var newProduct = new Product
+                    {
+                        Code = tandiaProduct.Code,
+                        Name = tandiaProduct.Name,
+                        Description = tandiaProduct.Description,
+                        PurchasePrice = tandiaProduct.CostPrice,
+                        SalePrice = tandiaProduct.SalePrice,
+                        Stock = tandiaProduct.Stock,
+                        MinimumStock = tandiaProduct.MinStock,
+                        Unit = tandiaProduct.Unit,
+                        CategoryId = category.Id,
+                        SupplierId = supplier?.Id,
+                        Active = tandiaProduct.Status.ToUpper() == "ACTIVO",
+                        ImportBatchId = importBatch.Id
+                    };
+                    
+                    await _productRepository.AddAsync(newProduct);
+                    
                     result.SuccessCount++;
+                    importBatch.SuccessCount++;
                 }
                 catch (Exception ex)
                 {
                     result.ErrorCount++;
+                    importBatch.ErrorCount++;
                     result.Errors.Add($"Row {result.SuccessCount + result.ErrorCount}: {ex.Message}");
                 }
             }
+            
+            // Actualizar ImportBatch con resultados finales
+            importBatch.Errors = result.Errors.Any() ? System.Text.Json.JsonSerializer.Serialize(result.Errors) : null;
+            importBatch.Warnings = result.Warnings.Any() ? System.Text.Json.JsonSerializer.Serialize(result.Warnings) : null;
+            await _importBatchRepository.UpdateAsync(importBatch);
+            
+            // Agregar código de batch al resultado
+            result.Warnings.Insert(0, $"Código de lote: {batchCode}");
         }
         catch (Exception ex)
         {
@@ -226,8 +276,29 @@ public class TandiaImportService : ITandiaImportService
         
         try
         {
+            // Crear ImportBatch con código único
+            var batchCode = await GenerateUniqueBatchCodeAsync("SALES");
+            var importBatch = new ImportBatch
+            {
+                BatchCode = batchCode,
+                BatchType = "SALES",
+                FileName = fileName,
+                ImportDate = DateTime.UtcNow,
+                ImportedBy = "SYSTEM",
+                TotalRecords = 0,
+                SuccessCount = 0,
+                SkippedCount = 0,
+                ErrorCount = 0
+            };
+            
+            // Guardar batch para obtener ID
+            await _importBatchRepository.AddAsync(importBatch);
+            
             var tandiaSales = await ValidateSalesExcelAsync(excelStream);
             result.TotalRecords = tandiaSales.Count;
+            
+            // Actualizar total records
+            importBatch.TotalRecords = tandiaSales.Count;
             
             // Group sales by document number
             var salesGroups = tandiaSales.GroupBy(s => s.DocumentNumber).ToList();
@@ -244,6 +315,8 @@ public class TandiaImportService : ITandiaImportService
                     if (existingSale != null)
                     {
                         result.Warnings.Add($"Sale {firstSale.DocumentNumber} already exists, skipping...");
+                        result.SkippedCount++;
+                        importBatch.SkippedCount++;
                         continue;
                     }
                     
@@ -259,12 +332,17 @@ public class TandiaImportService : ITandiaImportService
                         SubTotal = 0,
                         Taxes = 0,
                         Total = 0,
+                        ImportedAt = DateTime.UtcNow, // Marcar como importado
+                        ImportSource = batchCode, // Usar código de batch como fuente
+                        ImportBatchId = importBatch.Id, // Asociar al batch
                         Details = new List<SaleDetail>()
                     };
                     
                     decimal saleSubTotal = 0;
                     decimal saleTaxes = 0;
+                    var movementsToCreate = new List<InventoryMovement>();
                     
+                    // First pass: Create sale details and calculate totals
                     foreach (var saleDetail in salesGroup)
                     {
                         // Find product
@@ -288,6 +366,22 @@ public class TandiaImportService : ITandiaImportService
                         sale.Details.Add(detail);
                         saleSubTotal += detail.Subtotal;
                         saleTaxes += saleDetail.Tax;
+                    }
+                    
+                    // Set sale totals and save the sale first to get the ID
+                    sale.SubTotal = saleSubTotal;
+                    sale.Taxes = saleTaxes;
+                    sale.Total = saleSubTotal + saleTaxes;
+                    
+                    await _saleRepository.AddAsync(sale);
+                    
+                    // Second pass: Update stock and create movements with correct SaleId
+                    foreach (var saleDetail in salesGroup)
+                    {
+                        // Find product again
+                        var product = await _productRepository.FirstOrDefaultAsync(p => p.Code == saleDetail.ProductCode);
+                        
+                        if (product == null) continue; // Already warned in first pass
                         
                         // Get or create store
                         var store = await GetOrCreateStoreAsync(saleDetail.Warehouse);
@@ -304,7 +398,7 @@ public class TandiaImportService : ITandiaImportService
                         product.Stock -= (int)saleDetail.Quantity;
                         await _productRepository.UpdateAsync(product);
                         
-                        // Register inventory movement
+                        // Register inventory movement with correct SaleId
                         var movement = new InventoryMovement
                         {
                             Date = DateTime.SpecifyKind(firstSale.Date, DateTimeKind.Utc),
@@ -321,25 +415,29 @@ public class TandiaImportService : ITandiaImportService
                             ProductId = product.Id,
                             StoreId = store.Id,
                             ProductStockId = productStock.Id,
-                            SaleId = null // Will be set after sale is saved
+                            SaleId = sale.Id // Now we have the correct Sale ID!
                         };
                         
                         await _inventoryMovementRepository.AddAsync(movement);
                     }
-                    
-                    sale.SubTotal = saleSubTotal;
-                    sale.Taxes = saleTaxes;
-                    sale.Total = saleSubTotal + saleTaxes;
-                    
-                    await _saleRepository.AddAsync(sale);
                     result.SuccessCount++;
+                    importBatch.SuccessCount++;
                 }
                 catch (Exception ex)
                 {
                     result.ErrorCount++;
+                    importBatch.ErrorCount++;
                     result.Errors.Add($"Sale {salesGroup.Key}: {ex.Message}");
                 }
             }
+            
+            // Actualizar ImportBatch con resultados finales
+            importBatch.Errors = result.Errors.Any() ? System.Text.Json.JsonSerializer.Serialize(result.Errors) : null;
+            importBatch.Warnings = result.Warnings.Any() ? System.Text.Json.JsonSerializer.Serialize(result.Warnings) : null;
+            await _importBatchRepository.UpdateAsync(importBatch);
+            
+            // Agregar código de batch al resultado
+            result.Warnings.Insert(0, $"Código de lote: {batchCode}");
         }
         catch (Exception ex)
         {

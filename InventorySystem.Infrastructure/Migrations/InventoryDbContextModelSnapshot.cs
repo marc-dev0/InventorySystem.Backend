@@ -52,7 +52,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -114,7 +114,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.InventoryMovement", b =>
@@ -194,7 +194,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasIndex("StoreId");
 
-                    b.ToTable("InventoryMovements");
+                    b.ToTable("InventoryMovements", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Product", b =>
@@ -257,7 +257,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.ProductStock", b =>
@@ -302,7 +302,7 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasIndex("ProductId", "StoreId")
                         .IsUnique();
 
-                    b.ToTable("ProductStocks");
+                    b.ToTable("ProductStocks", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Purchase", b =>
@@ -344,7 +344,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Purchases");
+                    b.ToTable("Purchases", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.PurchaseDetail", b =>
@@ -390,7 +390,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("PurchaseDetails");
+                    b.ToTable("PurchaseDetails", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Sale", b =>
@@ -437,7 +437,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Sales");
+                    b.ToTable("Sales", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.SaleDetail", b =>
@@ -478,7 +478,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.ToTable("SaleDetails");
+                    b.ToTable("SaleDetails", (string)null);
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Store", b =>
@@ -528,7 +528,7 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Stores");
+                    b.ToTable("Stores", (string)null);
 
                     b.HasData(
                         new
@@ -589,7 +589,7 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
 
                     b.HasData(
                         new

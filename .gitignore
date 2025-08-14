@@ -42,3 +42,5 @@ Thumbs.db
 # Test files
 errores/
 EOF < /dev/null
+
+.fake

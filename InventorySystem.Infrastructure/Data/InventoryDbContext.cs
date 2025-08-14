@@ -21,6 +21,7 @@ public class InventoryDbContext : DbContext
     public DbSet<InventoryMovement> InventoryMovements { get; set; }
     public DbSet<Store> Stores { get; set; }
     public DbSet<ProductStock> ProductStocks { get; set; }
+    public DbSet<ImportBatch> ImportBatches { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -112,6 +113,32 @@ public class InventoryDbContext : DbContext
             entity.HasOne(e => e.ProductStock)
                 .WithMany(ps => ps.InventoryMovements)
                 .HasForeignKey(e => e.ProductStockId)
+                .OnDelete(DeleteBehavior.SetNull);
+        });
+
+        modelBuilder.Entity<ImportBatch>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.BatchType).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.FileName).IsRequired().HasMaxLength(255);
+            entity.Property(e => e.StoreCode).HasMaxLength(10);
+            entity.Property(e => e.ImportedBy).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.DeletedBy).HasMaxLength(100);
+            entity.Property(e => e.DeleteReason).HasMaxLength(500);
+            
+            entity.HasMany(e => e.Sales)
+                .WithOne(s => s.ImportBatch)
+                .HasForeignKey(s => s.ImportBatchId)
+                .OnDelete(DeleteBehavior.SetNull);
+                
+            entity.HasMany(e => e.Products)
+                .WithOne(p => p.ImportBatch)
+                .HasForeignKey(p => p.ImportBatchId)
+                .OnDelete(DeleteBehavior.SetNull);
+                
+            entity.HasMany(e => e.ProductStocks)
+                .WithOne(ps => ps.ImportBatch)
+                .HasForeignKey(ps => ps.ImportBatchId)
                 .OnDelete(DeleteBehavior.SetNull);
         });
 
