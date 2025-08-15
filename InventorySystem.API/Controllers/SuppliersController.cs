@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
+using InventorySystem.API.Controllers.Base;
 
 namespace InventorySystem.API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class SuppliersController : ControllerBase
+[Authorize(Policy = "UserOrAdmin")]
+public class SuppliersController : BaseCrudController<SupplierDto, CreateSupplierDto, UpdateSupplierDto>
 {
     private readonly ISupplierService _supplierService;
 
@@ -15,68 +16,39 @@ public class SuppliersController : ControllerBase
         _supplierService = supplierService;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<SupplierDto>>> GetAll()
+    // Implementation of abstract methods from BaseCrudController
+    protected override async Task<IEnumerable<SupplierDto>> GetAllItemsAsync()
     {
-        var suppliers = await _supplierService.GetAllAsync();
-        return Ok(suppliers);
+        return await _supplierService.GetAllAsync();
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<SupplierDto>> GetById(int id)
+    protected override async Task<SupplierDto?> GetItemByIdAsync(int id)
     {
-        var supplier = await _supplierService.GetByIdAsync(id);
-        if (supplier == null)
-            return NotFound();
-
-        return Ok(supplier);
+        return await _supplierService.GetByIdAsync(id);
     }
 
-    [HttpGet("active")]
-    public async Task<ActionResult<IEnumerable<SupplierDto>>> GetActive()
+    protected override async Task<IEnumerable<SupplierDto>> GetActiveItemsAsync()
     {
-        var suppliers = await _supplierService.GetActiveSuppliersAsync();
-        return Ok(suppliers);
+        return await _supplierService.GetActiveSuppliersAsync();
     }
 
-    [HttpPost]
-    public async Task<ActionResult<SupplierDto>> Create([FromBody] CreateSupplierDto dto)
+    protected override async Task<SupplierDto> CreateItemAsync(CreateSupplierDto createDto)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        var supplier = await _supplierService.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetById), new { id = supplier.Id }, supplier);
+        return await _supplierService.CreateAsync(createDto);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody] UpdateSupplierDto dto)
+    protected override async Task UpdateItemAsync(int id, UpdateSupplierDto updateDto)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        try
-        {
-            await _supplierService.UpdateAsync(id, dto);
-            return NoContent();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
+        await _supplierService.UpdateAsync(id, updateDto);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    protected override async Task DeleteItemAsync(int id)
     {
-        try
-        {
-            await _supplierService.DeleteAsync(id);
-            return NoContent();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
+        await _supplierService.DeleteAsync(id);
+    }
+
+    protected override int GetItemId(SupplierDto item)
+    {
+        return item.Id;
     }
 }

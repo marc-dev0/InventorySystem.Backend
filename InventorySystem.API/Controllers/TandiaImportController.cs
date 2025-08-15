@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
+using InventorySystem.API.Utilities;
 
 namespace InventorySystem.API.Controllers;
 
+[Authorize(Policy = "AdminOnly")]
 [ApiController]
 [Route("api/[controller]")]
 public class TandiaImportController : ControllerBase
@@ -24,7 +27,7 @@ public class TandiaImportController : ControllerBase
         if (file == null || file.Length == 0)
             return BadRequest("No file uploaded");
 
-        if (!IsValidExcelFile(file))
+        if (!FileValidationHelper.IsValidExcelFile(file))
             return BadRequest("Invalid file format. Please upload an Excel file (.xlsx or .xls)");
 
         try
@@ -52,7 +55,7 @@ public class TandiaImportController : ControllerBase
         if (file == null || file.Length == 0)
             return BadRequest("No file uploaded");
 
-        if (!IsValidExcelFile(file))
+        if (!FileValidationHelper.IsValidExcelFile(file))
             return BadRequest("Invalid file format. Please upload an Excel file (.xlsx or .xls)");
 
         try
@@ -85,7 +88,7 @@ public class TandiaImportController : ControllerBase
         if (salesFile == null || salesFile.Length == 0)
             return BadRequest("Sales file is required");
 
-        if (!IsValidExcelFile(productsFile) || !IsValidExcelFile(salesFile))
+        if (!FileValidationHelper.IsValidExcelFile(productsFile) || !FileValidationHelper.IsValidExcelFile(salesFile))
             return BadRequest("Invalid file format. Please upload Excel files (.xlsx or .xls)");
 
         try
@@ -111,7 +114,7 @@ public class TandiaImportController : ControllerBase
         if (file == null || file.Length == 0)
             return BadRequest("No file uploaded");
 
-        if (!IsValidExcelFile(file))
+        if (!FileValidationHelper.IsValidExcelFile(file))
             return BadRequest("Invalid file format. Please upload an Excel file (.xlsx or .xls)");
 
         try
@@ -156,7 +159,7 @@ public class TandiaImportController : ControllerBase
         if (file == null || file.Length == 0)
             return BadRequest("No file uploaded");
 
-        if (!IsValidExcelFile(file))
+        if (!FileValidationHelper.IsValidExcelFile(file))
             return BadRequest("Invalid file format. Please upload an Excel file (.xlsx or .xls)");
 
         try
@@ -216,13 +219,4 @@ public class TandiaImportController : ControllerBase
         return Ok(history);
     }
 
-    private static bool IsValidExcelFile(IFormFile file)
-    {
-        var allowedExtensions = new[] { ".xlsx", ".xls" };
-        var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
-        
-        return allowedExtensions.Contains(fileExtension) && 
-               file.ContentType.Contains("spreadsheet") || 
-               file.ContentType.Contains("excel");
-    }
 }

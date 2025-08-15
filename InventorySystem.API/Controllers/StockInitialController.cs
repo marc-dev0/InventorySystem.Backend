@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
+using InventorySystem.API.Utilities;
 
 namespace InventorySystem.API.Controllers;
 
+[Authorize(Policy = "AdminOnly")]
 [ApiController]
 [Route("api/[controller]")]
 public class StockInitialController : ControllerBase
@@ -29,7 +32,7 @@ public class StockInitialController : ControllerBase
                 return BadRequest("No se ha seleccionado ningún archivo.");
             }
 
-            if (!IsValidExcelFile(file))
+            if (!FileValidationHelper.IsValidExcelFile(file))
             {
                 return BadRequest("El archivo debe ser un Excel (.xlsx o .xls).");
             }
@@ -191,13 +194,4 @@ public class StockInitialController : ControllerBase
         return Ok(stores);
     }
 
-    private static bool IsValidExcelFile(IFormFile file)
-    {
-        var allowedExtensions = new[] { ".xlsx", ".xls" };
-        var fileExtension = Path.GetExtension(file.FileName).ToLowerInvariant();
-        
-        return allowedExtensions.Contains(fileExtension) && 
-               (file.ContentType.Contains("spreadsheet") || 
-                file.ContentType.Contains("excel"));
-    }
 }

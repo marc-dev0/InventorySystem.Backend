@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
+using InventorySystem.API.Controllers.Base;
 
 namespace InventorySystem.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PurchasesController : ControllerBase
+public class PurchasesController : BaseReportController<PurchaseDto>
 {
     private readonly IPurchaseService _purchaseService;
 
@@ -42,28 +43,14 @@ public class PurchasesController : ControllerBase
         return Ok(purchase);
     }
 
-    [HttpGet("date-range")]
-    public async Task<ActionResult<IEnumerable<PurchaseDto>>> GetByDateRange(
-        [FromQuery] DateTime startDate,
-        [FromQuery] DateTime endDate)
+    protected override async Task<IEnumerable<PurchaseDto>> GetItemsByDateRangeAsync(DateTime startDate, DateTime endDate)
     {
-        if (startDate > endDate)
-            return BadRequest("Start date cannot be greater than end date");
-
-        var purchases = await _purchaseService.GetPurchasesByDateRangeAsync(startDate, endDate);
-        return Ok(purchases);
+        return await _purchaseService.GetPurchasesByDateRangeAsync(startDate, endDate);
     }
 
-    [HttpGet("reports")]
-    public async Task<ActionResult<object>> GetReport(
-        [FromQuery] DateTime startDate,
-        [FromQuery] DateTime endDate)
+    protected override async Task<object> GetReportAsync(DateTime startDate, DateTime endDate)
     {
-        if (startDate > endDate)
-            return BadRequest("Start date cannot be greater than end date");
-
-        var report = await _purchaseService.GetPurchasesReportAsync(startDate, endDate);
-        return Ok(report);
+        return await _purchaseService.GetPurchasesReportAsync(startDate, endDate);
     }
 
     [HttpPost]

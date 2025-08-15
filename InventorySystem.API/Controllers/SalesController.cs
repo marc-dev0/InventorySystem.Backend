@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
+using InventorySystem.API.Controllers.Base;
 
 namespace InventorySystem.API.Controllers;
 
+[Authorize(Policy = "UserOrAdmin")]
 [ApiController]
 [Route("api/[controller]")]
-public class SalesController : ControllerBase
+public class SalesController : BaseReportController<SaleDto>
 {
     private readonly ISaleService _saleService;
 
@@ -42,16 +45,14 @@ public class SalesController : ControllerBase
         return Ok(sale);
     }
 
-    [HttpGet("date-range")]
-    public async Task<ActionResult<IEnumerable<SaleDto>>> GetByDateRange(
-        [FromQuery] DateTime startDate,
-        [FromQuery] DateTime endDate)
+    protected override async Task<IEnumerable<SaleDto>> GetItemsByDateRangeAsync(DateTime startDate, DateTime endDate)
     {
-        if (startDate > endDate)
-            return BadRequest("Start date cannot be greater than end date");
+        return await _saleService.GetSalesByDateRangeAsync(startDate, endDate);
+    }
 
-        var sales = await _saleService.GetSalesByDateRangeAsync(startDate, endDate);
-        return Ok(sales);
+    protected override async Task<object> GetReportAsync(DateTime startDate, DateTime endDate)
+    {
+        return await _saleService.GetSalesReportAsync(startDate, endDate);
     }
 
     [HttpGet("customer/{customerId}")]
@@ -59,18 +60,6 @@ public class SalesController : ControllerBase
     {
         var sales = await _saleService.GetSalesByCustomerAsync(customerId);
         return Ok(sales);
-    }
-
-    [HttpGet("reports")]
-    public async Task<ActionResult<object>> GetReport(
-        [FromQuery] DateTime startDate,
-        [FromQuery] DateTime endDate)
-    {
-        if (startDate > endDate)
-            return BadRequest("Start date cannot be greater than end date");
-
-        var report = await _saleService.GetSalesReportAsync(startDate, endDate);
-        return Ok(report);
     }
 
     [HttpGet("dashboard")]

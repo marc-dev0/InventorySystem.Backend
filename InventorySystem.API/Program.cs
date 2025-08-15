@@ -1,9 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using InventorySystem.Infrastructure.Data;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.Services;
+using InventorySystem.Infrastructure.Services;
 using InventorySystem.Core.Interfaces;
 using InventorySystem.Infrastructure.Repositories;
+using InventorySystem.API.Configuration;
 using Serilog;
 
 // Configure Serilog
@@ -23,6 +28,42 @@ builder.Host.UseSerilog();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Configure JWT Settings
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"]!;
+var issuer = jwtSettings["Issuer"]!;
+var audience = jwtSettings["Audience"]!;
+
+// Add JWT Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = issuer,
+        ValidAudience = audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+        ClockSkew = TimeSpan.Zero // Remove default 5 minute tolerance
+    };
+});
+
+// Add Authorization
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => 
+        policy.RequireRole("Admin"));
+    options.AddPolicy("UserOrAdmin", policy => 
+        policy.RequireRole("User", "Admin"));
+});
 
 // Add CORS for frontend
 builder.Services.AddCors(options =>
@@ -65,6 +106,10 @@ builder.Services.AddScoped<ITandiaImportService, TandiaImportService>();
 builder.Services.AddScoped<IStockInitialService, StockInitialService>();
 builder.Services.AddScoped<ISalesImportTrackingService, SalesImportTrackingService>();
 
+// Register authentication services
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 var app = builder.Build();
 
 // Auto-create database and apply migrations
@@ -73,11 +118,12 @@ using (var scope = app.Services.CreateScope())
     var context = scope.ServiceProvider.GetRequiredService<InventoryDbContext>();
     try
     {
-        context.Database.EnsureCreated();
+        // Use migrations instead of EnsureCreated for better control
+        context.Database.Migrate();
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Database creation error: {ex.Message}");
+        Console.WriteLine($"Database migration error: {ex.Message}");
     }
 }
 
@@ -93,7 +139,11 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
+
+// Add authentication and authorization middleware
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 // Add health check endpoint

@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
+using InventorySystem.API.Controllers.Base;
 
 namespace InventorySystem.API.Controllers;
 
+[Authorize(Policy = "UserOrAdmin")]
 [ApiController]
 [Route("api/[controller]")]
-public class ProductsController : ControllerBase
+public class ProductsController : BaseSearchController<ProductDto>
 {
     private readonly IProductService _productService;
 
@@ -56,14 +59,9 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
-    [HttpGet("search")]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> Search([FromQuery] string term)
+    protected override async Task<IEnumerable<ProductDto>> SearchItemsAsync(string term)
     {
-        if (string.IsNullOrWhiteSpace(term))
-            return BadRequest("Search term is required");
-
-        var products = await _productService.SearchProductsAsync(term);
-        return Ok(products);
+        return await _productService.SearchProductsAsync(term);
     }
 
     [HttpPost]

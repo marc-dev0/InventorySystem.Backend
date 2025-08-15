@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
+using InventorySystem.API.Controllers.Base;
 
 namespace InventorySystem.API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class CategoriesController : ControllerBase
+[Authorize(Policy = "UserOrAdmin")]
+public class CategoriesController : BaseCrudController<CategoryDto, CreateCategoryDto, UpdateCategoryDto>
 {
     private readonly ICategoryService _categoryService;
 
@@ -15,68 +16,39 @@ public class CategoriesController : ControllerBase
         _categoryService = categoryService;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAll()
+    // Implementation of abstract methods from BaseCrudController
+    protected override async Task<IEnumerable<CategoryDto>> GetAllItemsAsync()
     {
-        var categories = await _categoryService.GetAllAsync();
-        return Ok(categories);
+        return await _categoryService.GetAllAsync();
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<CategoryDto>> GetById(int id)
+    protected override async Task<CategoryDto?> GetItemByIdAsync(int id)
     {
-        var category = await _categoryService.GetByIdAsync(id);
-        if (category == null)
-            return NotFound();
-
-        return Ok(category);
+        return await _categoryService.GetByIdAsync(id);
     }
 
-    [HttpGet("active")]
-    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetActive()
+    protected override async Task<IEnumerable<CategoryDto>> GetActiveItemsAsync()
     {
-        var categories = await _categoryService.GetActiveCategoriesAsync();
-        return Ok(categories);
+        return await _categoryService.GetActiveCategoriesAsync();
     }
 
-    [HttpPost]
-    public async Task<ActionResult<CategoryDto>> Create([FromBody] CreateCategoryDto dto)
+    protected override async Task<CategoryDto> CreateItemAsync(CreateCategoryDto createDto)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        var category = await _categoryService.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
+        return await _categoryService.CreateAsync(createDto);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody] UpdateCategoryDto dto)
+    protected override async Task UpdateItemAsync(int id, UpdateCategoryDto updateDto)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
-
-        try
-        {
-            await _categoryService.UpdateAsync(id, dto);
-            return NoContent();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
+        await _categoryService.UpdateAsync(id, updateDto);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    protected override async Task DeleteItemAsync(int id)
     {
-        try
-        {
-            await _categoryService.DeleteAsync(id);
-            return NoContent();
-        }
-        catch (KeyNotFoundException)
-        {
-            return NotFound();
-        }
+        await _categoryService.DeleteAsync(id);
+    }
+
+    protected override int GetItemId(CategoryDto item)
+    {
+        return item.Id;
     }
 }
