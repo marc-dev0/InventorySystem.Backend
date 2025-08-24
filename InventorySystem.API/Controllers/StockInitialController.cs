@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.API.Utilities;
+using InventorySystem.Core.Interfaces;
+using InventorySystem.Application.Services;
 
 namespace InventorySystem.API.Controllers;
 
@@ -12,21 +14,48 @@ public class StockInitialController : ControllerBase
 {
     private readonly IStockInitialService _stockInitialService;
     private readonly ILogger<StockInitialController> _logger;
+    private readonly IProductRepository _productRepository;
+    private readonly IImportLockService _importLockService;
 
-    public StockInitialController(IStockInitialService stockInitialService, ILogger<StockInitialController> logger)
+    public StockInitialController(IStockInitialService stockInitialService, ILogger<StockInitialController> logger, IProductRepository productRepository, IImportLockService importLockService)
     {
         _stockInitialService = stockInitialService;
         _logger = logger;
+        _productRepository = productRepository;
+        _importLockService = importLockService;
     }
 
     /// <summary>
-    /// Cargar stock inicial desde archivo Excel
+    /// Cargar stock inicial desde archivo Excel - SÍNCRONO (DEPRECADO: Use BackgroundJobs/stock/queue)
     /// </summary>
     [HttpPost("upload-excel")]
     public async Task<IActionResult> UploadStockExcel(IFormFile file, [FromForm] string storeCode)
     {
         try
         {
+            // BLOQUEO MUTUO: Verificar si se permite la importación de stock
+            var isAllowed = await _importLockService.IsImportAllowedAsync("STOCK_IMPORT", storeCode);
+            if (!isAllowed)
+            {
+                var blockingMessage = await _importLockService.GetBlockingJobMessageAsync("STOCK_IMPORT", storeCode);
+                return Conflict(new 
+                { 
+                    error = "No se puede iniciar la carga de stock inicial en este momento",
+                    reason = blockingMessage,
+                    suggestion = "Use el endpoint BackgroundJobs/stock/queue para cargas en segundo plano, o espere a que termine el proceso actual",
+                    warningDeprecation = "⚠️ Este endpoint síncrono está deprecado. Use BackgroundJobs/stock/queue para mejor rendimiento."
+                });
+            }
+
+            // Verificar si existen productos en el sistema
+            var allProducts = await _productRepository.GetAllAsync();
+            var activeProducts = allProducts.Where(p => p.Active && !p.IsDeleted).ToList();
+            
+            if (!activeProducts.Any())
+            {
+                return BadRequest("No se puede cargar stock inicial porque no hay productos registrados en el sistema. Debe importar productos primero.");
+            }
+
             if (file == null || file.Length == 0)
             {
                 return BadRequest("No se ha seleccionado ningún archivo.");
@@ -63,6 +92,11 @@ public class StockInitialController : ControllerBase
                 return BadRequest(new 
                 { 
                     message = "Carga completada con errores",
+                    totalRecords = result.TotalRecords,
+                    successCount = result.SuccessCount,
+                    skippedCount = result.SkippedCount,
+                    errorCount = result.ErrorCount,
+                    processingTime = result.ProcessingTime.ToString(@"hh\:mm\:ss\.fff"),
                     processedProducts = result.ProcessedProducts,
                     skippedProducts = result.SkippedProducts,
                     totalStock = result.TotalStock,
@@ -75,6 +109,11 @@ public class StockInitialController : ControllerBase
             return Ok(new 
             { 
                 message = "Stock cargado exitosamente",
+                totalRecords = result.TotalRecords,
+                successCount = result.SuccessCount,
+                skippedCount = result.SkippedCount,
+                errorCount = result.ErrorCount,
+                processingTime = result.ProcessingTime.ToString(@"hh\:mm\:ss\.fff"),
                 processedProducts = result.ProcessedProducts,
                 skippedProducts = result.SkippedProducts,
                 totalStock = result.TotalStock,
@@ -182,6 +221,7 @@ public class StockInitialController : ControllerBase
     /// <summary>
     /// Obtener información de los almacenes disponibles
     /// </summary>
+    [AllowAnonymous]
     [HttpGet("stores")]
     public IActionResult GetAvailableStores()
     {

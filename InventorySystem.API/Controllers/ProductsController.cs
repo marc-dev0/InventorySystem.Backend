@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
 using InventorySystem.API.Controllers.Base;
+using InventorySystem.Application.Services;
 
 namespace InventorySystem.API.Controllers;
 
@@ -12,10 +13,12 @@ namespace InventorySystem.API.Controllers;
 public class ProductsController : BaseSearchController<ProductDto>
 {
     private readonly IProductService _productService;
+    private readonly IImportLockService _importLockService;
 
-    public ProductsController(IProductService productService)
+    public ProductsController(IProductService productService, IImportLockService importLockService)
     {
         _productService = productService;
+        _importLockService = importLockService;
     }
 
     [HttpGet]
@@ -111,6 +114,19 @@ public class ProductsController : BaseSearchController<ProductDto>
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
+        // Verificar si se puede eliminar el producto (no hay cargas activas)
+        var canDelete = await _importLockService.CanDeleteAsync("PRODUCT", id);
+        if (!canDelete)
+        {
+            return Conflict(new 
+            { 
+                error = "No se puede eliminar el producto en este momento",
+                reason = "Hay cargas de datos en proceso que utilizan productos",
+                suggestion = "Espere a que terminen las cargas activas antes de eliminar productos",
+                checkStatusEndpoint = "/api/backgroundjobs/status/imports"
+            });
+        }
+
         try
         {
             await _productService.DeleteAsync(id);

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using InventorySystem.Infrastructure.Data;
+using Npgsql;
 using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.Services;
 using InventorySystem.Infrastructure.Services;
@@ -10,6 +11,8 @@ using InventorySystem.Core.Interfaces;
 using InventorySystem.Infrastructure.Repositories;
 using InventorySystem.API.Configuration;
 using Serilog;
+using Hangfire;
+using Hangfire.PostgreSql;
 
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
@@ -76,6 +79,9 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Configure Npgsql DateTime handling
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 // Configure Entity Framework
 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
     ?? builder.Configuration.GetConnectionString("DefaultConnection");
@@ -83,17 +89,29 @@ var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
 builder.Services.AddDbContext<InventoryDbContext>(options =>
     options.UseNpgsql(connectionString));
 
+// Configure Hangfire
+builder.Services.AddHangfire(configuration => configuration
+    .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+    .UseSimpleAssemblyNameTypeSerializer()
+    .UseRecommendedSerializerSettings()
+    .UsePostgreSqlStorage(connectionString));
+
+builder.Services.AddHangfireServer();
+
 // Register repositories
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<ISaleRepository, SaleRepository>();
 builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
 builder.Services.AddScoped<IInventoryMovementRepository, InventoryMovementRepository>();
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IProductStockRepository, ProductStockRepository>();
 builder.Services.AddScoped<IImportBatchRepository, ImportBatchRepository>();
+builder.Services.AddScoped<IBackgroundJobRepository, BackgroundJobRepository>();
+builder.Services.AddScoped<ISystemConfigurationRepository, SystemConfigurationRepository>();
 
 // Register services
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -105,10 +123,19 @@ builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 builder.Services.AddScoped<ITandiaImportService, TandiaImportService>();
 builder.Services.AddScoped<IStockInitialService, StockInitialService>();
 builder.Services.AddScoped<ISalesImportTrackingService, SalesImportTrackingService>();
+builder.Services.AddScoped<IBackgroundJobService, BackgroundJobService>();
+builder.Services.AddScoped<IStockValidationService, StockValidationService>();
+builder.Services.AddScoped<IImportLockService, ImportLockService>();
+builder.Services.AddScoped<BatchProcessingService>();
+builder.Services.AddScoped<BatchedTandiaImportService>();
 
 // Register authentication services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+// Register Excel Processor Service (Native .NET with ClosedXML)
+builder.Services.AddScoped<ExcelProcessorService>();
+
 
 var app = builder.Build();
 
@@ -137,6 +164,12 @@ if (app.Environment.IsDevelopment())
 
 // Use CORS
 app.UseCors("AllowFrontend");
+
+// Use Hangfire Dashboard (only in development for security)
+if (app.Environment.IsDevelopment())
+{
+    app.UseHangfireDashboard("/hangfire");
+}
 
 app.UseHttpsRedirection();
 
