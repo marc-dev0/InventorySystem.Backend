@@ -40,3 +40,16 @@ logs/
 
 # Rider
 .idea/
+
+# Large files and installers
+*.deb
+*.rpm
+*.msi
+*.exe
+*.dmg
+*.iso
+
+# Temporary office files
+*.tmp
+~$*
+.~lock.*
