@@ -9,6 +9,6 @@ public interface IProductRepository : IRepository<Product>
     Task<IEnumerable<Product>> GetLowStockProductsAsync();
     Task<Product?> GetByCodeAsync(string code);
     Task<bool> CodeExistsAsync(string code, int? excludeId = null);
-    Task UpdateStockAsync(int productId, int newStock);
+    Task UpdateStockAsync(int productId, decimal newStock);
     Task<IEnumerable<Product>> SearchProductsAsync(string searchTerm);
 }

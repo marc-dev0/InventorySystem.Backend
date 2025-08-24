@@ -16,9 +16,11 @@ public class Sale : BaseEntity
     // Foreign keys
     public int? CustomerId { get; set; }
     public int? ImportBatchId { get; set; }
+    public int StoreId { get; set; }
     
     // Relationships
     public virtual Customer? Customer { get; set; }
     public virtual ImportBatch? ImportBatch { get; set; }
+    public virtual Store Store { get; set; } = null!;
     public virtual ICollection<SaleDetail> Details { get; set; } = new List<SaleDetail>();
 }

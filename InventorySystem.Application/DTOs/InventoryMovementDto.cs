@@ -8,10 +8,10 @@ public class InventoryMovementDto
     public DateTime Date { get; set; }
     public MovementType Type { get; set; }
     public string TypeDescription { get; set; } = string.Empty;
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public string? Reason { get; set; }
-    public int PreviousStock { get; set; }
-    public int NewStock { get; set; }
+    public decimal PreviousStock { get; set; }
+    public decimal NewStock { get; set; }
     public string? DocumentNumber { get; set; }
     public string? UserName { get; set; }
     public string? Source { get; set; }
@@ -34,7 +34,7 @@ public class CreateInventoryMovementDto
 {
     public int ProductId { get; set; }
     public MovementType Type { get; set; }
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public string? Reason { get; set; }
     public string? DocumentNumber { get; set; }
     public string? UserName { get; set; }
@@ -58,7 +58,7 @@ public class ProductStockHistoryDto
     public int ProductId { get; set; }
     public string ProductCode { get; set; } = string.Empty;
     public string ProductName { get; set; } = string.Empty;
-    public int CurrentStock { get; set; }
+    public decimal CurrentStock { get; set; }
     public List<InventoryMovementDto> Movements { get; set; } = new();
-    public Dictionary<DateTime, int> StockByDate { get; set; } = new();
+    public Dictionary<DateTime, decimal> StockByDate { get; set; } = new();
 }

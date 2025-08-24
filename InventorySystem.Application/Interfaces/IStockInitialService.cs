@@ -8,4 +8,5 @@ public interface IStockInitialService
     Task<StockClearResultDto> ClearAllStockAsync();
     Task<StoreClearResultDto> ClearStockByStoreAsync(string storeCode);
     Task<StockSummaryDto> GetStockSummaryAsync();
+    Task<int> DeleteProductStocksByBatchIdAsync(int batchId);
 }

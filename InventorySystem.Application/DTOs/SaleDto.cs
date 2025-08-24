@@ -13,7 +13,7 @@ public class SaleDto
     public string? Notes { get; set; }
     public int? CustomerId { get; set; }
     public string? CustomerName { get; set; }
-    public int ItemCount { get; set; }
+    public decimal ItemCount { get; set; }
 }
 
 public class SaleDetailsDto : SaleDto
@@ -28,7 +28,7 @@ public class SaleDetailDto
     public int ProductId { get; set; }
     public string ProductName { get; set; } = string.Empty;
     public string ProductCode { get; set; } = string.Empty;
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public decimal UnitPrice { get; set; }
     public decimal Subtotal { get; set; }
 }
@@ -43,6 +43,6 @@ public class CreateSaleDto
 public class CreateSaleDetailDto
 {
     public int ProductId { get; set; }
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public decimal UnitPrice { get; set; }
 }

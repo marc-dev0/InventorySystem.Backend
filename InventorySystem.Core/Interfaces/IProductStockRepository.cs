@@ -8,5 +8,5 @@ public interface IProductStockRepository : IRepository<ProductStock>
     Task<IEnumerable<ProductStock>> GetByProductIdAsync(int productId);
     Task<IEnumerable<ProductStock>> GetByStoreIdAsync(int storeId);
     Task<IEnumerable<ProductStock>> GetLowStockAsync(int storeId);
-    Task<int> GetTotalStockForProductAsync(int productId);
+    Task<decimal> GetTotalStockForProductAsync(int productId);
 }

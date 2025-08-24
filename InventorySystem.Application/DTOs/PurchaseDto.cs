@@ -25,7 +25,7 @@ public class PurchaseDetailDto
     public string ProductCode { get; set; } = string.Empty;
     public int SupplierId { get; set; }
     public string SupplierName { get; set; } = string.Empty;
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public decimal UnitPrice { get; set; }
     public decimal Subtotal { get; set; }
 }
@@ -40,6 +40,6 @@ public class CreatePurchaseDetailDto
 {
     public int ProductId { get; set; }
     public int SupplierId { get; set; }
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public decimal UnitPrice { get; set; }
 }

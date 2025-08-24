@@ -14,9 +14,17 @@ public class ImportBatch : BaseEntity
     public string? Warnings { get; set; } // JSON de warnings
     public DateTime ImportDate { get; set; }
     public string ImportedBy { get; set; } = string.Empty; // Usuario que hizo la carga
+    
+    // Campos para control de tiempo y estado de procesos
+    public DateTime? StartedAt { get; set; } // Cuando inició el proceso
+    public DateTime? CompletedAt { get; set; } // Cuando terminó el proceso
+    public double? ProcessingTimeSeconds { get; set; } // Tiempo total en segundos
+    public bool IsInProgress { get; set; } = false; // Si el proceso está activo
+    
     public DateTime? DeletedAt { get; set; }
     public string? DeletedBy { get; set; }
     public string? DeleteReason { get; set; }
+    public bool IsDeleted { get; set; } = false;
     
     // Relationships
     public virtual ICollection<Sale> Sales { get; set; } = new List<Sale>();

@@ -44,15 +44,14 @@ public class ProductRepository : Repository<Product>, IProductRepository
     {
         try
         {
-            _logger.LogDebug("Getting all active products with related data");
+            _logger.LogDebug("Getting all products (including inactive) with related data");
             var products = await _dbSet
                 .Include(p => p.Category)
                 .Include(p => p.Supplier)
-                .Where(p => p.Active)
                 .OrderBy(p => p.Name)
                 .ToListAsync();
 
-            _logger.LogInformation("Retrieved {Count} active products", products.Count);
+            _logger.LogInformation("Retrieved {Count} total products", products.Count);
             return products;
         }
         catch (Exception ex)
@@ -184,7 +183,7 @@ public class ProductRepository : Repository<Product>, IProductRepository
         }
     }
 
-    public async Task UpdateStockAsync(int productId, int newStock)
+    public async Task UpdateStockAsync(int productId, decimal newStock)
     {
         try
         {

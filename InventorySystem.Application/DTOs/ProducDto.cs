@@ -8,8 +8,8 @@ public class ProductDto
     public string? Description { get; set; }
     public decimal PurchasePrice { get; set; }
     public decimal SalePrice { get; set; }
-    public int Stock { get; set; }
-    public int MinimumStock { get; set; }
+    public decimal Stock { get; set; }
+    public decimal MinimumStock { get; set; }
     public string? Unit { get; set; }
     public bool Active { get; set; }
     public int CategoryId { get; set; }
@@ -27,8 +27,8 @@ public class CreateProductDto
     public string? Description { get; set; }
     public decimal PurchasePrice { get; set; }
     public decimal SalePrice { get; set; }
-    public int Stock { get; set; }
-    public int MinimumStock { get; set; }
+    public decimal Stock { get; set; }
+    public decimal MinimumStock { get; set; }
     public string? Unit { get; set; }
     public int CategoryId { get; set; }
     public int? SupplierId { get; set; }
@@ -41,7 +41,7 @@ public class UpdateProductDto
     public string? Description { get; set; }
     public decimal PurchasePrice { get; set; }
     public decimal SalePrice { get; set; }
-    public int MinimumStock { get; set; }
+    public decimal MinimumStock { get; set; }
     public string? Unit { get; set; }
     public bool Active { get; set; }
     public int CategoryId { get; set; }
@@ -50,6 +50,6 @@ public class UpdateProductDto
 
 public class UpdateStockDto
 {
-    public int NewStock { get; set; }
+    public decimal NewStock { get; set; }
     public string? Reason { get; set; }
 }

@@ -45,7 +45,7 @@ public class ProductStockRepository : Repository<ProductStock>, IProductStockRep
             .ToListAsync();
     }
 
-    public async Task<int> GetTotalStockForProductAsync(int productId)
+    public async Task<decimal> GetTotalStockForProductAsync(int productId)
     {
         return await _context.Set<ProductStock>()
             .Where(ps => ps.ProductId == productId)

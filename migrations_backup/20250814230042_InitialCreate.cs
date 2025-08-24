@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InventorySystem.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CompleteInitialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,6 +51,36 @@ namespace InventorySystem.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ImportBatches",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    BatchCode = table.Column<string>(type: "text", nullable: false),
+                    BatchType = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    FileName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    StoreCode = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
+                    TotalRecords = table.Column<int>(type: "integer", nullable: false),
+                    SuccessCount = table.Column<int>(type: "integer", nullable: false),
+                    SkippedCount = table.Column<int>(type: "integer", nullable: false),
+                    ErrorCount = table.Column<int>(type: "integer", nullable: false),
+                    Errors = table.Column<string>(type: "text", nullable: true),
+                    Warnings = table.Column<string>(type: "text", nullable: true),
+                    ImportDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ImportedBy = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DeletedBy = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    DeleteReason = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImportBatches", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -127,7 +157,10 @@ namespace InventorySystem.Infrastructure.Migrations
                     Taxes = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     Total = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     Notes = table.Column<string>(type: "text", nullable: true),
+                    ImportedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ImportSource = table.Column<string>(type: "text", nullable: true),
                     CustomerId = table.Column<int>(type: "integer", nullable: true),
+                    ImportBatchId = table.Column<int>(type: "integer", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
@@ -140,6 +173,12 @@ namespace InventorySystem.Infrastructure.Migrations
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Sales_ImportBatches_ImportBatchId",
+                        column: x => x.ImportBatchId,
+                        principalTable: "ImportBatches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,12 +192,13 @@ namespace InventorySystem.Infrastructure.Migrations
                     Description = table.Column<string>(type: "text", nullable: true),
                     PurchasePrice = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     SalePrice = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    Stock = table.Column<int>(type: "integer", nullable: false),
-                    MinimumStock = table.Column<int>(type: "integer", nullable: false),
+                    Stock = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
+                    MinimumStock = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
                     Unit = table.Column<string>(type: "text", nullable: true),
                     Active = table.Column<bool>(type: "boolean", nullable: false),
                     CategoryId = table.Column<int>(type: "integer", nullable: false),
                     SupplierId = table.Column<int>(type: "integer", nullable: true),
+                    ImportBatchId = table.Column<int>(type: "integer", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
@@ -173,6 +213,12 @@ namespace InventorySystem.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Products_ImportBatches_ImportBatchId",
+                        column: x => x.ImportBatchId,
+                        principalTable: "ImportBatches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
                         name: "FK_Products_Suppliers_SupplierId",
                         column: x => x.SupplierId,
                         principalTable: "Suppliers",
@@ -185,12 +231,13 @@ namespace InventorySystem.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CurrentStock = table.Column<int>(type: "integer", nullable: false),
-                    MinimumStock = table.Column<int>(type: "integer", nullable: false),
-                    MaximumStock = table.Column<int>(type: "integer", nullable: false),
+                    CurrentStock = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
+                    MinimumStock = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
+                    MaximumStock = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
                     AverageCost = table.Column<decimal>(type: "numeric(18,4)", nullable: false),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
                     StoreId = table.Column<int>(type: "integer", nullable: false),
+                    ImportBatchId = table.Column<int>(type: "integer", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
@@ -198,6 +245,12 @@ namespace InventorySystem.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProductStocks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductStocks_ImportBatches_ImportBatchId",
+                        column: x => x.ImportBatchId,
+                        principalTable: "ImportBatches",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_ProductStocks_Products_ProductId",
                         column: x => x.ProductId,
@@ -218,9 +271,9 @@ namespace InventorySystem.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Quantity = table.Column<int>(type: "integer", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "numeric", nullable: false),
-                    Subtotal = table.Column<decimal>(type: "numeric", nullable: false),
+                    Quantity = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
+                    UnitPrice = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    Subtotal = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     PurchaseId = table.Column<int>(type: "integer", nullable: false),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
                     SupplierId = table.Column<int>(type: "integer", nullable: true),
@@ -256,9 +309,9 @@ namespace InventorySystem.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Quantity = table.Column<int>(type: "integer", nullable: false),
-                    UnitPrice = table.Column<decimal>(type: "numeric", nullable: false),
-                    Subtotal = table.Column<decimal>(type: "numeric", nullable: false),
+                    Quantity = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
+                    UnitPrice = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
+                    Subtotal = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
                     SaleId = table.Column<int>(type: "integer", nullable: false),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -290,10 +343,10 @@ namespace InventorySystem.Infrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Type = table.Column<int>(type: "integer", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false),
+                    Quantity = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
                     Reason = table.Column<string>(type: "text", nullable: true),
-                    PreviousStock = table.Column<int>(type: "integer", nullable: false),
-                    NewStock = table.Column<int>(type: "integer", nullable: false),
+                    PreviousStock = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
+                    NewStock = table.Column<decimal>(type: "numeric(18,3)", nullable: false),
                     DocumentNumber = table.Column<string>(type: "text", nullable: true),
                     UserName = table.Column<string>(type: "text", nullable: true),
                     Source = table.Column<string>(type: "text", nullable: true),
@@ -346,8 +399,8 @@ namespace InventorySystem.Infrastructure.Migrations
                 columns: new[] { "Id", "Active", "CreatedAt", "Description", "IsDeleted", "Name", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2025, 8, 13, 5, 41, 24, 594, DateTimeKind.Utc).AddTicks(8638), "Electronic devices", false, "Electronics", null },
-                    { 2, true, new DateTime(2025, 8, 13, 5, 41, 24, 594, DateTimeKind.Utc).AddTicks(9930), "Apparel items", false, "Clothing", null }
+                    { 1, true, new DateTime(2025, 8, 14, 23, 0, 41, 602, DateTimeKind.Utc).AddTicks(631), "Electronic devices", false, "Electronics", null },
+                    { 2, true, new DateTime(2025, 8, 14, 23, 0, 41, 602, DateTimeKind.Utc).AddTicks(2554), "Apparel items", false, "Clothing", null }
                 });
 
             migrationBuilder.InsertData(
@@ -355,8 +408,8 @@ namespace InventorySystem.Infrastructure.Migrations
                 columns: new[] { "Id", "Active", "Address", "Code", "CreatedAt", "Description", "IsDeleted", "Name", "Phone", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, true, null, "TANT", new DateTime(2025, 8, 13, 5, 41, 24, 596, DateTimeKind.Utc).AddTicks(840), "Sucursal principal Tantamayo", false, "Tienda Tantamayo", null, null },
-                    { 2, true, null, "MAIN", new DateTime(2025, 8, 13, 5, 41, 24, 596, DateTimeKind.Utc).AddTicks(2418), "Almacén central", false, "Almacén Principal", null, null }
+                    { 1, true, null, "TANT", new DateTime(2025, 8, 14, 23, 0, 41, 603, DateTimeKind.Utc).AddTicks(8133), "Main Tantamayo Store", false, "Tienda Tantamayo", null, null },
+                    { 2, true, null, "MAIN", new DateTime(2025, 8, 14, 23, 0, 41, 604, DateTimeKind.Utc).AddTicks(417), "Central warehouse", false, "Main Warehouse", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -364,8 +417,8 @@ namespace InventorySystem.Infrastructure.Migrations
                 columns: new[] { "Id", "Active", "Address", "CreatedAt", "Email", "IsDeleted", "Name", "Phone", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { 1, true, null, new DateTime(2025, 8, 13, 5, 41, 24, 595, DateTimeKind.Utc).AddTicks(8746), null, false, "TechSupply Inc.", "555-0001", null },
-                    { 2, true, null, new DateTime(2025, 8, 13, 5, 41, 24, 595, DateTimeKind.Utc).AddTicks(9612), null, false, "Fashion World", "555-0002", null }
+                    { 1, true, null, new DateTime(2025, 8, 14, 23, 0, 41, 603, DateTimeKind.Utc).AddTicks(5173), null, false, "TechSupply Inc.", "555-0001", null },
+                    { 2, true, null, new DateTime(2025, 8, 14, 23, 0, 41, 603, DateTimeKind.Utc).AddTicks(6425), null, false, "Fashion World", "555-0002", null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -399,9 +452,19 @@ namespace InventorySystem.Infrastructure.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_ImportBatchId",
+                table: "Products",
+                column: "ImportBatchId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_SupplierId",
                 table: "Products",
                 column: "SupplierId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductStocks_ImportBatchId",
+                table: "ProductStocks",
+                column: "ImportBatchId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductStocks_ProductId_StoreId",
@@ -443,6 +506,11 @@ namespace InventorySystem.Infrastructure.Migrations
                 name: "IX_Sales_CustomerId",
                 table: "Sales",
                 column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sales_ImportBatchId",
+                table: "Sales",
+                column: "ImportBatchId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Stores_Code",
@@ -489,6 +557,9 @@ namespace InventorySystem.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "ImportBatches");
 
             migrationBuilder.DropTable(
                 name: "Suppliers");

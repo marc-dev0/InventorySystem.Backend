@@ -13,5 +13,5 @@ public interface IProductService
     Task<ProductDto> CreateAsync(CreateProductDto dto);
     Task UpdateAsync(int id, UpdateProductDto dto);
     Task DeleteAsync(int id);
-    Task UpdateStockAsync(int id, int newStock, string? reason);
+    Task UpdateStockAsync(int id, decimal newStock, string? reason);
 }

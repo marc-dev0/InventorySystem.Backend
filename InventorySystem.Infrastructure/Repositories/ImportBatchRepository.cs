@@ -15,7 +15,7 @@ public class ImportBatchRepository : Repository<ImportBatch>, IImportBatchReposi
     public async Task<IEnumerable<ImportBatch>> GetActiveBatchesAsync()
     {
         return await _context.Set<ImportBatch>()
-            .Where(b => !b.IsDeleted)
+            .Where(b => !b.DeletedAt.HasValue)
             .OrderByDescending(b => b.ImportDate)
             .ToListAsync();
     }
@@ -23,7 +23,7 @@ public class ImportBatchRepository : Repository<ImportBatch>, IImportBatchReposi
     public async Task<IEnumerable<ImportBatch>> GetBatchesByTypeAsync(string batchType)
     {
         return await _context.Set<ImportBatch>()
-            .Where(b => !b.IsDeleted && b.BatchType == batchType)
+            .Where(b => !b.DeletedAt.HasValue && b.BatchType == batchType)
             .OrderByDescending(b => b.ImportDate)
             .ToListAsync();
     }

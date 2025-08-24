@@ -6,10 +6,10 @@ public class InventoryMovement : BaseEntity
 {
     public DateTime Date { get; set; } = DateTime.UtcNow;
     public MovementType Type { get; set; }
-    public int Quantity { get; set; }
+    public decimal Quantity { get; set; }
     public string? Reason { get; set; }
-    public int PreviousStock { get; set; }
-    public int NewStock { get; set; }
+    public decimal PreviousStock { get; set; }
+    public decimal NewStock { get; set; }
     
     // Additional tracking fields
     public string? DocumentNumber { get; set; }  // Sale number, purchase number, etc.

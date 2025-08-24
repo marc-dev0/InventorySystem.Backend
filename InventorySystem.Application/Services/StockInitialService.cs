@@ -3,6 +3,7 @@ using InventorySystem.Application.Interfaces;
 using InventorySystem.Application.DTOs;
 using InventorySystem.Core.Interfaces;
 using InventorySystem.Core.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace InventorySystem.Application.Services;
 
@@ -12,22 +13,31 @@ public class StockInitialService : IStockInitialService
     private readonly IStoreRepository _storeRepository;
     private readonly IProductStockRepository _productStockRepository;
     private readonly IInventoryMovementRepository _inventoryMovementRepository;
+    private readonly IImportBatchRepository _importBatchRepository;
+    private readonly ILogger<StockInitialService> _logger;
 
     public StockInitialService(
         IProductRepository productRepository,
         IStoreRepository storeRepository,
         IProductStockRepository productStockRepository,
-        IInventoryMovementRepository inventoryMovementRepository)
+        IInventoryMovementRepository inventoryMovementRepository,
+        IImportBatchRepository importBatchRepository,
+        ILogger<StockInitialService> logger)
     {
         _productRepository = productRepository;
         _storeRepository = storeRepository;
         _productStockRepository = productStockRepository;
         _inventoryMovementRepository = inventoryMovementRepository;
+        _importBatchRepository = importBatchRepository;
+        _logger = logger;
     }
 
     public async Task<StockLoadResultDto> LoadStockFromExcelAsync(Stream excelStream, string fileName, string storeCode)
     {
+        var startTime = DateTime.UtcNow;
         var result = new StockLoadResultDto { StoreCode = storeCode };
+        
+        _logger.LogInformation("Iniciando carga de stock para archivo: {FileName}, Store: {StoreCode}", fileName, storeCode);
 
         // Validar store
         var store = await _storeRepository.GetByCodeAsync(storeCode);
@@ -39,9 +49,44 @@ public class StockInitialService : IStockInitialService
 
         result.StoreName = store.Name;
 
+        // Crear y guardar ImportBatch primero para obtener el Id
+        var batchCode = $"STK-{DateTime.Now:yyyyMMdd-HHmmss}";
+        var importBatch = new ImportBatch
+        {
+            BatchCode = batchCode,
+            BatchType = "STOCK_INITIAL",
+            FileName = fileName,
+            StoreCode = storeCode,
+            ImportDate = DateTime.UtcNow,
+            ImportedBy = "System" // TODO: Obtener usuario actual
+        };
+
+        // Guardar el batch primero para obtener el ID
+        await _importBatchRepository.AddAsync(importBatch);
+
         // Obtener todos los productos existentes
         var products = await _productRepository.GetAllAsync();
-        var productsDict = products.ToDictionary(p => p.Code, p => p);
+        // Manejar productos duplicados tomando el primero de cada código
+        var productsDict = products
+            .Where(p => !string.IsNullOrEmpty(p.Code))
+            .GroupBy(p => p.Code)
+            .ToDictionary(g => g.Key, g => g.First());
+            
+        // Log si hay duplicados
+        var duplicateCodes = products
+            .Where(p => !string.IsNullOrEmpty(p.Code))
+            .GroupBy(p => p.Code)
+            .Where(g => g.Count() > 1)
+            .Select(g => new { Code = g.Key, Count = g.Count() })
+            .ToList();
+            
+        if (duplicateCodes.Any())
+        {
+            _logger.LogWarning("Productos con códigos duplicados encontrados: {DuplicateCodes}", 
+                string.Join(", ", duplicateCodes.Select(d => $"{d.Code}({d.Count})")));
+        }
+        
+        _logger.LogInformation("Productos en BD: {ProductCount}, Store encontrado: {StoreName}", products.Count(), store.Name);
 
         try
         {
@@ -57,6 +102,8 @@ public class StockInitialService : IStockInitialService
 
             var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
             
+            _logger.LogInformation("Archivo Excel abierto, última fila: {LastRow}", lastRow);
+            
             // Procesar desde la fila 2 (asumiendo header en fila 1)
             for (int row = 2; row <= lastRow; row++)
             {
@@ -65,6 +112,11 @@ public class StockInitialService : IStockInitialService
                     var codigo = worksheet.Cell(row, 2).GetString().Trim(); // Columna B - Código
                     var stockStr = worksheet.Cell(row, 11).GetString().Trim(); // Columna K - Stock
                     var stockMinStr = worksheet.Cell(row, 12).GetString().Trim(); // Columna L - Stock min
+
+                    // Log solo productos válidos procesados
+                    if (!string.IsNullOrEmpty(codigo) && decimal.TryParse(stockStr, out _)) {
+                        _logger.LogDebug("Procesando fila {Row}: Código='{Codigo}', Stock='{Stock}'", row, codigo, stockStr);
+                    }
 
                     if (string.IsNullOrEmpty(codigo))
                     {
@@ -83,17 +135,23 @@ public class StockInitialService : IStockInitialService
                     var product = productsDict[codigo];
 
                     // Parsear stock
-                    int currentStock = 0;
-                    int minStock = 0;
+                    decimal currentStock = 0;
+                    decimal minStock = 0;
 
-                    if (!string.IsNullOrEmpty(stockStr) && !int.TryParse(stockStr, out currentStock))
+                    if (!string.IsNullOrEmpty(stockStr))
                     {
-                        result.Warnings.Add($"Fila {row}: Stock inválido para producto {codigo}: {stockStr}");
+                        if (!decimal.TryParse(stockStr, out currentStock))
+                        {
+                            result.Warnings.Add($"Fila {row}: Stock inválido para producto {codigo}: {stockStr}");
+                        }
                     }
 
-                    if (!string.IsNullOrEmpty(stockMinStr) && !int.TryParse(stockMinStr, out minStock))
+                    if (!string.IsNullOrEmpty(stockMinStr))
                     {
-                        result.Warnings.Add($"Fila {row}: Stock mínimo inválido para producto {codigo}: {stockMinStr}");
+                        if (!decimal.TryParse(stockMinStr, out minStock))
+                        {
+                            result.Warnings.Add($"Fila {row}: Stock mínimo inválido para producto {codigo}: {stockMinStr}");
+                        }
                     }
 
                     // Verificar si ya existe ProductStock para este producto y store
@@ -106,7 +164,7 @@ public class StockInitialService : IStockInitialService
                         continue;
                     }
                     
-                    // Crear nuevo ProductStock
+                    // Crear nuevo ProductStock asociado al ImportBatch
                     var productStock = new ProductStock
                     {
                         ProductId = product.Id,
@@ -114,10 +172,12 @@ public class StockInitialService : IStockInitialService
                         CurrentStock = currentStock,
                         MinimumStock = minStock,
                         MaximumStock = minStock * 3,
-                        AverageCost = product.PurchasePrice
+                        AverageCost = product.PurchasePrice,
+                        ImportBatchId = importBatch.Id
                     };
 
                     await _productStockRepository.AddAsync(productStock);
+                    _logger.LogDebug("ProductStock creado para producto {Codigo}: Stock={Stock}, StockMin={StockMin}", codigo, currentStock, minStock);
 
                     result.ProcessedProducts++;
                     result.TotalStock += currentStock;
@@ -133,6 +193,24 @@ public class StockInitialService : IStockInitialService
         {
             result.Errors.Add($"Error al leer el archivo Excel: {ex.Message}");
         }
+
+        // Actualizar ImportBatch con estadísticas finales
+        var endTime = DateTime.UtcNow;
+        importBatch.TotalRecords = result.ProcessedProducts + result.SkippedProducts;
+        importBatch.SuccessCount = result.ProcessedProducts;
+        importBatch.ErrorCount = result.Errors.Count;
+        
+        // Actualizar ImportBatch con estadísticas
+        await _importBatchRepository.UpdateAsync(importBatch);
+
+        // Actualizar resultado con información de batch
+        result.TotalRecords = importBatch.TotalRecords;
+        result.SuccessCount = importBatch.SuccessCount;
+        result.SkippedCount = result.SkippedProducts;
+        result.ErrorCount = importBatch.ErrorCount;
+        result.ProcessingTime = endTime - startTime;
+
+        _logger.LogInformation("Carga de stock finalizada. Procesados: {Processed}, Skipped: {Skipped}, Errores: {Errors}", result.ProcessedProducts, result.SkippedProducts, result.Errors.Count);
 
         return result;
     }
@@ -239,5 +317,23 @@ public class StockInitialService : IStockInitialService
         }
 
         return summary;
+    }
+
+    public async Task<int> DeleteProductStocksByBatchIdAsync(int batchId)
+    {
+        var deletedCount = 0;
+        
+        // Obtener todos los ProductStocks de este batch
+        var productStocks = await _productStockRepository.GetAllAsync();
+        var batchProductStocks = productStocks.Where(ps => ps.ImportBatchId == batchId).ToList();
+        
+        // Eliminar cada ProductStock
+        foreach (var productStock in batchProductStocks)
+        {
+            await _productStockRepository.DeleteAsync(productStock.Id);
+            deletedCount++;
+        }
+        
+        return deletedCount;
     }
 }

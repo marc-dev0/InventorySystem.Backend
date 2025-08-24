@@ -128,7 +128,7 @@ public class ProductService : IProductService
         await _productRepository.UpdateAsync(product);
     }
 
-    public async Task UpdateStockAsync(int id, int newStock, string? reason)
+    public async Task UpdateStockAsync(int id, decimal newStock, string? reason)
     {
         var product = await _productRepository.GetByIdAsync(id);
         if (product == null)

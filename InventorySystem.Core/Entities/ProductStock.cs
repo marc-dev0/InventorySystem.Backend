@@ -4,9 +4,9 @@ namespace InventorySystem.Core.Entities;
 
 public class ProductStock : BaseEntity
 {
-    public int CurrentStock { get; set; }
-    public int MinimumStock { get; set; }
-    public int MaximumStock { get; set; }
+    public decimal CurrentStock { get; set; }
+    public decimal MinimumStock { get; set; }
+    public decimal MaximumStock { get; set; }
     public decimal AverageCost { get; set; }
     
     // Foreign keys

@@ -1,7 +1,7 @@
 #!/bin/bash
 # seed-data.sh - Load sample data into the inventory system
 
-API_URL="http://localhost:5193"
+API_URL="http://localhost:5000"
 
 echo "🌱 Loading seed data into Inventory Management System..."
 

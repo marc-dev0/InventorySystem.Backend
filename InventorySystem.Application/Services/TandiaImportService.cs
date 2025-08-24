@@ -269,13 +269,22 @@ public class TandiaImportService : ITandiaImportService
         return result;
     }
 
-    public async Task<BulkUploadResultDto> ImportSalesFromExcelAsync(Stream excelStream, string fileName)
+    public async Task<BulkUploadResultDto> ImportSalesFromExcelAsync(Stream excelStream, string fileName, string storeCode)
     {
         var startTime = DateTime.Now;
         var result = new BulkUploadResultDto();
         
         try
         {
+            // Verificar que existe la sucursal
+            var store = await _storeRepository.FirstOrDefaultAsync(s => s.Code == storeCode);
+            if (store == null)
+            {
+                result.Errors.Add($"Sucursal con código '{storeCode}' no encontrada");
+                result.ErrorCount++;
+                return result;
+            }
+
             // Crear ImportBatch con código único
             var batchCode = await GenerateUniqueBatchCodeAsync("SALES");
             var importBatch = new ImportBatch
@@ -283,6 +292,7 @@ public class TandiaImportService : ITandiaImportService
                 BatchCode = batchCode,
                 BatchType = "SALES",
                 FileName = fileName,
+                StoreCode = storeCode,
                 ImportDate = DateTime.UtcNow,
                 ImportedBy = "SYSTEM",
                 TotalRecords = 0,
@@ -329,6 +339,7 @@ public class TandiaImportService : ITandiaImportService
                         SaleNumber = firstSale.DocumentNumber,
                         SaleDate = DateTime.SpecifyKind(firstSale.Date, DateTimeKind.Utc),
                         CustomerId = customer?.Id,
+                        StoreId = store.Id, // Asignar la sucursal
                         SubTotal = 0,
                         Taxes = 0,
                         Total = 0,
@@ -358,7 +369,7 @@ public class TandiaImportService : ITandiaImportService
                         var detail = new SaleDetail
                         {
                             ProductId = product.Id,
-                            Quantity = (int)saleDetail.Quantity,
+                            Quantity = saleDetail.Quantity,
                             UnitPrice = saleDetail.SalePrice,
                             Subtotal = saleDetail.Total
                         };
@@ -383,19 +394,17 @@ public class TandiaImportService : ITandiaImportService
                         
                         if (product == null) continue; // Already warned in first pass
                         
-                        // Get or create store
-                        var store = await GetOrCreateStoreAsync(saleDetail.Warehouse);
-                        
+                        // Use the store selected by the user (not from Excel warehouse column)
                         // Get or create product stock for this store
                         var productStock = await GetOrCreateProductStockAsync(product.Id, store.Id);
                         
                         // Update product stock and register movement
                         var previousStock = productStock.CurrentStock;
-                        productStock.CurrentStock -= (int)saleDetail.Quantity;
+                        productStock.CurrentStock -= saleDetail.Quantity;
                         await _productStockRepository.UpdateAsync(productStock);
                         
                         // Also update legacy Product.Stock for backward compatibility
-                        product.Stock -= (int)saleDetail.Quantity;
+                        product.Stock -= saleDetail.Quantity;
                         await _productRepository.UpdateAsync(product);
                         
                         // Register inventory movement with correct SaleId
@@ -403,7 +412,7 @@ public class TandiaImportService : ITandiaImportService
                         {
                             Date = DateTime.SpecifyKind(firstSale.Date, DateTimeKind.Utc),
                             Type = MovementType.Sale,
-                            Quantity = -(int)saleDetail.Quantity, // Negative for outbound
+                            Quantity = -saleDetail.Quantity, // Negative for outbound
                             Reason = $"Sale imported from Tandia - {firstSale.DocumentNumber}",
                             PreviousStock = previousStock,
                             NewStock = productStock.CurrentStock,
@@ -459,8 +468,14 @@ public class TandiaImportService : ITandiaImportService
         // Import products first
         summary.ProductsResult = await ImportProductsFromExcelAsync(productsStream, "products.xlsx");
         
-        // Then import sales
-        summary.SalesResult = await ImportSalesFromExcelAsync(salesStream, "sales.xlsx");
+        // Then import sales (using default store for legacy compatibility)
+        var allStores = await _storeRepository.GetAllAsync();
+        var defaultStore = allStores.FirstOrDefault();
+        if (defaultStore == null)
+        {
+            throw new InvalidOperationException("No hay almacenes configurados en el sistema");
+        }
+        summary.SalesResult = await ImportSalesFromExcelAsync(salesStream, "sales.xlsx", defaultStore.Code);
         
         return summary;
     }
@@ -634,5 +649,163 @@ public class TandiaImportService : ITandiaImportService
         }
         
         return productStock;
+    }
+    
+    public async Task<ClearDataResultDto> ClearAllProductsAsync()
+    {
+        var result = new ClearDataResultDto();
+        
+        // Eliminar movimientos de inventario relacionados con productos
+        var inventoryMovements = await _inventoryMovementRepository.GetAllAsync();
+        foreach (var movement in inventoryMovements)
+        {
+            await _inventoryMovementRepository.DeleteAsync(movement.Id);
+            result.DeletedInventoryMovements++;
+        }
+        
+        // Eliminar stocks de productos
+        var productStocks = await _productStockRepository.GetAllAsync();
+        foreach (var stock in productStocks)
+        {
+            await _productStockRepository.DeleteAsync(stock.Id);
+            result.DeletedProductStocks++;
+        }
+        
+        // Eliminar productos
+        var products = await _productRepository.GetAllAsync();
+        foreach (var product in products)
+        {
+            await _productRepository.DeleteAsync(product.Id);
+            result.DeletedProducts++;
+        }
+        
+        // Eliminar categorías
+        var categories = await _categoryRepository.GetAllAsync();
+        foreach (var category in categories)
+        {
+            await _categoryRepository.DeleteAsync(category.Id);
+            result.DeletedCategories++;
+        }
+        
+        result.Message = "Todos los productos y datos relacionados han sido eliminados exitosamente";
+        return result;
+    }
+    
+    public async Task<ClearDataResultDto> ClearAllSalesAsync()
+    {
+        var result = new ClearDataResultDto();
+        
+        // Eliminar movimientos de inventario relacionados con ventas
+        var allMovements = await _inventoryMovementRepository.GetAllAsync();
+        var salesMovements = allMovements.Where(m => 
+            m.Type == Core.Entities.MovementType.Sale || 
+            m.Type == Core.Entities.MovementType.TandiaImport_Sale).ToList();
+        foreach (var movement in salesMovements)
+        {
+            await _inventoryMovementRepository.DeleteAsync(movement.Id);
+            result.DeletedInventoryMovements++;
+        }
+        
+        // Eliminar todas las ventas (esto eliminará automáticamente los detalles por cascada)
+        var sales = await _saleRepository.GetAllAsync();
+        foreach (var sale in sales)
+        {
+            // Contar detalles antes de eliminar
+            var saleDetails = await _saleRepository.GetSaleDetailsAsync(sale.Id);
+            result.DeletedSaleDetails += saleDetails?.Details?.Count ?? 0;
+            
+            await _saleRepository.DeleteAsync(sale.Id);
+            result.DeletedSales++;
+        }
+        
+        result.Message = "Todas las ventas y datos relacionados han sido eliminados exitosamente";
+        return result;
+    }
+
+    public async Task<int> DeleteProductsByBatchIdAsync(int batchId)
+    {
+        int deletedCount = 0;
+        
+        // Obtener todos los productos que pertenecen a este batch
+        var allProducts = await _productRepository.GetAllAsync();
+        var batchProducts = allProducts.Where(p => p.ImportBatchId == batchId).ToList();
+        
+        foreach (var product in batchProducts)
+        {
+            // Eliminar movimientos de inventario relacionados con este producto
+            var allMovements = await _inventoryMovementRepository.GetAllAsync();
+            var productMovements = allMovements.Where(m => m.ProductId == product.Id).ToList();
+            foreach (var movement in productMovements)
+            {
+                await _inventoryMovementRepository.DeleteAsync(movement.Id);
+            }
+            
+            // Eliminar stocks del producto
+            var allStocks = await _productStockRepository.GetAllAsync();
+            var productStocks = allStocks.Where(s => s.ProductId == product.Id).ToList();
+            foreach (var stock in productStocks)
+            {
+                await _productStockRepository.DeleteAsync(stock.Id);
+            }
+            
+            // Eliminar el producto
+            await _productRepository.DeleteAsync(product.Id);
+            deletedCount++;
+        }
+        
+        return deletedCount;
+    }
+
+    public async Task<int> DeleteSalesByBatchIdAsync(int batchId)
+    {
+        var deletedCount = 0;
+        
+        // Obtener todas las ventas de este batch con sus details incluidos
+        var allSales = await _saleRepository.GetAllAsync();
+        var batchSales = allSales.Where(s => s.ImportBatchId == batchId).ToList();
+        
+        // Cargar details para cada venta (si no están cargados)
+        foreach (var sale in batchSales)
+        {
+            var saleWithDetails = await _saleRepository.GetSaleDetailsAsync(sale.Id);
+            if (saleWithDetails != null)
+            {
+                sale.Details = saleWithDetails.Details;
+            }
+        }
+        
+        foreach (var sale in batchSales)
+        {
+            // 1. Revertir movimientos de inventario (devolver stock)
+            var allMovements = await _inventoryMovementRepository.GetAllAsync();
+            var saleMovements = allMovements.Where(m => 
+                m.SaleId == sale.Id && 
+                (m.Type == MovementType.Sale || m.Type == MovementType.TandiaImport_Sale)
+            ).ToList();
+            
+            foreach (var movement in saleMovements)
+            {
+                // Devolver el stock al ProductStock correspondiente
+                var productStock = await _productStockRepository.GetByProductAndStoreAsync(movement.ProductId, movement.StoreId);
+                if (productStock != null)
+                {
+                    // Revertir la salida de stock (sumar la cantidad que se había restado)
+                    productStock.CurrentStock += movement.Quantity;
+                    await _productStockRepository.UpdateAsync(productStock);
+                }
+                
+                // Eliminar el movimiento
+                await _inventoryMovementRepository.DeleteAsync(movement.Id);
+            }
+            
+            // 2. Los SaleDetails se eliminarán automáticamente por CASCADE DELETE
+            // al eliminar la Sale (configurado en EF Core)
+            
+            // 3. Eliminar la Sale
+            await _saleRepository.DeleteAsync(sale.Id);
+            deletedCount++;
+        }
+        
+        return deletedCount;
     }
 }
