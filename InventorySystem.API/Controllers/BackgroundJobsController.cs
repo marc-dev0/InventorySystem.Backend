@@ -16,19 +16,25 @@ public class BackgroundJobsController : ControllerBase
     private readonly IStockValidationService _stockValidationService;
     private readonly ITandiaImportService _tandiaImportService;
     private readonly IImportLockService _importLockService;
+    private readonly IProductStockRepository _productStockRepository;
+    private readonly IStoreRepository _storeRepository;
 
     public BackgroundJobsController(
         IBackgroundJobService backgroundJobService,
         IProductRepository productRepository,
         IStockValidationService stockValidationService,
         ITandiaImportService tandiaImportService,
-        IImportLockService importLockService)
+        IImportLockService importLockService,
+        IProductStockRepository productStockRepository,
+        IStoreRepository storeRepository)
     {
         _backgroundJobService = backgroundJobService;
         _productRepository = productRepository;
         _stockValidationService = stockValidationService;
         _tandiaImportService = tandiaImportService;
         _importLockService = importLockService;
+        _productStockRepository = productStockRepository;
+        _storeRepository = storeRepository;
     }
 
     /// <summary>
@@ -99,7 +105,31 @@ public class BackgroundJobsController : ControllerBase
     //[Authorize(Policy = "AdminOnly")] // ALTA SEGURIDAD: Solo admins pueden cargar datos masivos
     public async Task<ActionResult<object>> QueueStockImport(IFormFile file, [FromForm] string storeCode)
     {
-        // Verificar si se permite la importación de stock
+        if (file == null || file.Length == 0)
+            return BadRequest("No file uploaded");
+
+        if (string.IsNullOrEmpty(storeCode))
+            return BadRequest("El código de sucursal es requerido");
+
+        // Verificar que la tienda existe
+        var store = await _storeRepository.GetByCodeAsync(storeCode);
+        if (store == null)
+            return BadRequest($"No se encontró la tienda con código: {storeCode}");
+
+        // VALIDACIÓN CRÍTICA: Verificar si la tienda ya tiene stock inicial cargado
+        var hasInitialStock = await _productStockRepository.HasStockForStoreAsync(store.Id);
+        if (hasInitialStock)
+        {
+            return Conflict(new 
+            { 
+                error = "Stock inicial ya cargado",
+                message = $"La tienda '{store.Name}' ({storeCode}) ya tiene stock inicial cargado.",
+                reason = "Solo se permite UNA carga de stock inicial por tienda. Los movimientos de stock posteriores se deben realizar mediante ventas u otros módulos de movimiento de inventario.",
+                suggestion = "Si necesita actualizar el stock, use los módulos de ajuste de inventario o movimientos de stock."
+            });
+        }
+
+        // Verificar si se permite la importación de stock (procesos concurrentes)
         var isAllowed = await _importLockService.IsImportAllowedAsync("STOCK_IMPORT", storeCode);
         if (!isAllowed)
         {
@@ -112,12 +142,6 @@ public class BackgroundJobsController : ControllerBase
             });
         }
 
-        if (file == null || file.Length == 0)
-            return BadRequest("No file uploaded");
-
-        if (string.IsNullOrEmpty(storeCode))
-            return BadRequest("El código de sucursal es requerido");
-
         try
         {
             var userId = User.Identity?.Name ?? "Unknown";
@@ -127,13 +151,14 @@ public class BackgroundJobsController : ControllerBase
             
             return Ok(new
             {
-                message = "Importación de stock encolada exitosamente",
+                message = "Importación de stock inicial encolada exitosamente",
                 jobId = jobId,
                 status = "QUEUED",
                 fileName = file.FileName,
                 storeCode = storeCode,
                 note = "La importación se está procesando en segundo plano. Use el jobId para consultar el progreso.",
-                warning = "⚠️ Durante esta carga no se podrán realizar NINGUNA otra importación (productos o ventas). Solo se permite un proceso a la vez."
+                warning = "⚠️ Esta es una carga de STOCK INICIAL única. Una vez completada, no se podrá volver a cargar stock inicial para esta tienda.",
+                importantNote = "Durante esta carga no se podrán realizar NINGUNA otra importación (productos o ventas). Solo se permite un proceso a la vez."
             });
         }
         catch (Exception ex)

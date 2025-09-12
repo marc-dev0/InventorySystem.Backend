@@ -353,10 +353,20 @@ public class FastImportsController : ControllerBase
             _logger.LogInformation("Iniciando importación rápida de stock: {FileName}, Store: {StoreCode}", file.FileName, storeCode);
 
 
-            // Verificar que el store existe
+            // Verificar que el store existe, o crearlo si no existe
             var store = await _storeRepository.GetByCodeAsync(storeCode);
             if (store == null)
-                return BadRequest($"No se encontró el almacén con código: {storeCode}");
+            {
+                _logger.LogInformation("Creando almacén {StoreCode} automáticamente", storeCode);
+                store = new Store
+                {
+                    Code = storeCode,
+                    Name = $"Almacén {storeCode}",
+                    Description = $"Almacén creado automáticamente para importación",
+                    Active = true
+                };
+                await _storeRepository.AddAsync(store);
+            }
 
             // Crear ImportBatch inicial con campos de timing
             var batchCode = $"FAST-STK-{DateTime.Now:yyyyMMdd-HHmmss}";
@@ -380,8 +390,8 @@ public class FastImportsController : ControllerBase
             // Obtener productos existentes y manejar duplicados
             var products = await _productRepository.GetAllAsync();
             var productsDict = products
-                .Where(p => !string.IsNullOrEmpty(p.Code))
-                .GroupBy(p => p.Code)
+                .Where(p => !string.IsNullOrEmpty(p.Name))
+                .GroupBy(p => p.Name)
                 .ToDictionary(g => g.Key, g => g.First());
                 
             // Log si hay duplicados
@@ -569,10 +579,20 @@ public class FastImportsController : ControllerBase
             _logger.LogInformation("Iniciando importación rápida de ventas: {FileName}, Store: {StoreCode}", file.FileName, storeCode);
 
 
-            // Verificar que el store existe
+            // Verificar que el store existe, o crearlo si no existe
             var store = await _storeRepository.GetByCodeAsync(storeCode);
             if (store == null)
-                return BadRequest($"No se encontró el almacén con código: {storeCode}");
+            {
+                _logger.LogInformation("Creando almacén {StoreCode} automáticamente", storeCode);
+                store = new Store
+                {
+                    Code = storeCode,
+                    Name = $"Almacén {storeCode}",
+                    Description = $"Almacén creado automáticamente para importación",
+                    Active = true
+                };
+                await _storeRepository.AddAsync(store);
+            }
 
             // Verificar que existen productos
             var allProducts = await _productRepository.GetAllAsync();
@@ -602,12 +622,12 @@ public class FastImportsController : ControllerBase
             // Obtener productos existentes y manejar duplicados
             var products = await _productRepository.GetAllAsync();
             var productsDict = products
-                .Where(p => !string.IsNullOrEmpty(p.Code))
-                .GroupBy(p => p.Code)
+                .Where(p => !string.IsNullOrEmpty(p.Name))
+                .GroupBy(p => p.Name)
                 .ToDictionary(g => g.Key, g => g.First());
 
             // Agrupar ventas por número de documento
-            var salesGroups = result.Data.GroupBy(s => GetStringValue(s, "documento_numero")).ToList();
+            var salesGroups = result.Data.GroupBy(s => GetStringValue(s, "SaleNumber")).ToList();
 
             // OPTIMIZACIÓN: Cargar todas las ventas existentes de una vez para evitar N+1 queries
             var allDocumentNumbers = salesGroups.Select(g => g.Key).Where(dn => !string.IsNullOrWhiteSpace(dn)).ToList();
@@ -643,11 +663,11 @@ public class FastImportsController : ControllerBase
                     
                     // Crear o obtener cliente
                     var customer = await GetOrCreateCustomerAsync(
-                        GetStringValue(firstSaleData, "cliente"), 
-                        GetStringValue(firstSaleData, "cliente_documento"));
+                        GetStringValue(firstSaleData, "CustomerName"), 
+                        GetStringValue(firstSaleData, "CustomerDocument"));
 
                     // Validar fecha de venta
-                    var fechaString = GetStringValue(firstSaleData, "fecha");
+                    var fechaString = GetStringValue(firstSaleData, "SaleDate");
                     if (string.IsNullOrWhiteSpace(fechaString) || !DateTime.TryParse(fechaString, out _))
                     {
                         warnings.Add($"Fecha inválida ({fechaString}) para venta {documentNumber}, usando fecha actual");
@@ -675,7 +695,7 @@ public class FastImportsController : ControllerBase
                     // Primera pasada: crear detalles de venta y calcular totales
                     foreach (var saleDetailData in salesGroup)
                     {
-                        var productCode = GetStringValue(saleDetailData, "producto_codigo");
+                        var productCode = GetStringValue(saleDetailData, "ProductName");
                         if (!productsDict.ContainsKey(productCode))
                         {
                             warnings.Add($"Producto {productCode} no encontrado para venta {documentNumber}");
@@ -683,9 +703,9 @@ public class FastImportsController : ControllerBase
                         }
 
                         var product = productsDict[productCode];
-                        var quantity = GetDecimalValue(saleDetailData, "cantidad");
-                        var unitPrice = GetDecimalValue(saleDetailData, "precio_unitario");
-                        var total = GetDecimalValue(saleDetailData, "total");
+                        var quantity = GetDecimalValue(saleDetailData, "Quantity");
+                        var unitPrice = GetDecimalValue(saleDetailData, "UnitPrice");
+                        var total = GetDecimalValue(saleDetailData, "Subtotal");
 
                         // Validaciones de negocio
                         if (quantity <= 0)
@@ -725,11 +745,11 @@ public class FastImportsController : ControllerBase
                     // Segunda pasada: actualizar stock y crear movimientos de inventario
                     foreach (var saleDetailData in salesGroup)
                     {
-                        var productCode = GetStringValue(saleDetailData, "producto_codigo");
+                        var productCode = GetStringValue(saleDetailData, "ProductName");
                         if (!productsDict.ContainsKey(productCode)) continue;
 
                         var product = productsDict[productCode];
-                        var quantity = GetDecimalValue(saleDetailData, "cantidad");
+                        var quantity = GetDecimalValue(saleDetailData, "Quantity");
 
                         // Obtener o crear product stock para este store
                         var productStock = await GetOrCreateProductStockAsync(product.Id, store.Id);
@@ -762,8 +782,8 @@ public class FastImportsController : ControllerBase
                             DocumentNumber = documentNumber,
                             UserName = "FastImport",
                             Source = "FastImport",
-                            UnitCost = GetDecimalValue(saleDetailData, "precio_unitario"),
-                            TotalCost = GetDecimalValue(saleDetailData, "total"),
+                            UnitCost = GetDecimalValue(saleDetailData, "UnitPrice"),
+                            TotalCost = GetDecimalValue(saleDetailData, "Subtotal"),
                             ProductId = product.Id,
                             StoreId = store.Id,
                             ProductStockId = productStock.Id,
@@ -1105,10 +1125,20 @@ public class FastImportsController : ControllerBase
             _logger.LogInformation("Iniciando importación ULTRA RÁPIDA de ventas con Polars: {FileName}, Store: {StoreCode}", file.FileName, storeCode);
 
 
-            // Verificar que el store existe
+            // Verificar que el store existe, o crearlo si no existe
             var store = await _storeRepository.GetByCodeAsync(storeCode);
             if (store == null)
-                return BadRequest($"No se encontró el almacén con código: {storeCode}");
+            {
+                _logger.LogInformation("Creando almacén {StoreCode} automáticamente", storeCode);
+                store = new Store
+                {
+                    Code = storeCode,
+                    Name = $"Almacén {storeCode}",
+                    Description = $"Almacén creado automáticamente para importación",
+                    Active = true
+                };
+                await _storeRepository.AddAsync(store);
+            }
 
             // Verificar que existen productos
             var allProducts = await _productRepository.GetAllAsync();
@@ -1143,12 +1173,12 @@ public class FastImportsController : ControllerBase
             // Obtener productos existentes y manejar duplicados
             var products = await _productRepository.GetAllAsync();
             var productsDict = products
-                .Where(p => !string.IsNullOrEmpty(p.Code))
-                .GroupBy(p => p.Code)
+                .Where(p => !string.IsNullOrEmpty(p.Name))
+                .GroupBy(p => p.Name)
                 .ToDictionary(g => g.Key, g => g.First());
 
             // Agrupar ventas por número de documento
-            var salesGroups = result.Data.GroupBy(s => GetStringValue(s, "documento_numero")).ToList();
+            var salesGroups = result.Data.GroupBy(s => GetStringValue(s, "SaleNumber")).ToList();
 
             // OPTIMIZACIÓN: Cargar todas las ventas existentes de una vez para evitar N+1 queries
             var allDocumentNumbers = salesGroups.Select(g => g.Key).Where(dn => !string.IsNullOrWhiteSpace(dn)).ToList();
@@ -1184,11 +1214,11 @@ public class FastImportsController : ControllerBase
                     
                     // Crear o obtener cliente
                     var customer = await GetOrCreateCustomerAsync(
-                        GetStringValue(firstSaleData, "cliente"), 
-                        GetStringValue(firstSaleData, "cliente_documento"));
+                        GetStringValue(firstSaleData, "CustomerName"), 
+                        GetStringValue(firstSaleData, "CustomerDocument"));
 
                     // Validar fecha de venta
-                    var fechaString = GetStringValue(firstSaleData, "fecha");
+                    var fechaString = GetStringValue(firstSaleData, "SaleDate");
                     if (string.IsNullOrWhiteSpace(fechaString) || !DateTime.TryParse(fechaString, out _))
                     {
                         warnings.Add($"Fecha inválida ({fechaString}) para venta {documentNumber}, usando fecha actual");
@@ -1216,7 +1246,7 @@ public class FastImportsController : ControllerBase
                     // Primera pasada: crear detalles de venta y calcular totales
                     foreach (var saleDetailData in salesGroup)
                     {
-                        var productCode = GetStringValue(saleDetailData, "producto_codigo");
+                        var productCode = GetStringValue(saleDetailData, "ProductName");
                         if (!productsDict.ContainsKey(productCode))
                         {
                             warnings.Add($"Producto {productCode} no encontrado para venta {documentNumber}");
@@ -1224,9 +1254,9 @@ public class FastImportsController : ControllerBase
                         }
 
                         var product = productsDict[productCode];
-                        var quantity = GetDecimalValue(saleDetailData, "cantidad");
-                        var unitPrice = GetDecimalValue(saleDetailData, "precio_unitario");
-                        var total = GetDecimalValue(saleDetailData, "total");
+                        var quantity = GetDecimalValue(saleDetailData, "Quantity");
+                        var unitPrice = GetDecimalValue(saleDetailData, "UnitPrice");
+                        var total = GetDecimalValue(saleDetailData, "Subtotal");
 
                         // Validaciones de negocio
                         if (quantity <= 0)
@@ -1266,11 +1296,11 @@ public class FastImportsController : ControllerBase
                     // Segunda pasada: actualizar stock y crear movimientos de inventario
                     foreach (var saleDetailData in salesGroup)
                     {
-                        var productCode = GetStringValue(saleDetailData, "producto_codigo");
+                        var productCode = GetStringValue(saleDetailData, "ProductName");
                         if (!productsDict.ContainsKey(productCode)) continue;
 
                         var product = productsDict[productCode];
-                        var quantity = GetDecimalValue(saleDetailData, "cantidad");
+                        var quantity = GetDecimalValue(saleDetailData, "Quantity");
 
                         // Obtener o crear product stock para este store
                         var productStock = await GetOrCreateProductStockAsync(product.Id, store.Id);
@@ -1303,8 +1333,8 @@ public class FastImportsController : ControllerBase
                             DocumentNumber = documentNumber,
                             UserName = "UltraFastImport",
                             Source = "UltraFastImport-Polars",
-                            UnitCost = GetDecimalValue(saleDetailData, "precio_unitario"),
-                            TotalCost = GetDecimalValue(saleDetailData, "total"),
+                            UnitCost = GetDecimalValue(saleDetailData, "UnitPrice"),
+                            TotalCost = GetDecimalValue(saleDetailData, "Subtotal"),
                             ProductId = product.Id,
                             StoreId = store.Id,
                             ProductStockId = productStock.Id,
