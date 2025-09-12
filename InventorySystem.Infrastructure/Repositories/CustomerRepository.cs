@@ -26,6 +26,12 @@ public class CustomerRepository : Repository<Customer>, ICustomerRepository
             .FirstOrDefaultAsync(c => c.Document == document);
     }
 
+    public async Task<Customer?> GetByNameAsync(string name)
+    {
+        return await _dbSet
+            .FirstOrDefaultAsync(c => c.Name == name);
+    }
+
     public async Task<IEnumerable<Customer>> SearchCustomersAsync(string searchTerm)
     {
         return await _dbSet

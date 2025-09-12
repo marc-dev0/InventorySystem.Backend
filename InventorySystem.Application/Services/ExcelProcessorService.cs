@@ -41,7 +41,7 @@ public class ExcelProcessorService
             }
 
             // Get expected columns from generic configuration
-            var expectedColumns = await GetExpectedColumnsAsync("PRODUCTS");
+            var expectedColumns = await GetExpectedColumnsAsync("PRODUCT");
             
             var headerRow = worksheet.Row(1);
             var actualColumns = new List<string>();
@@ -218,6 +218,35 @@ public class ExcelProcessorService
                 return result;
             }
 
+            // Get expected columns from generic configuration
+            var expectedColumns = await GetExpectedColumnsAsync("STOCK");
+            
+            var headerRow = worksheet.Row(1);
+            var actualColumns = new List<string>();
+            
+            var lastColumn = headerRow.LastCellUsed()?.Address.ColumnNumber ?? 0;
+            for (int col = 1; col <= lastColumn; col++)
+            {
+                var cellValue = headerRow.Cell(col).GetString().Trim();
+                actualColumns.Add(cellValue);
+            }
+            
+            // Basic validation - check if we have the minimum required columns
+            if (actualColumns.Count < expectedColumns.Count)
+            {
+                errors.Add($"Error en formato del archivo: Se esperaban al menos {expectedColumns.Count} columnas, pero se encontraron {actualColumns.Count}");
+                errors.Add($"Columnas esperadas: {string.Join(", ", expectedColumns)}");
+                errors.Add($"Columnas encontradas: {string.Join(", ", actualColumns)}");
+                result.Errors = errors;
+                result.ErrorCount = 1;
+                return result;
+            }
+            
+            _logger.LogInformation("Validación de columnas exitosa para archivo {FileName}", fileName);
+
+            // Get column mapping from configuration
+            var columnMapping = await GetStockColumnMappingAsync();
+
             var rows = worksheet.RowsUsed().Skip(1); // Skip header
             var totalRecords = rows.Count();
             result.TotalRecords = totalRecords;
@@ -233,18 +262,39 @@ public class ExcelProcessorService
                     {
                         var stockData = new Dictionary<string, object>();
                         
-                        stockData["ProductCode"] = row.Cell(1).GetString().Trim();
+                        var productCode = row.Cell(columnMapping.CodeColumn).GetString().Trim();
+                        stockData["ProductCode"] = productCode;
+                        stockData["codigo"] = productCode; // Para compatibilidad con FastImportsController
                         stockData["StoreCode"] = storeCode;
                         
-                        if (int.TryParse(row.Cell(2).GetString(), out var quantity))
+                        if (decimal.TryParse(row.Cell(columnMapping.StockColumn).GetString(), out var quantity))
+                        {
                             stockData["Quantity"] = quantity;
+                            stockData["current_stock"] = quantity; // Para compatibilidad con FastImportsController
+                        }
                         else
+                        {
                             stockData["Quantity"] = 0;
+                            stockData["current_stock"] = 0;
+                        }
+
+                        if (decimal.TryParse(row.Cell(columnMapping.MinStockColumn).GetString(), out var minQuantity))
+                        {
+                            stockData["MinQuantity"] = minQuantity;
+                            stockData["minimum_stock"] = minQuantity; // Para compatibilidad con FastImportsController
+                            stockData["maximum_stock"] = minQuantity * 3; // Calcular máximo automáticamente
+                        }
+                        else
+                        {
+                            stockData["MinQuantity"] = 0;
+                            stockData["minimum_stock"] = 0;
+                            stockData["maximum_stock"] = 0;
+                        }
                             
                         stockData["LastUpdated"] = DateTime.UtcNow;
 
                         // Validaciones básicas
-                        if (string.IsNullOrEmpty(stockData["ProductCode"]?.ToString()))
+                        if (string.IsNullOrEmpty(productCode))
                         {
                             errors.Add($"Fila {row.RowNumber()}: Código de producto requerido");
                             errorCount++;
@@ -311,6 +361,19 @@ public class ExcelProcessorService
                 return result;
             }
 
+            // Validar columnas del Excel contra configuración
+            var columnValidationResult = await ValidateSalesColumnsAsync(worksheet);
+            if (!columnValidationResult.IsValid)
+            {
+                errors.AddRange(columnValidationResult.Errors);
+                result.Errors = errors;
+                result.ErrorCount = columnValidationResult.Errors.Count;
+                return result;
+            }
+
+            // Obtener mapeo de columnas configurado
+            var columnMapping = await GetSalesColumnMappingAsync();
+
             var rows = worksheet.RowsUsed().Skip(1); // Skip header
             var totalRecords = rows.Count();
             result.TotalRecords = totalRecords;
@@ -326,27 +389,85 @@ public class ExcelProcessorService
                     {
                         var saleData = new Dictionary<string, object>();
                         
-                        saleData["SaleNumber"] = row.Cell(1).GetString().Trim();
+                        // Usar mapeo de columnas configurado
+                        saleData["RazonSocial"] = row.Cell(columnMapping.RazonSocialColumn).GetString().Trim();
+                        saleData["EmployeeName"] = row.Cell(columnMapping.EmpleadoVentaColumn).GetString().Trim();
+                        saleData["Almacen"] = row.Cell(columnMapping.AlmacenColumn).GetString().Trim();
+                        saleData["CustomerName"] = row.Cell(columnMapping.ClienteNombreColumn).GetString().Trim();
+                        saleData["CustomerDoc"] = row.Cell(columnMapping.ClienteDocColumn).GetString().Trim();
+                        var documentNumber = row.Cell(columnMapping.NumDocColumn).GetString().Trim();
+                        var docRelacionado = row.Cell(columnMapping.DocRelacionadoColumn).GetString().Trim();
                         
-                        if (DateTime.TryParse(row.Cell(2).GetString(), out var saleDate))
+                        // Usar el número de documento principal para agrupación
+                        saleData["DocumentNumber"] = documentNumber;
+                        saleData["SaleNumber"] = !string.IsNullOrEmpty(documentNumber) ? documentNumber : docRelacionado;
+                        
+                        if (DateTime.TryParse(row.Cell(columnMapping.FechaColumn).GetString(), out var saleDate))
                             saleData["SaleDate"] = saleDate;
                         else
                             saleData["SaleDate"] = DateTime.UtcNow;
                             
-                        if (decimal.TryParse(row.Cell(3).GetString(), out var total))
+                        saleData["Hora"] = row.Cell(columnMapping.HoraColumn).GetString().Trim();
+                        saleData["TipoDoc"] = row.Cell(columnMapping.TipDocColumn).GetString().Trim();
+                        saleData["Unidad"] = row.Cell(columnMapping.UnidadColumn).GetString().Trim();
+                        
+                        if (decimal.TryParse(row.Cell(columnMapping.CantidadColumn).GetString(), out var quantity))
+                            saleData["Quantity"] = quantity;
+                        else
+                            saleData["Quantity"] = 1m;
+                            
+                        if (decimal.TryParse(row.Cell(columnMapping.PrecioVentaColumn).GetString(), out var unitPrice))
+                            saleData["UnitPrice"] = unitPrice;
+                        else
+                            saleData["UnitPrice"] = 0m;
+                            
+                        if (decimal.TryParse(row.Cell(columnMapping.IgvColumn).GetString(), out var igv))
+                            saleData["IGV"] = igv;
+                        else
+                            saleData["IGV"] = 0m;
+                            
+                        if (decimal.TryParse(row.Cell(columnMapping.TotalColumn).GetString(), out var total))
                             saleData["Total"] = total;
                         else
-                            saleData["Total"] = 0m;
+                            saleData["Total"] = quantity * unitPrice;
                             
-                        saleData["CustomerDocument"] = row.Cell(4).GetString().Trim();
-                        saleData["CustomerName"] = row.Cell(5).GetString().Trim();
+                        saleData["Subtotal"] = saleData["Total"];
+                        
+                        if (decimal.TryParse(row.Cell(columnMapping.DescuentoColumn).GetString(), out var descuento))
+                            saleData["Descuento"] = descuento;
+                        else
+                            saleData["Descuento"] = 0m;
+                            
+                        saleData["Conversion"] = row.Cell(columnMapping.ConversionColumn).GetString().Trim();
+                        saleData["Moneda"] = row.Cell(columnMapping.MonedaColumn).GetString().Trim();
+                        saleData["CodigoSKU"] = row.Cell(columnMapping.CodigoSkuColumn).GetString().Trim();
+                        saleData["CodAlternativo"] = row.Cell(columnMapping.CodAlternativoColumn).GetString().Trim();
+                        saleData["Marca"] = row.Cell(columnMapping.MarcaColumn).GetString().Trim();
+                        saleData["Categoria"] = row.Cell(columnMapping.CategoriaColumn).GetString().Trim();
+                        saleData["Caracteristicas"] = row.Cell(columnMapping.CaracteristicasColumn).GetString().Trim();
+                        saleData["ProductName"] = row.Cell(columnMapping.NombreColumn).GetString().Trim();
+                        saleData["Descripcion"] = row.Cell(columnMapping.DescripcionColumn).GetString().Trim();
+                        saleData["Proveedor"] = row.Cell(columnMapping.ProveedorColumn).GetString().Trim();
+                        
+                        if (decimal.TryParse(row.Cell(columnMapping.PrecioCostoColumn).GetString(), out var precioCosto))
+                            saleData["PrecioCosto"] = precioCosto;
+                        else
+                            saleData["PrecioCosto"] = 0m;
+                            
+                        saleData["EmpleadoRegistro"] = row.Cell(columnMapping.EmpleadoRegistroColumn).GetString().Trim();
                         saleData["StoreCode"] = storeCode;
 
-                        // Validaciones básicas
-                        if (string.IsNullOrEmpty(saleData["SaleNumber"]?.ToString()))
+                        // Validaciones básicas (más flexibles como productos)
+                        if (string.IsNullOrEmpty(saleData["DocumentNumber"]?.ToString()) && 
+                            string.IsNullOrEmpty(saleData["SaleNumber"]?.ToString()))
                         {
-                            errors.Add($"Fila {row.RowNumber()}: Número de venta requerido");
-                            errorCount++;
+                            warnings.Add($"Fila {row.RowNumber()}: Sin número de documento, omitiendo...");
+                            continue;
+                        }
+                        
+                        if (string.IsNullOrEmpty(saleData["ProductName"]?.ToString()))
+                        {
+                            warnings.Add($"Fila {row.RowNumber()}: Sin nombre de producto, omitiendo...");
                             continue;
                         }
 
@@ -387,6 +508,111 @@ public class ExcelProcessorService
         }
     }
 
+    private async Task<(bool IsValid, List<string> Errors)> ValidateSalesColumnsAsync(IXLWorksheet worksheet)
+    {
+        var errors = new List<string>();
+        
+        try
+        {
+            // Obtener columnas esperadas de la configuración
+            var expectedColumns = await GetExpectedSalesColumnsAsync();
+            if (expectedColumns == null || !expectedColumns.Any())
+            {
+                // Si no hay configuración, usar validación mínima por defecto
+                return (true, errors);
+            }
+
+            // Obtener las columnas del Excel (primera fila)
+            var headerRow = worksheet.Row(1);
+            var actualColumns = new List<string>();
+            
+            for (int col = 1; col <= expectedColumns.Count; col++)
+            {
+                try
+                {
+                    var cellValue = headerRow.Cell(col).GetString().Trim();
+                    actualColumns.Add(cellValue);
+                }
+                catch
+                {
+                    actualColumns.Add("");
+                }
+            }
+
+            // Validar que todas las columnas esperadas estén presentes
+            for (int i = 0; i < expectedColumns.Count; i++)
+            {
+                if (i >= actualColumns.Count || string.IsNullOrEmpty(actualColumns[i]))
+                {
+                    errors.Add($"Columna {i + 1} ({expectedColumns[i]}) no encontrada o vacía");
+                }
+                else if (actualColumns[i] != expectedColumns[i])
+                {
+                    errors.Add($"Columna {i + 1}: esperada '{expectedColumns[i]}', encontrada '{actualColumns[i]}'");
+                }
+            }
+
+            return (errors.Count == 0, errors);
+        }
+        catch (Exception ex)
+        {
+            errors.Add($"Error validando columnas: {ex.Message}");
+            return (false, errors);
+        }
+    }
+
+    private async Task<List<string>> GetExpectedSalesColumnsAsync()
+    {
+        try
+        {
+            var configKey = "IMPORT_COLUMNS_SALES";
+            var config = await _configRepository.GetByKeyAsync(configKey);
+            
+            if (config == null || string.IsNullOrEmpty(config.ConfigValue))
+            {
+                // Configuración por defecto
+                return new List<string>
+                {
+                    "Razón Social", "Empleado Venta", "Almacén", "Cliente Nombre", "Cliente Doc.",
+                    "#-DOC", "# Doc. Relacionado", "Fecha", "Hora", "Tip. Doc.", "Unidad",
+                    "Cantidad", "Precio de Venta", "IGV", "Total", "Descuento aplicado (%)",
+                    "Conversión", "Moneda", "Codigo SKU", "Cod. alternativo", "Marca",
+                    "Categoría", "Características", "Nombre", "Descripción", "Proveedor",
+                    "Precio de costo", "Empleado registro"
+                };
+            }
+
+            return System.Text.Json.JsonSerializer.Deserialize<List<string>>(config.ConfigValue) ?? new List<string>();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning("Error obteniendo configuración de columnas de ventas: {Error}", ex.Message);
+            return new List<string>();
+        }
+    }
+
+    private async Task<SalesColumnMapping> GetSalesColumnMappingAsync()
+    {
+        try
+        {
+            var configKey = "IMPORT_MAPPING_SALES";
+            var config = await _configRepository.GetByKeyAsync(configKey);
+            
+            if (config == null || string.IsNullOrEmpty(config.ConfigValue))
+            {
+                // Configuración por defecto
+                return new SalesColumnMapping();
+            }
+
+            return System.Text.Json.JsonSerializer.Deserialize<SalesColumnMapping>(config.ConfigValue) ?? new SalesColumnMapping();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning("Error obteniendo mapeo de columnas de ventas: {Error}", ex.Message);
+            return new SalesColumnMapping();
+        }
+    }
+
     // Métodos de compatibilidad para mantener la misma interfaz
     public Task<ExcelProcessResult> ProcessSalesFastAsync(Stream excelStream, string fileName, string storeCode)
     {
@@ -420,6 +646,29 @@ public class ExcelProcessorService
         {
             _logger.LogError(ex, "Error retrieving column configuration for import type: {ImportType}", importType);
             return new List<string>();
+        }
+    }
+
+    private async Task<StockColumnMapping> GetStockColumnMappingAsync()
+    {
+        try
+        {
+            var configKey = "IMPORT_MAPPING_STOCK";
+            var mappingJson = await _configRepository.GetConfigValueAsync(configKey);
+            
+            if (string.IsNullOrEmpty(mappingJson))
+            {
+                _logger.LogWarning("No stock column mapping configuration found, using defaults");
+                return new StockColumnMapping();
+            }
+
+            var mapping = System.Text.Json.JsonSerializer.Deserialize<StockColumnMapping>(mappingJson);
+            return mapping ?? new StockColumnMapping();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving stock column mapping configuration, using defaults");
+            return new StockColumnMapping();
         }
     }
 }

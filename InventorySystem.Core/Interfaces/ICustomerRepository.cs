@@ -6,5 +6,6 @@ public interface ICustomerRepository : IRepository<Customer>
 {
     Task<IEnumerable<Customer>> GetActiveCustomersAsync();
     Task<Customer?> GetByDocumentAsync(string document);
+    Task<Customer?> GetByNameAsync(string name);
     Task<IEnumerable<Customer>> SearchCustomersAsync(string searchTerm);
 }

@@ -51,4 +51,10 @@ public class ProductStockRepository : Repository<ProductStock>, IProductStockRep
             .Where(ps => ps.ProductId == productId)
             .SumAsync(ps => ps.CurrentStock);
     }
+
+    public async Task<bool> HasStockForStoreAsync(int storeId)
+    {
+        return await _context.Set<ProductStock>()
+            .AnyAsync(ps => ps.StoreId == storeId && !ps.IsDeleted);
+    }
 }

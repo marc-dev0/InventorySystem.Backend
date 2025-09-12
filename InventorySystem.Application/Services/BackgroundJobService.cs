@@ -21,6 +21,10 @@ public class BackgroundJobService : IBackgroundJobService
     private readonly ISupplierRepository _supplierRepository;
     private readonly IBrandRepository _brandRepository;
     private readonly IImportBatchRepository _importBatchRepository;
+    private readonly IEmployeeRepository _employeeRepository;
+    private readonly ICustomerRepository _customerRepository;
+    private readonly ISaleRepository _saleRepository;
+    private readonly IInventoryMovementRepository _inventoryMovementRepository;
     private readonly IStockValidationService _stockValidationService;
     private readonly BatchProcessingService _batchProcessingService;
     private readonly BatchedTandiaImportService _batchedTandiaImportService;
@@ -38,6 +42,10 @@ public class BackgroundJobService : IBackgroundJobService
         ISupplierRepository supplierRepository,
         IBrandRepository brandRepository,
         IImportBatchRepository importBatchRepository,
+        IEmployeeRepository employeeRepository,
+        ICustomerRepository customerRepository,
+        ISaleRepository saleRepository,
+        IInventoryMovementRepository inventoryMovementRepository,
         IStockValidationService stockValidationService,
         BatchProcessingService batchProcessingService,
         BatchedTandiaImportService batchedTandiaImportService,
@@ -54,6 +62,10 @@ public class BackgroundJobService : IBackgroundJobService
         _supplierRepository = supplierRepository;
         _brandRepository = brandRepository;
         _importBatchRepository = importBatchRepository;
+        _employeeRepository = employeeRepository;
+        _customerRepository = customerRepository;
+        _saleRepository = saleRepository;
+        _inventoryMovementRepository = inventoryMovementRepository;
         _stockValidationService = stockValidationService;
         _batchProcessingService = batchProcessingService;
         _batchedTandiaImportService = batchedTandiaImportService;
@@ -99,8 +111,8 @@ public class BackgroundJobService : IBackgroundJobService
         excelStream.Position = 0;
         await excelStream.ReadExactlyAsync(fileData, 0, fileData.Length);
         
-        // Encolar job
-        Hangfire.BackgroundJob.Enqueue(() => ProcessSalesImportAsync(createdJobId!, fileData, fileName, storeCode));
+        // Encolar job en Hangfire
+        Hangfire.BackgroundJob.Enqueue<IBackgroundJobService>(service => service.ProcessSalesImportAsync(createdJobId!, fileData, fileName, storeCode));
         
         return createdJobId!;
     }
@@ -140,7 +152,7 @@ public class BackgroundJobService : IBackgroundJobService
         excelStream.Position = 0;
         await excelStream.ReadExactlyAsync(fileData, 0, fileData.Length);
         
-        Hangfire.BackgroundJob.Enqueue(() => ProcessStockImportAsync(createdJobId!, fileData, fileName, storeCode));
+        Hangfire.BackgroundJob.Enqueue<IBackgroundJobService>(service => service.ProcessStockImportAsync(createdJobId!, fileData, fileName, storeCode));
         
         return createdJobId!;
     }
@@ -179,7 +191,7 @@ public class BackgroundJobService : IBackgroundJobService
         excelStream.Position = 0;
         await excelStream.ReadExactlyAsync(fileData, 0, fileData.Length);
         
-        Hangfire.BackgroundJob.Enqueue(() => ProcessProductsImportAsync(createdJobId!, fileData, fileName));
+        Hangfire.BackgroundJob.Enqueue<IBackgroundJobService>(service => service.ProcessProductsImportAsync(createdJobId!, fileData, fileName));
         
         return createdJobId!;
     }
@@ -212,31 +224,75 @@ public class BackgroundJobService : IBackgroundJobService
             // Usar ExcelProcessorService nativo
             var result = await _excelProcessorService.ProcessSalesAsync(stream, fileName, storeCode);
             
-            // Aquí podrías agregar la lógica de importación a la base de datos
-            // Por ahora solo actualizamos el estado del job
+            // Persistir los datos de ventas en la base de datos
+            bool persistenceSuccessful = true;
+            string? persistenceError = null;
+            int skippedCount = 0;
+            int savedCount = 0;
+            List<string> allWarnings = new List<string>();
+            
+            if (result.Data.Any())
+            {
+                try
+                {
+                    var (persistSkippedCount, persistWarnings, processedSavedCount, importBatchId) = await PersistSalesDataAsync(result.Data, jobId, storeCode);
+                    savedCount = processedSavedCount;
+                    skippedCount = persistSkippedCount;
+                    allWarnings.AddRange(persistWarnings);
+                    
+                    // Update BackgroundJob with ImportBatchId
+                    var backgroundJob = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+                    if (backgroundJob != null)
+                    {
+                        backgroundJob.ImportBatchId = importBatchId;
+                        await _backgroundJobRepository.UpdateAsync(backgroundJob);
+                        _logger.LogInformation($"Updated BackgroundJob {jobId} with ImportBatchId {importBatchId}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    persistenceSuccessful = false;
+                    persistenceError = ex.Message;
+                    _logger.LogError(ex, "Error persisting sales data for job {JobId}", jobId);
+                }
+            }
             
             var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
             if (job != null)
             {
                 job.TotalRecords = result.TotalRecords;
-                job.SuccessRecords = result.SuccessCount;
+                job.SuccessRecords = result.SuccessCount - skippedCount;
                 job.ErrorRecords = result.ErrorCount;
-                job.WarningRecords = result.SkippedCount;
+                job.WarningRecords = skippedCount;
                 job.ProgressPercentage = 100;
                 
+                // Combine all errors and warnings
+                var allErrors = new List<string>();
                 if (result.Errors.Any())
                 {
-                    job.DetailedErrors = result.Errors;
+                    allErrors.AddRange(result.Errors);
                 }
-                if (result.Warnings.Any())
+                if (persistenceError != null)
                 {
-                    job.DetailedWarnings = result.Warnings;
+                    allErrors.Add($"Persistence error: {persistenceError}");
                 }
+                if (allErrors.Any())
+                {
+                    job.DetailedErrors = allErrors;
+                }
+                
+                if (allWarnings.Any())
+                {
+                    job.DetailedWarnings = allWarnings;
+                }
+                
+                // Update ProcessedRecords with the actual number processed
+                job.ProcessedRecords = savedCount;
                 
                 await _backgroundJobRepository.UpdateAsync(job);
             }
             
-            var finalStatus = result.ErrorCount > 0 ? "COMPLETED_WITH_WARNINGS" : "COMPLETED";
+            var finalStatus = (result.ErrorCount == 0 && persistenceSuccessful) ? "COMPLETED" : "COMPLETED_WITH_WARNINGS";
             await _backgroundJobRepository.UpdateStatusAsync(jobId, finalStatus);
             _logger.LogInformation($"Completed native .NET sales import job {jobId} with status {finalStatus}");
         }
@@ -258,28 +314,82 @@ public class BackgroundJobService : IBackgroundJobService
             
             var result = await _excelProcessorService.ProcessStockAsync(stream, fileName, storeCode);
             
+            // Persist the processed data to database
+            bool persistenceSuccessful = true;
+            string persistenceError = null;
+            
+            int skippedCount = 0;
+            int savedCount = 0;
+            List<string> detailedWarnings = new List<string>();
+            
+            if (result.Data != null && result.Data.Any())
+            {
+                _logger.LogInformation($"About to persist {result.Data.Count} stock records for job {jobId}");
+                try
+                {
+                    var persistenceResult = await PersistStockDataAsync(result.Data, jobId, storeCode);
+                    skippedCount = persistenceResult.skippedCount;
+                    savedCount = persistenceResult.savedCount;
+                    detailedWarnings = persistenceResult.warnings;
+                    _logger.LogInformation($"Successfully persisted stock data for job {jobId}. Skipped: {skippedCount}");
+                }
+                catch (Exception ex)
+                {
+                    persistenceSuccessful = false;
+                    persistenceError = ex.Message;
+                    _logger.LogError(ex, $"Error persisting stock data for job {jobId}: {ex.Message}");
+                    // Don't throw - continue to complete the job with warnings
+                }
+            }
+            else
+            {
+                _logger.LogWarning($"No stock data to persist for job {jobId}");
+            }
+            
             var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
             if (job != null)
             {
                 job.TotalRecords = result.TotalRecords;
                 job.SuccessRecords = result.SuccessCount;
                 job.ErrorRecords = result.ErrorCount;
-                job.WarningRecords = result.SkippedCount;
+                job.WarningRecords = result.SkippedCount + skippedCount; // Include both Excel warnings and persistence warnings
                 job.ProgressPercentage = 100;
                 
                 if (result.Errors.Any())
                 {
                     job.DetailedErrors = result.Errors;
                 }
+                
+                // Combine Excel warnings with persistence warnings
+                var allWarnings = new List<string>();
                 if (result.Warnings.Any())
                 {
-                    job.DetailedWarnings = result.Warnings;
+                    allWarnings.AddRange(result.Warnings);
                 }
+                if (detailedWarnings.Any())
+                {
+                    allWarnings.AddRange(detailedWarnings);
+                }
+                if (allWarnings.Any())
+                {
+                    job.DetailedWarnings = allWarnings;
+                }
+                
+                // Add persistence error to detailed errors if it occurred
+                if (!persistenceSuccessful && persistenceError != null)
+                {
+                    var errors = job.DetailedErrors?.ToList() ?? new List<string>();
+                    errors.Add($"Error de persistencia: {persistenceError}");
+                    job.DetailedErrors = errors;
+                }
+                
+                // Update ProcessedRecords with the actual number processed
+                job.ProcessedRecords = savedCount;
                 
                 await _backgroundJobRepository.UpdateAsync(job);
             }
             
-            var finalStatus = result.ErrorCount > 0 ? "COMPLETED_WITH_WARNINGS" : "COMPLETED";
+            var finalStatus = result.ErrorCount > 0 || !persistenceSuccessful ? "COMPLETED_WITH_WARNINGS" : "COMPLETED";
             await _backgroundJobRepository.UpdateStatusAsync(jobId, finalStatus);
             _logger.LogInformation($"Completed native .NET stock import job {jobId} with status {finalStatus}");
         }
@@ -306,6 +416,7 @@ public class BackgroundJobService : IBackgroundJobService
             string persistenceError = null;
             
             int skippedCount = 0;
+            int savedCount = 0;
             List<string> detailedWarnings = new List<string>();
             
             if (result.Data != null && result.Data.Any())
@@ -315,6 +426,7 @@ public class BackgroundJobService : IBackgroundJobService
                 {
                     var persistenceResult = await PersistProductsDataAsync(result.Data, jobId);
                     skippedCount = persistenceResult.skippedCount;
+                    savedCount = persistenceResult.savedCount;
                     detailedWarnings = persistenceResult.warnings;
                     _logger.LogInformation($"Successfully persisted products for job {jobId}. Skipped: {skippedCount}");
                 }
@@ -368,6 +480,9 @@ public class BackgroundJobService : IBackgroundJobService
                     job.DetailedErrors = errors;
                     job.ErrorMessage = persistenceError;
                 }
+                
+                // Update ProcessedRecords with the actual number processed
+                job.ProcessedRecords = savedCount;
                 
                 await _backgroundJobRepository.UpdateAsync(job);
             }
@@ -436,7 +551,7 @@ public class BackgroundJobService : IBackgroundJobService
         }
     }
 
-    private async Task<(int skippedCount, List<string> warnings)> PersistProductsDataAsync(List<Dictionary<string, object>> productsData, string jobId)
+    private async Task<(int skippedCount, List<string> warnings, int savedCount)> PersistProductsDataAsync(List<Dictionary<string, object>> productsData, string jobId)
     {
         _logger.LogInformation($"Starting to persist {productsData.Count} products for job {jobId}");
         
@@ -464,6 +579,14 @@ public class BackgroundJobService : IBackgroundJobService
         };
         
         await _importBatchRepository.AddAsync(importBatch);
+        
+        // Actualizar el BackgroundJob con el ImportBatchId para poder hacer la relación
+        var backgroundJob = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+        if (backgroundJob != null)
+        {
+            backgroundJob.ImportBatchId = importBatch.Id;
+            await _backgroundJobRepository.UpdateAsync(backgroundJob);
+        }
         
         foreach (var productData in productsData)
         {
@@ -614,7 +737,7 @@ public class BackgroundJobService : IBackgroundJobService
             detailedWarnings.AddRange(importBatch.Warnings.Split(new string[] { "; " }, StringSplitOptions.RemoveEmptyEntries));
         }
         
-        return (importBatch.SkippedCount, detailedWarnings);
+        return (importBatch.SkippedCount, detailedWarnings, importBatch.SuccessCount);
     }
 
     private string GenerateStoreCode(string storeName)
@@ -653,5 +776,434 @@ public class BackgroundJobService : IBackgroundJobService
             baseCode = "STORE";
         
         return baseCode;
+    }
+
+    private async Task<(int skippedCount, List<string> warnings, int savedCount)> PersistStockDataAsync(List<Dictionary<string, object>> stockData, string jobId, string storeCode)
+    {
+        _logger.LogInformation($"Starting to persist {stockData.Count} stock records for job {jobId} in store {storeCode}");
+        
+        var warnings = new List<string>();
+        int skippedCount = 0;
+        int savedCount = 0;
+
+        // Get store entity
+        var store = await _storeRepository.GetByCodeAsync(storeCode);
+        if (store == null)
+        {
+            warnings.Add($"Store with code {storeCode} not found");
+            return (stockData.Count, warnings, 0);
+        }
+
+        // Get existing products
+        var products = await _productRepository.GetAllAsync();
+        var productsDict = products
+            .Where(p => !string.IsNullOrEmpty(p.Code))
+            .GroupBy(p => p.Code)
+            .ToDictionary(g => g.Key, g => g.First());
+
+        // Create ImportBatch for tracking
+        var importBatch = new ImportBatch
+        {
+            BatchCode = $"STOCK-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
+            BatchType = "STOCK_IMPORT",
+            FileName = "carga_stock.xlsx",
+            StoreCode = storeCode,
+            TotalRecords = stockData.Count,
+            SuccessCount = 0,
+            SkippedCount = 0,
+            ErrorCount = 0,
+            ImportDate = DateTime.UtcNow,
+            ImportedBy = "System",
+            StartedAt = DateTime.UtcNow,
+            CreatedAt = DateTime.UtcNow,
+            IsInProgress = true,
+            IsDeleted = false
+        };
+
+        await _importBatchRepository.AddAsync(importBatch);
+
+        // Update the BackgroundJob with the ImportBatchId
+        var backgroundJob = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+        if (backgroundJob != null)
+        {
+            backgroundJob.ImportBatchId = importBatch.Id;
+            await _backgroundJobRepository.UpdateAsync(backgroundJob);
+        }
+
+        foreach (var stockRecord in stockData)
+        {
+            try
+            {
+                var productCode = stockRecord["codigo"]?.ToString()?.Trim();
+                if (string.IsNullOrEmpty(productCode))
+                {
+                    warnings.Add("Product code is empty, skipping record");
+                    skippedCount++;
+                    continue;
+                }
+
+                if (!productsDict.ContainsKey(productCode))
+                {
+                    warnings.Add($"Product {productCode} not found in system");
+                    skippedCount++;
+                    continue;
+                }
+
+                var product = productsDict[productCode];
+
+                // Check if stock already exists for this product/store
+                var existingStock = await _productStockRepository.GetByProductAndStoreAsync(product.Id, store.Id);
+                if (existingStock != null)
+                {
+                    warnings.Add($"Stock for product {productCode} in store {storeCode} already exists, skipping");
+                    skippedCount++;
+                    continue;
+                }
+
+                var currentStock = Convert.ToDecimal(stockRecord["current_stock"] ?? 0);
+                var minimumStock = Convert.ToDecimal(stockRecord["minimum_stock"] ?? 0);
+                var maximumStock = Convert.ToDecimal(stockRecord["maximum_stock"] ?? minimumStock * 3);
+
+                var productStock = new ProductStock
+                {
+                    ProductId = product.Id,
+                    StoreId = store.Id,
+                    CurrentStock = currentStock,
+                    MinimumStock = minimumStock,
+                    MaximumStock = maximumStock,
+                    AverageCost = product.PurchasePrice,
+                    ImportBatchId = importBatch.Id,
+                    CreatedAt = DateTime.UtcNow,
+                    IsDeleted = false
+                };
+
+                await _productStockRepository.AddAsync(productStock);
+                savedCount++;
+            }
+            catch (Exception ex)
+            {
+                warnings.Add($"Error processing stock record for product {stockRecord.GetValueOrDefault("codigo", "Unknown")}: {ex.Message}");
+                skippedCount++;
+                _logger.LogError(ex, "Error processing stock record for job {JobId}", jobId);
+            }
+        }
+
+        // Update ImportBatch with final results
+        importBatch.SuccessCount = savedCount;
+        importBatch.SkippedCount = skippedCount;
+        importBatch.ErrorCount = warnings.Count;
+        importBatch.CompletedAt = DateTime.UtcNow;
+        importBatch.IsInProgress = false;
+        await _importBatchRepository.UpdateAsync(importBatch);
+
+        _logger.LogInformation($"Completed persisting stock data for job {jobId}. Saved: {savedCount}, Skipped: {skippedCount}");
+        
+        return (skippedCount, warnings, savedCount);
+    }
+
+    private async Task<(int skippedCount, List<string> warnings, int savedCount, int importBatchId)> PersistSalesDataAsync(List<Dictionary<string, object>> salesData, string jobId, string storeCode)
+    {
+        _logger.LogInformation($"Starting to persist {salesData.Count} sale detail lines for job {jobId}");
+
+        var warnings = new List<string>();
+        int skippedCount = 0;
+        int savedCount = 0;
+
+        // Get store entity
+        var store = await _storeRepository.GetByCodeAsync(storeCode);
+        if (store == null)
+        {
+            throw new InvalidOperationException($"Store not found: {storeCode}");
+        }
+
+        // Caches for entities
+        var employeeCache = new Dictionary<string, Employee>();
+        var customerCache = new Dictionary<string, Customer>();
+        var productCache = new Dictionary<string, Product>();
+
+        // Create ImportBatch for tracking
+        var importBatch = new ImportBatch
+        {
+            BatchCode = $"SALES-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
+            BatchType = "SALES",
+            FileName = $"sales_import_{jobId}.xlsx",
+            StoreCode = storeCode,
+            TotalRecords = salesData.Count,
+            ImportedBy = "System",
+            CreatedAt = DateTime.UtcNow,
+            IsInProgress = true
+        };
+
+        await _importBatchRepository.AddAsync(importBatch);
+
+        // Group sales data by SaleNumber (each sale number is one sale with multiple products)
+        var salesGrouped = salesData.GroupBy(x => x.GetValueOrDefault("SaleNumber", "")?.ToString()?.Trim())
+            .Where(g => !string.IsNullOrEmpty(g.Key))
+            .ToList();
+
+        _logger.LogInformation($"Found {salesGrouped.Count} unique sales documents");
+
+        var productStocks = await _productStockRepository.GetByStoreIdAsync(store.Id);
+
+        foreach (var saleGroup in salesGrouped)
+        {
+            try
+            {
+                var saleNumber = saleGroup.Key; // This is now the SaleNumber from column F
+                var saleDetails = saleGroup.ToList();
+                var firstRecord = saleDetails.First(); // Use first record for sale-level data
+                var documentNumber = firstRecord.GetValueOrDefault("DocumentNumber", "")?.ToString()?.Trim(); // Keep original document number for reference
+                
+                // Create or find Employee (same for all items in this sale)
+                var employeeName = firstRecord.GetValueOrDefault("EmployeeName", "")?.ToString()?.Trim();
+                Employee? employee = null;
+                
+                if (!string.IsNullOrEmpty(employeeName))
+                {
+                    if (!employeeCache.ContainsKey(employeeName))
+                    {
+                        employee = await _employeeRepository.GetByNameAsync(employeeName);
+                        if (employee == null)
+                        {
+                            // Create new employee
+                            employee = new Employee
+                            {
+                                Code = employeeName.Replace(" ", "").ToUpper(),
+                                Name = employeeName,
+                                StoreId = store.Id,
+                                Active = true,
+                                HireDate = DateTime.UtcNow,
+                                CreatedAt = DateTime.UtcNow
+                            };
+                            await _employeeRepository.AddAsync(employee);
+                        }
+                        employeeCache[employeeName] = employee;
+                    }
+                    else
+                    {
+                        employee = employeeCache[employeeName];
+                    }
+                }
+
+                // Create or find Customer (same for all items in this sale)
+                var customerName = firstRecord.GetValueOrDefault("CustomerName", "")?.ToString()?.Trim();
+                Customer? customer = null;
+
+                if (!string.IsNullOrEmpty(customerName))
+                {
+                    var customerKey = customerName;
+                    if (!customerCache.ContainsKey(customerKey))
+                    {
+                        customer = await _customerRepository.GetByNameAsync(customerName);
+
+                        if (customer == null)
+                        {
+                            // Create new customer using name from column D
+                            customer = new Customer
+                            {
+                                Name = customerName,
+                                Document = "99999999", // Default document for generic customers
+                                Active = true,
+                                CreatedAt = DateTime.UtcNow
+                            };
+                            await _customerRepository.AddAsync(customer);
+                        }
+                        customerCache[customerKey] = customer;
+                    }
+                    else
+                    {
+                        customer = customerCache[customerKey];
+                    }
+                }
+
+                // saleNumber already comes from the grouping key (column F)
+                // No need to read it again from firstRecord since we're already grouped by it
+                var saleDate = (DateTime)firstRecord.GetValueOrDefault("SaleDate", DateTime.UtcNow);
+                var total = saleDetails.Sum(x => Convert.ToDecimal(x.GetValueOrDefault("Subtotal", 0)));
+
+                if (string.IsNullOrEmpty(saleNumber))
+                {
+                    warnings.Add($"Sale record skipped: Missing sale number");
+                    skippedCount++;
+                    continue;
+                }
+
+                // Log employee assignment for debugging
+                _logger.LogInformation($"Creating sale {saleNumber}. Employee: {employeeName} -> ID: {employee?.Id}, Customer: {customerName} -> ID: {customer?.Id}");
+
+                var sale = new Sale
+                {
+                    SaleNumber = saleNumber,
+                    SaleDate = saleDate,
+                    Total = total,
+                    SubTotal = total, // Assuming no tax separation in import
+                    Taxes = 0,
+                    StoreId = store.Id,
+                    CustomerId = customer?.Id,
+                    EmployeeId = employee?.Id,
+                    ImportBatchId = importBatch.Id,
+                    ImportedAt = DateTime.UtcNow,
+                    ImportSource = "TANDIA_EXCEL",
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                // Initialize the Details collection
+                sale.Details = new List<SaleDetail>();
+
+                // Collect sale details and inventory movements to create after saving the sale
+                var saleDetailsToAdd = new List<SaleDetail>();
+                var inventoryMovementsToAdd = new List<InventoryMovement>();
+
+                // Create SaleDetails for each product in this sale
+                foreach (var detail in saleDetails)
+                {
+                    var productName = detail.GetValueOrDefault("ProductName", "")?.ToString()?.Trim();
+                    var quantity = Convert.ToDecimal(detail.GetValueOrDefault("Quantity", 1));
+                    var unitPrice = Convert.ToDecimal(detail.GetValueOrDefault("UnitPrice", 0));
+                    var subtotal = Convert.ToDecimal(detail.GetValueOrDefault("Subtotal", 0));
+
+                    if (string.IsNullOrEmpty(productName))
+                    {
+                        warnings.Add($"Product name missing in sale {saleNumber}");
+                        continue;
+                    }
+
+                    // Find or cache product
+                    Product? product = null;
+                    if (!productCache.ContainsKey(productName))
+                    {
+                        var searchResults = await _productRepository.SearchProductsAsync(productName);
+                        product = searchResults.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+                        if (product == null)
+                        {
+                            // Use first available product as fallback
+                            product = (await _productRepository.GetAllAsync()).FirstOrDefault();
+                            if (product != null)
+                            {
+                                warnings.Add($"Product '{productName}' not found, using fallback product '{product.Name}'");
+                            }
+                        }
+                        if (product != null)
+                        {
+                            productCache[productName] = product;
+                        }
+                    }
+                    else
+                    {
+                        product = productCache[productName];
+                    }
+
+                    if (product != null)
+                    {
+                        // Create SaleDetail (will be added after sale is saved)
+                        var saleDetail = new SaleDetail
+                        {
+                            ProductId = product.Id,
+                            Quantity = quantity,
+                            UnitPrice = unitPrice,
+                            Subtotal = subtotal,
+                            CreatedAt = DateTime.UtcNow
+                        };
+
+                        // Add to temporary collection
+                        saleDetailsToAdd.Add(saleDetail);
+
+                        // Prepare inventory movement for this product (will be added after sale is saved)
+                        var inventoryMovement = new InventoryMovement
+                        {
+                            Type = MovementType.TandiaImport_Sale,
+                            Date = saleDate,
+                            Quantity = -quantity,
+                            Reason = $"Sale: {saleNumber} - {productName}",
+                            DocumentNumber = saleNumber,
+                            Source = "TANDIA_EXCEL",
+                            UnitCost = unitPrice,
+                            TotalCost = subtotal,
+                            ProductId = product.Id,
+                            StoreId = store.Id,
+                            CreatedAt = DateTime.UtcNow
+                        };
+
+                        // Find specific product stock and reduce it
+                        var productStock = productStocks.FirstOrDefault(ps => ps.ProductId == product.Id);
+                        if (productStock != null && productStock.CurrentStock >= quantity)
+                        {
+                            var previousStock = productStock.CurrentStock;
+                            productStock.CurrentStock -= quantity;
+                            productStock.UpdatedAt = DateTime.UtcNow;
+                            
+                            await _productStockRepository.UpdateAsync(productStock);
+
+                            // Update the inventory movement with actual stock values
+                            inventoryMovement.PreviousStock = previousStock;
+                            inventoryMovement.NewStock = productStock.CurrentStock;
+                            inventoryMovement.ProductStockId = productStock.Id;
+                        }
+                        else if (productStock != null)
+                        {
+                            // Insufficient stock - reduce what's available
+                            var previousStock = productStock.CurrentStock;
+                            var availableQuantity = productStock.CurrentStock;
+                            productStock.CurrentStock = 0;
+                            productStock.UpdatedAt = DateTime.UtcNow;
+                            
+                            await _productStockRepository.UpdateAsync(productStock);
+
+                            inventoryMovement.PreviousStock = previousStock;
+                            inventoryMovement.NewStock = 0;
+                            inventoryMovement.Quantity = -availableQuantity;
+                            inventoryMovement.ProductStockId = productStock.Id;
+                            
+                            warnings.Add($"Insufficient stock for product '{productName}'. Required: {quantity}, Available: {availableQuantity}");
+                        }
+
+                        // Add to temporary collection
+                        inventoryMovementsToAdd.Add(inventoryMovement);
+                    }
+                    else
+                    {
+                        warnings.Add($"Product '{productName}' not found for sale {saleNumber}");
+                    }
+                }
+
+                // Save the sale first to get the generated ID
+                await _saleRepository.AddAsync(sale);
+                _logger.LogInformation($"Sale {saleNumber} saved with ID: {sale.Id}, EmployeeId: {sale.EmployeeId}");
+
+                // Now that sale has an ID, add the SaleDetails with correct SaleId
+                foreach (var saleDetail in saleDetailsToAdd)
+                {
+                    saleDetail.SaleId = sale.Id;
+                    sale.Details.Add(saleDetail);
+                }
+
+                // Add inventory movements with correct SaleId
+                foreach (var inventoryMovement in inventoryMovementsToAdd)
+                {
+                    inventoryMovement.SaleId = sale.Id;
+                    await _inventoryMovementRepository.AddAsync(inventoryMovement);
+                }
+
+                savedCount++;
+            }
+            catch (Exception ex)
+            {
+                warnings.Add($"Error processing sale group {saleGroup.Key}: {ex.Message}");
+                skippedCount++;
+                _logger.LogError(ex, "Error processing sale group {SaleNumber} for job {JobId}", saleGroup.Key, jobId);
+            }
+        }
+
+        // Update ImportBatch with final results
+        importBatch.SuccessCount = savedCount;
+        importBatch.SkippedCount = skippedCount;
+        importBatch.ErrorCount = warnings.Count;
+        importBatch.CompletedAt = DateTime.UtcNow;
+        importBatch.IsInProgress = false;
+        await _importBatchRepository.UpdateAsync(importBatch);
+
+        _logger.LogInformation($"Completed persisting sales data for job {jobId}. Saved: {savedCount}, Skipped: {skippedCount}");
+
+        return (skippedCount, warnings, savedCount, importBatch.Id);
     }
 }

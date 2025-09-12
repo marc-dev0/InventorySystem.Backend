@@ -31,6 +31,7 @@ public class InventoryDbContext : DbContext
     public DbSet<ProductStock> ProductStocks { get; set; }
     public DbSet<ImportBatch> ImportBatches { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Employee> Employees { get; set; }
     public DbSet<BackgroundJob> BackgroundJobs { get; set; }
     public DbSet<SystemConfiguration> SystemConfigurations { get; set; }
 
@@ -73,6 +74,18 @@ public class InventoryDbContext : DbContext
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<Employee>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Code).IsRequired().HasMaxLength(50);
+            entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.Document).HasMaxLength(50);
+            entity.Property(e => e.Position).HasMaxLength(100);
+            entity.Property(e => e.Phone).HasMaxLength(20);
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.HasIndex(e => e.Code).IsUnique();
         });
 
         modelBuilder.Entity<Sale>(entity =>

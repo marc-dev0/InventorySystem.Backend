@@ -10,6 +10,7 @@ public class Store : BaseEntity
     public string? Address { get; set; }
     public string? Phone { get; set; }
     public bool Active { get; set; } = true;
+    public bool HasInitialStock { get; set; } = false;
     
     // Relationships
     public virtual ICollection<ProductStock> ProductStocks { get; set; } = new List<ProductStock>();

@@ -14,6 +14,7 @@ public class StockInitialService : IStockInitialService
     private readonly IProductStockRepository _productStockRepository;
     private readonly IInventoryMovementRepository _inventoryMovementRepository;
     private readonly IImportBatchRepository _importBatchRepository;
+    private readonly ISystemConfigurationRepository _configRepository;
     private readonly ILogger<StockInitialService> _logger;
 
     public StockInitialService(
@@ -22,6 +23,7 @@ public class StockInitialService : IStockInitialService
         IProductStockRepository productStockRepository,
         IInventoryMovementRepository inventoryMovementRepository,
         IImportBatchRepository importBatchRepository,
+        ISystemConfigurationRepository configRepository,
         ILogger<StockInitialService> logger)
     {
         _productRepository = productRepository;
@@ -29,6 +31,7 @@ public class StockInitialService : IStockInitialService
         _productStockRepository = productStockRepository;
         _inventoryMovementRepository = inventoryMovementRepository;
         _importBatchRepository = importBatchRepository;
+        _configRepository = configRepository;
         _logger = logger;
     }
 
@@ -103,15 +106,20 @@ public class StockInitialService : IStockInitialService
             var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
             
             _logger.LogInformation("Archivo Excel abierto, última fila: {LastRow}", lastRow);
+
+            // Obtener configuración de mapeo de columnas
+            var columnMapping = await GetColumnMappingAsync();
+            _logger.LogInformation("Usando mapeo de columnas: Código=Col{CodeColumn}, Stock=Col{StockColumn}, StockMin=Col{MinStockColumn}, InicioFila={StartRow}", 
+                columnMapping.CodeColumn, columnMapping.StockColumn, columnMapping.MinStockColumn, columnMapping.StartRow);
             
-            // Procesar desde la fila 2 (asumiendo header en fila 1)
-            for (int row = 2; row <= lastRow; row++)
+            // Procesar desde la fila configurada (por defecto fila 2)
+            for (int row = columnMapping.StartRow; row <= lastRow; row++)
             {
                 try
                 {
-                    var codigo = worksheet.Cell(row, 2).GetString().Trim(); // Columna B - Código
-                    var stockStr = worksheet.Cell(row, 11).GetString().Trim(); // Columna K - Stock
-                    var stockMinStr = worksheet.Cell(row, 12).GetString().Trim(); // Columna L - Stock min
+                    var codigo = worksheet.Cell(row, columnMapping.CodeColumn).GetString().Trim(); // Código
+                    var stockStr = worksheet.Cell(row, columnMapping.StockColumn).GetString().Trim(); // Stock
+                    var stockMinStr = worksheet.Cell(row, columnMapping.MinStockColumn).GetString().Trim(); // Stock min
 
                     // Log solo productos válidos procesados
                     if (!string.IsNullOrEmpty(codigo) && decimal.TryParse(stockStr, out _)) {
@@ -202,6 +210,14 @@ public class StockInitialService : IStockInitialService
         
         // Actualizar ImportBatch con estadísticas
         await _importBatchRepository.UpdateAsync(importBatch);
+
+        // Si se procesaron productos exitosamente, marcar la tienda como que ya tiene stock inicial
+        if (result.ProcessedProducts > 0)
+        {
+            store.HasInitialStock = true;
+            await _storeRepository.UpdateAsync(store);
+            _logger.LogInformation("Tienda {StoreCode} marcada como con stock inicial cargado", storeCode);
+        }
 
         // Actualizar resultado con información de batch
         result.TotalRecords = importBatch.TotalRecords;
@@ -335,5 +351,28 @@ public class StockInitialService : IStockInitialService
         }
         
         return deletedCount;
+    }
+
+    private async Task<StockColumnMapping> GetColumnMappingAsync()
+    {
+        try
+        {
+            var configKey = "IMPORT_MAPPING_STOCK";
+            var mappingJson = await _configRepository.GetConfigValueAsync(configKey);
+            
+            if (string.IsNullOrEmpty(mappingJson))
+            {
+                _logger.LogWarning("No stock column mapping configuration found, using defaults");
+                return new StockColumnMapping();
+            }
+
+            var mapping = System.Text.Json.JsonSerializer.Deserialize<StockColumnMapping>(mappingJson);
+            return mapping ?? new StockColumnMapping();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving stock column mapping configuration, using defaults");
+            return new StockColumnMapping();
+        }
     }
 }

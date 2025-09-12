@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InventorySystem.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InventorySystem.Infrastructure.Migrations
 {
     [DbContext(typeof(InventoryDbContext))]
-    partial class InventoryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250825210754_AddEmployeeEntity")]
+    partial class AddEmployeeEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,7 +184,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTime(2025, 9, 1, 3, 54, 29, 654, DateTimeKind.Utc).AddTicks(9589),
+                            CreatedAt = new DateTime(2025, 8, 25, 21, 7, 53, 49, DateTimeKind.Utc).AddTicks(6730),
                             Description = "Electronic devices",
                             IsDeleted = false,
                             Name = "Electronics"
@@ -190,7 +193,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTime(2025, 9, 1, 3, 54, 29, 655, DateTimeKind.Utc).AddTicks(1011),
+                            CreatedAt = new DateTime(2025, 8, 25, 21, 7, 53, 49, DateTimeKind.Utc).AddTicks(8016),
                             Description = "Apparel items",
                             IsDeleted = false,
                             Name = "Clothing"
@@ -815,9 +818,6 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<bool>("HasInitialStock")
-                        .HasColumnType("boolean");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -848,9 +848,8 @@ namespace InventorySystem.Infrastructure.Migrations
                             Id = 1,
                             Active = true,
                             Code = "TANT",
-                            CreatedAt = new DateTime(2025, 9, 1, 3, 54, 29, 656, DateTimeKind.Utc).AddTicks(9903),
+                            CreatedAt = new DateTime(2025, 8, 25, 21, 7, 53, 50, DateTimeKind.Utc).AddTicks(9701),
                             Description = "Main Tantamayo Store",
-                            HasInitialStock = false,
                             IsDeleted = false,
                             Name = "Tienda Tantamayo"
                         },
@@ -859,9 +858,8 @@ namespace InventorySystem.Infrastructure.Migrations
                             Id = 2,
                             Active = true,
                             Code = "MAIN",
-                            CreatedAt = new DateTime(2025, 9, 1, 3, 54, 29, 657, DateTimeKind.Utc).AddTicks(2322),
+                            CreatedAt = new DateTime(2025, 8, 25, 21, 7, 53, 51, DateTimeKind.Utc).AddTicks(1498),
                             Description = "Central warehouse",
-                            HasInitialStock = false,
                             IsDeleted = false,
                             Name = "Main Warehouse"
                         });
@@ -910,7 +908,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTime(2025, 9, 1, 3, 54, 29, 656, DateTimeKind.Utc).AddTicks(6801),
+                            CreatedAt = new DateTime(2025, 8, 25, 21, 7, 53, 50, DateTimeKind.Utc).AddTicks(7588),
                             IsDeleted = false,
                             Name = "TechSupply Inc.",
                             Phone = "555-0001"
@@ -919,7 +917,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTime(2025, 9, 1, 3, 54, 29, 656, DateTimeKind.Utc).AddTicks(7977),
+                            CreatedAt = new DateTime(2025, 8, 25, 21, 7, 53, 50, DateTimeKind.Utc).AddTicks(8489),
                             IsDeleted = false,
                             Name = "Fashion World",
                             Phone = "555-0002"
