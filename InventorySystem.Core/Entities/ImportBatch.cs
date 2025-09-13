@@ -14,6 +14,7 @@ public class ImportBatch : BaseEntity
     public string? Warnings { get; set; } // JSON de warnings
     public DateTime ImportDate { get; set; }
     public string ImportedBy { get; set; } = string.Empty; // Usuario que hizo la carga
+    public int? EmployeeId { get; set; } // ID del empleado si está disponible
     
     // Campos para control de tiempo y estado de procesos
     public DateTime? StartedAt { get; set; } // Cuando inició el proceso

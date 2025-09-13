@@ -370,6 +370,96 @@ public class TestController : ControllerBase
         }
     }
 
+    [HttpPost("sync-product-stocks")]
+    public async Task<IActionResult> SyncProductStocks()
+    {
+        try
+        {
+            var results = new List<object>();
+            
+            // Get all products with their current ProductStocks for store 1 (main store)
+            var products = await _context.Products
+                .Where(p => !p.IsDeleted)
+                .ToListAsync();
+                
+            var store = await _context.Stores.FirstOrDefaultAsync(s => s.Code == "TIETAN");
+            if (store == null)
+            {
+                return BadRequest("Store TANT not found");
+            }
+            
+            int synced = 0;
+            int created = 0;
+            
+            foreach (var product in products)
+            {
+                var productStock = await _context.ProductStocks
+                    .FirstOrDefaultAsync(ps => ps.ProductId == product.Id && ps.StoreId == store.Id);
+                    
+                if (productStock == null)
+                {
+                    // Create missing ProductStock record
+                    productStock = new ProductStock
+                    {
+                        ProductId = product.Id,
+                        StoreId = store.Id,
+                        CurrentStock = product.Stock,
+                        MinimumStock = product.MinimumStock,
+                        MaximumStock = 1000, // Default max stock
+                        AverageCost = product.PurchasePrice
+                    };
+                    _context.ProductStocks.Add(productStock);
+                    created++;
+                    
+                    results.Add(new { 
+                        Action = "CREATED", 
+                        ProductId = product.Id,
+                        ProductName = product.Name,
+                        ProductStock = product.Stock,
+                        NewCurrentStock = productStock.CurrentStock
+                    });
+                }
+                else if (Math.Abs(productStock.CurrentStock - product.Stock) > 0.001m)
+                {
+                    // Sync desynchronized stock
+                    var oldStock = productStock.CurrentStock;
+                    productStock.CurrentStock = product.Stock;
+                    productStock.UpdatedAt = DateTime.UtcNow;
+                    synced++;
+                    
+                    results.Add(new { 
+                        Action = "SYNCED", 
+                        ProductId = product.Id,
+                        ProductName = product.Name,
+                        ProductStock = product.Stock,
+                        OldCurrentStock = oldStock,
+                        NewCurrentStock = productStock.CurrentStock
+                    });
+                }
+            }
+            
+            await _context.SaveChangesAsync();
+            
+            return Ok(new 
+            { 
+                message = "Stock synchronization completed",
+                summary = new
+                {
+                    totalProducts = products.Count,
+                    created = created,
+                    synced = synced,
+                    unchanged = products.Count - created - synced
+                },
+                details = results.Take(20).ToList(), // Show first 20 changes
+                totalChanges = results.Count
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message, stackTrace = ex.StackTrace });
+        }
+    }
+
     [HttpGet("import-batches")]
     public async Task<IActionResult> TestImportBatches()
     {

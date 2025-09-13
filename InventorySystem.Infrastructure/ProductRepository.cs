@@ -8,8 +8,11 @@ namespace InventorySystem.Infrastructure.Repositories;
 
 public class ProductRepository : Repository<Product>, IProductRepository
 {
-    public ProductRepository(InventoryDbContext context, ILogger<ProductRepository> logger) : base(context, logger)
+    private readonly IProductStockRepository _productStockRepository;
+
+    public ProductRepository(InventoryDbContext context, ILogger<ProductRepository> logger, IProductStockRepository productStockRepository) : base(context, logger)
     {
+        _productStockRepository = productStockRepository;
     }
 
     public override async Task<Product?> GetByIdAsync(int id)
@@ -110,18 +113,24 @@ public class ProductRepository : Repository<Product>, IProductRepository
         try
         {
             _logger.LogDebug("Getting products with low stock");
-            var products = await _dbSet
-                .Include(p => p.Category)
-                .Include(p => p.Supplier)
-                .Where(p => p.Stock <= p.MinimumStock && p.Active)
-                .OrderBy(p => p.Stock)
+            
+            // Get all ProductStocks with low stock and include the related Product
+            var lowStockProductStocks = await _context.ProductStocks
+                .Include(ps => ps.Product)
+                    .ThenInclude(p => p.Category)
+                .Include(ps => ps.Product.Supplier)
+                .Where(ps => ps.CurrentStock <= ps.MinimumStock && ps.Product.Active)
+                .OrderBy(ps => ps.CurrentStock)
                 .ToListAsync();
 
+            var products = lowStockProductStocks.Select(ps => ps.Product).Distinct().ToList();
+
             _logger.LogWarning("Found {Count} products with low stock", products.Count);
-            foreach (var product in products)
+            foreach (var productStock in lowStockProductStocks)
             {
-                _logger.LogWarning("Low stock alert: {ProductName} (Code: {Code}) - Current: {CurrentStock}, Minimum: {MinStock}", 
-                    product.Name, product.Code, product.Stock, product.MinimumStock);
+                var product = productStock.Product;
+                _logger.LogWarning("Low stock alert: {ProductName} (Code: {Code}) - Current: {CurrentStock}, Minimum: {MinStock}, Store: {StoreId}", 
+                    product.Name, product.Code, productStock.CurrentStock, productStock.MinimumStock, productStock.StoreId);
             }
 
             return products;
@@ -191,11 +200,30 @@ public class ProductRepository : Repository<Product>, IProductRepository
             var product = await GetByIdAsync(productId);
             if (product != null)
             {
-                var oldStock = product.Stock;
+                // Get all ProductStocks for this product across all stores
+                var productStocks = await _productStockRepository.GetByProductIdAsync(productId);
+                
+                if (productStocks.Any())
+                {
+                    // Update the first store's stock (or you could update all stores proportionally)
+                    var primaryProductStock = productStocks.First();
+                    var oldStock = primaryProductStock.CurrentStock;
+                    primaryProductStock.CurrentStock = newStock;
+                    primaryProductStock.UpdatedAt = DateTime.UtcNow;
+                    
+                    await _productStockRepository.UpdateAsync(primaryProductStock);
+                    
+                    _logger.LogInformation("Stock updated for product {ProductName} (ID: {ProductId}) in store {StoreId}: {OldStock} -> {NewStock}", 
+                        product.Name, productId, primaryProductStock.StoreId, oldStock, newStock);
+                }
+                else
+                {
+                    _logger.LogWarning("No ProductStock records found for product ID {ProductId}", productId);
+                }
+                
+                // Also update the deprecated Products.Stock field for backward compatibility
                 product.Stock = newStock;
                 await UpdateAsync(product);
-                _logger.LogInformation("Stock updated for product {ProductName} (ID: {ProductId}): {OldStock} -> {NewStock}", 
-                    product.Name, productId, oldStock, newStock);
             }
             else
             {

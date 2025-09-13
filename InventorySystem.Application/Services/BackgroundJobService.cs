@@ -235,7 +235,16 @@ public class BackgroundJobService : IBackgroundJobService
             {
                 try
                 {
-                    var (persistSkippedCount, persistWarnings, processedSavedCount, importBatchId) = await PersistSalesDataAsync(result.Data, jobId, storeCode);
+                    // Get user info from BackgroundJob
+                    var backgroundJobForUser = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+                    var userId = backgroundJobForUser?.StartedBy ?? "System";
+                    
+                    // Try to find Employee by username for better normalization
+                    var employee = await _employeeRepository.GetAllAsync();
+                    var userEmployee = employee.FirstOrDefault(e => e.Name == userId || e.Code == userId);
+                    int? employeeId = userEmployee?.Id;
+                    
+                    var (persistSkippedCount, persistWarnings, processedSavedCount, importBatchId) = await PersistSalesDataAsync(result.Data, jobId, storeCode, userId, employeeId);
                     savedCount = processedSavedCount;
                     skippedCount = persistSkippedCount;
                     allWarnings.AddRange(persistWarnings);
@@ -327,7 +336,16 @@ public class BackgroundJobService : IBackgroundJobService
                 _logger.LogInformation($"About to persist {result.Data.Count} stock records for job {jobId}");
                 try
                 {
-                    var persistenceResult = await PersistStockDataAsync(result.Data, jobId, storeCode);
+                    // Get user info from BackgroundJob
+                    var backgroundJobForUser = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+                    var userId = backgroundJobForUser?.StartedBy ?? "System";
+                    
+                    // Try to find Employee by username for better normalization
+                    var employee = await _employeeRepository.GetAllAsync();
+                    var userEmployee = employee.FirstOrDefault(e => e.Name == userId || e.Code == userId);
+                    int? employeeId = userEmployee?.Id;
+                    
+                    var persistenceResult = await PersistStockDataAsync(result.Data, jobId, storeCode, userId, employeeId);
                     skippedCount = persistenceResult.skippedCount;
                     savedCount = persistenceResult.savedCount;
                     detailedWarnings = persistenceResult.warnings;
@@ -424,7 +442,16 @@ public class BackgroundJobService : IBackgroundJobService
                 _logger.LogInformation($"About to persist {result.Data.Count} products for job {jobId}");
                 try
                 {
-                    var persistenceResult = await PersistProductsDataAsync(result.Data, jobId);
+                    // Get user info from BackgroundJob
+                    var backgroundJobForUser = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+                    var userId = backgroundJobForUser?.StartedBy ?? "System";
+                    
+                    // Try to find Employee by username for better normalization
+                    var employee = await _employeeRepository.GetAllAsync();
+                    var userEmployee = employee.FirstOrDefault(e => e.Name == userId || e.Code == userId);
+                    int? employeeId = userEmployee?.Id;
+                    
+                    var persistenceResult = await PersistProductsDataAsync(result.Data, jobId, userId, employeeId);
                     skippedCount = persistenceResult.skippedCount;
                     savedCount = persistenceResult.savedCount;
                     detailedWarnings = persistenceResult.warnings;
@@ -551,7 +578,7 @@ public class BackgroundJobService : IBackgroundJobService
         }
     }
 
-    private async Task<(int skippedCount, List<string> warnings, int savedCount)> PersistProductsDataAsync(List<Dictionary<string, object>> productsData, string jobId)
+    private async Task<(int skippedCount, List<string> warnings, int savedCount)> PersistProductsDataAsync(List<Dictionary<string, object>> productsData, string jobId, string userId, int? employeeId)
     {
         _logger.LogInformation($"Starting to persist {productsData.Count} products for job {jobId}");
         
@@ -561,6 +588,7 @@ public class BackgroundJobService : IBackgroundJobService
         var storeCache = new Dictionary<string, Store>();
         
         // Crear ImportBatch para tracking
+        var startTime = DateTime.UtcNow;
         var importBatch = new ImportBatch
         {
             BatchCode = $"PRODUCTS-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
@@ -570,10 +598,11 @@ public class BackgroundJobService : IBackgroundJobService
             SuccessCount = 0,
             SkippedCount = 0,
             ErrorCount = 0,
-            ImportDate = DateTime.UtcNow,
-            ImportedBy = "System",
-            StartedAt = DateTime.UtcNow,
-            CreatedAt = DateTime.UtcNow,
+            ImportDate = startTime,
+            ImportedBy = userId,
+            EmployeeId = employeeId,
+            StartedAt = startTime,
+            CreatedAt = startTime,
             IsInProgress = true,
             IsDeleted = false
         };
@@ -695,6 +724,27 @@ public class BackgroundJobService : IBackgroundJobService
                         await _productRepository.AddAsync(product);
                         _logger.LogDebug($"Created product: {productCode} - {product.Name}");
                         
+                        // Create corresponding ProductStock record for this product in the store
+                        var store = storeCache.Values.FirstOrDefault(); // Get the store from the cache
+                        if (store != null)
+                        {
+                            var productStock = new ProductStock
+                            {
+                                ProductId = product.Id,
+                                StoreId = store.Id,
+                                CurrentStock = Convert.ToDecimal(productData["Stock"]),
+                                MinimumStock = Convert.ToDecimal(productData["MinimumStock"]),
+                                MaximumStock = Convert.ToDecimal(productData["MinimumStock"]) * 3, // Default to 3x minimum
+                                AverageCost = Convert.ToDecimal(productData["PurchasePrice"]),
+                                ImportBatchId = importBatch.Id,
+                                CreatedAt = DateTime.UtcNow,
+                                IsDeleted = false
+                            };
+                            
+                            await _productStockRepository.AddAsync(productStock);
+                            _logger.LogDebug($"Created ProductStock for product: {productCode} in store: {store.Code}");
+                        }
+                        
                         importBatch.SuccessCount++;
                     }
                     else
@@ -724,8 +774,10 @@ public class BackgroundJobService : IBackgroundJobService
         }
         
         // Actualizar ImportBatch
-        importBatch.CompletedAt = DateTime.UtcNow;
-        importBatch.ProcessingTimeSeconds = (DateTime.UtcNow - importBatch.StartedAt.Value).TotalSeconds;
+        var completedTime = DateTime.UtcNow;
+        importBatch.CompletedAt = completedTime;
+        importBatch.ProcessingTimeSeconds = (completedTime - startTime).TotalSeconds;
+        importBatch.IsInProgress = false;
         await _importBatchRepository.UpdateAsync(importBatch);
         
         _logger.LogInformation($"Completed persisting products for job {jobId}. Success: {importBatch.SuccessCount}, Skipped: {importBatch.SkippedCount}, Errors: {importBatch.ErrorCount}");
@@ -778,7 +830,7 @@ public class BackgroundJobService : IBackgroundJobService
         return baseCode;
     }
 
-    private async Task<(int skippedCount, List<string> warnings, int savedCount)> PersistStockDataAsync(List<Dictionary<string, object>> stockData, string jobId, string storeCode)
+    private async Task<(int skippedCount, List<string> warnings, int savedCount)> PersistStockDataAsync(List<Dictionary<string, object>> stockData, string jobId, string storeCode, string userId, int? employeeId)
     {
         _logger.LogInformation($"Starting to persist {stockData.Count} stock records for job {jobId} in store {storeCode}");
         
@@ -802,6 +854,7 @@ public class BackgroundJobService : IBackgroundJobService
             .ToDictionary(g => g.Key, g => g.First());
 
         // Create ImportBatch for tracking
+        var startTime = DateTime.UtcNow;
         var importBatch = new ImportBatch
         {
             BatchCode = $"STOCK-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
@@ -812,10 +865,11 @@ public class BackgroundJobService : IBackgroundJobService
             SuccessCount = 0,
             SkippedCount = 0,
             ErrorCount = 0,
-            ImportDate = DateTime.UtcNow,
-            ImportedBy = "System",
-            StartedAt = DateTime.UtcNow,
-            CreatedAt = DateTime.UtcNow,
+            ImportDate = startTime,
+            ImportedBy = userId,
+            EmployeeId = employeeId,
+            StartedAt = startTime,
+            CreatedAt = startTime,
             IsInProgress = true,
             IsDeleted = false
         };
@@ -889,10 +943,12 @@ public class BackgroundJobService : IBackgroundJobService
         }
 
         // Update ImportBatch with final results
+        var completedTime = DateTime.UtcNow;
         importBatch.SuccessCount = savedCount;
         importBatch.SkippedCount = skippedCount;
         importBatch.ErrorCount = warnings.Count;
-        importBatch.CompletedAt = DateTime.UtcNow;
+        importBatch.CompletedAt = completedTime;
+        importBatch.ProcessingTimeSeconds = (completedTime - startTime).TotalSeconds;
         importBatch.IsInProgress = false;
         await _importBatchRepository.UpdateAsync(importBatch);
 
@@ -901,7 +957,7 @@ public class BackgroundJobService : IBackgroundJobService
         return (skippedCount, warnings, savedCount);
     }
 
-    private async Task<(int skippedCount, List<string> warnings, int savedCount, int importBatchId)> PersistSalesDataAsync(List<Dictionary<string, object>> salesData, string jobId, string storeCode)
+    private async Task<(int skippedCount, List<string> warnings, int savedCount, int importBatchId)> PersistSalesDataAsync(List<Dictionary<string, object>> salesData, string jobId, string storeCode, string userId, int? employeeId)
     {
         _logger.LogInformation($"Starting to persist {salesData.Count} sale detail lines for job {jobId}");
 
@@ -922,6 +978,7 @@ public class BackgroundJobService : IBackgroundJobService
         var productCache = new Dictionary<string, Product>();
 
         // Create ImportBatch for tracking
+        var startTime = DateTime.UtcNow;
         var importBatch = new ImportBatch
         {
             BatchCode = $"SALES-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
@@ -929,8 +986,11 @@ public class BackgroundJobService : IBackgroundJobService
             FileName = $"sales_import_{jobId}.xlsx",
             StoreCode = storeCode,
             TotalRecords = salesData.Count,
-            ImportedBy = "System",
-            CreatedAt = DateTime.UtcNow,
+            ImportDate = startTime,
+            ImportedBy = userId,
+            EmployeeId = employeeId,
+            StartedAt = startTime,
+            CreatedAt = startTime,
             IsInProgress = true
         };
 
@@ -1195,11 +1255,20 @@ public class BackgroundJobService : IBackgroundJobService
         }
 
         // Update ImportBatch with final results
+        var completedTime = DateTime.UtcNow;
         importBatch.SuccessCount = savedCount;
         importBatch.SkippedCount = skippedCount;
         importBatch.ErrorCount = warnings.Count;
-        importBatch.CompletedAt = DateTime.UtcNow;
+        importBatch.CompletedAt = completedTime;
+        importBatch.ProcessingTimeSeconds = (completedTime - startTime).TotalSeconds;
         importBatch.IsInProgress = false;
+        
+        // Format warnings as JSON like FastImportsController
+        if (warnings.Count > 0)
+        {
+            importBatch.Warnings = System.Text.Json.JsonSerializer.Serialize(warnings);
+        }
+        
         await _importBatchRepository.UpdateAsync(importBatch);
 
         _logger.LogInformation($"Completed persisting sales data for job {jobId}. Saved: {savedCount}, Skipped: {skippedCount}");

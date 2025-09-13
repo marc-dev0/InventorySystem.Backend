@@ -181,6 +181,12 @@ public class InventoryDbContext : DbContext
             entity.Property(e => e.DeletedBy).HasMaxLength(100);
             entity.Property(e => e.DeleteReason).HasMaxLength(500);
             
+            // Optional Employee relationship
+            entity.HasOne<Employee>()
+                .WithMany()
+                .HasForeignKey(e => e.EmployeeId)
+                .OnDelete(DeleteBehavior.SetNull);
+            
             entity.HasMany(e => e.Sales)
                 .WithOne(s => s.ImportBatch)
                 .HasForeignKey(s => s.ImportBatchId)
