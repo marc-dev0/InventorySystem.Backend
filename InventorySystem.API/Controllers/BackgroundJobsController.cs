@@ -117,8 +117,9 @@ public class BackgroundJobsController : ControllerBase
             return BadRequest($"No se encontró la tienda con código: {storeCode}");
 
         // VALIDACIÓN CRÍTICA: Verificar si la tienda ya tiene stock inicial cargado
-        var hasInitialStock = await _productStockRepository.HasStockForStoreAsync(store.Id);
-        if (hasInitialStock)
+        // Use the actual Store.HasInitialStock field instead of checking ProductStocks existence
+        // This prevents product imports from incorrectly blocking stock initial uploads
+        if (store.HasInitialStock)
         {
             return Conflict(new 
             { 

@@ -22,7 +22,44 @@ public class ProductsController : BaseSearchController<ProductDto>
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> GetAll()
+    public async Task<ActionResult<object>> GetAll(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 20,
+        [FromQuery] string search = "",
+        [FromQuery] string categoryId = "",
+        [FromQuery] bool? lowStock = null,
+        [FromQuery] string status = "")
+    {
+        try
+        {
+            // Validate parameters
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 100) pageSize = 20;
+
+            var result = await _productService.GetPaginatedAsync(page, pageSize, search, categoryId, lowStock, status);
+
+            // Add statistics to the response (using ALL filters to get accurate filtered stats)
+            var stats = await _productService.GetProductStatsAsync(search, categoryId, lowStock, status);
+            var response = new
+            {
+                Data = result.Data,
+                TotalCount = result.TotalCount,
+                Page = result.Page,
+                PageSize = result.PageSize,
+                TotalPages = result.TotalPages,
+                Stats = stats
+            };
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Error = "Error interno del servidor", Details = ex.Message });
+        }
+    }
+
+    [HttpGet("all")]
+    public async Task<ActionResult<IEnumerable<ProductDto>>> GetAllProducts()
     {
         var products = await _productService.GetAllAsync();
         return Ok(products);

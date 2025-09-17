@@ -230,7 +230,7 @@ public class TandiaImportService : ITandiaImportService
                         Description = tandiaProduct.Description,
                         PurchasePrice = tandiaProduct.CostPrice,
                         SalePrice = tandiaProduct.SalePrice,
-                        Stock = tandiaProduct.Stock,
+                        Stock = 0, // Product imports should NOT set stock values - use stock import for that
                         MinimumStock = tandiaProduct.MinStock,
                         Unit = tandiaProduct.Unit,
                         CategoryId = category.Id,

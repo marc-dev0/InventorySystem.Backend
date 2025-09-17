@@ -46,9 +46,43 @@ public class TestController : ControllerBase
     }
 
     [HttpGet("health")]
-    public IActionResult Health()
+    public async Task<IActionResult> Health()
     {
-        return Ok(new { status = "healthy", timestamp = DateTime.Now });
+        try
+        {
+            // Test database connection
+            var canConnect = await _context.Database.CanConnectAsync();
+
+            var result = new
+            {
+                status = canConnect ? "healthy" : "unhealthy",
+                timestamp = DateTime.Now,
+                checks = new
+                {
+                    api = "healthy",
+                    database = canConnect ? "healthy" : "unhealthy"
+                },
+                environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
+            };
+
+            return canConnect ? Ok(result) : StatusCode(503, result);
+        }
+        catch (Exception ex)
+        {
+            var result = new
+            {
+                status = "unhealthy",
+                timestamp = DateTime.Now,
+                checks = new
+                {
+                    api = "healthy",
+                    database = "unhealthy"
+                },
+                error = ex.Message
+            };
+
+            return StatusCode(503, result);
+        }
     }
 
     [HttpGet("sales-employees")]

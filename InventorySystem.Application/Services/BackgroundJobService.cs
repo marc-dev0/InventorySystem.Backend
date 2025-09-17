@@ -732,7 +732,7 @@ public class BackgroundJobService : IBackgroundJobService
                             {
                                 ProductId = product.Id,
                                 StoreId = store.Id,
-                                CurrentStock = Convert.ToDecimal(productData["Stock"]),
+                                CurrentStock = 0,// Stock 0
                                 MinimumStock = Convert.ToDecimal(productData["MinimumStock"]),
                                 MaximumStock = Convert.ToDecimal(productData["MinimumStock"]) * 3, // Default to 3x minimum
                                 AverageCost = Convert.ToDecimal(productData["PurchasePrice"]),
@@ -907,31 +907,46 @@ public class BackgroundJobService : IBackgroundJobService
 
                 // Check if stock already exists for this product/store
                 var existingStock = await _productStockRepository.GetByProductAndStoreAsync(product.Id, store.Id);
-                if (existingStock != null)
-                {
-                    warnings.Add($"Stock for product {productCode} in store {storeCode} already exists, skipping");
-                    skippedCount++;
-                    continue;
-                }
 
                 var currentStock = Convert.ToDecimal(stockRecord["current_stock"] ?? 0);
                 var minimumStock = Convert.ToDecimal(stockRecord["minimum_stock"] ?? 0);
                 var maximumStock = Convert.ToDecimal(stockRecord["maximum_stock"] ?? minimumStock * 3);
 
-                var productStock = new ProductStock
+                ProductStock productStock;
+                
+                if (existingStock != null)
                 {
-                    ProductId = product.Id,
-                    StoreId = store.Id,
-                    CurrentStock = currentStock,
-                    MinimumStock = minimumStock,
-                    MaximumStock = maximumStock,
-                    AverageCost = product.PurchasePrice,
-                    ImportBatchId = importBatch.Id,
-                    CreatedAt = DateTime.UtcNow,
-                    IsDeleted = false
-                };
+                    // Update existing ProductStock
+                    productStock = existingStock;
+                    productStock.CurrentStock = currentStock;
+                    productStock.MinimumStock = minimumStock;
+                    productStock.MaximumStock = maximumStock;
+                    productStock.AverageCost = product.PurchasePrice;
+                    productStock.ImportBatchId = importBatch.Id;
+                    productStock.UpdatedAt = DateTime.UtcNow;
+                    
+                    await _productStockRepository.UpdateAsync(productStock);
+                    warnings.Add($"Updated existing stock for product {productCode} in store {storeCode}");
+                }
+                else
+                {
+                    // Create new ProductStock
+                    productStock = new ProductStock
+                    {
+                        ProductId = product.Id,
+                        StoreId = store.Id,
+                        CurrentStock = currentStock,
+                        MinimumStock = minimumStock,
+                        MaximumStock = maximumStock,
+                        AverageCost = product.PurchasePrice,
+                        ImportBatchId = importBatch.Id,
+                        CreatedAt = DateTime.UtcNow,
+                        IsDeleted = false
+                    };
 
-                await _productStockRepository.AddAsync(productStock);
+                    await _productStockRepository.AddAsync(productStock);
+                }
+                
                 savedCount++;
             }
             catch (Exception ex)

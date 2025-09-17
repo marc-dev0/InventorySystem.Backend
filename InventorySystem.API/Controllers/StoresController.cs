@@ -27,15 +27,18 @@ public class StoresController : ControllerBase
     {
         try
         {
+            _logger.LogInformation("Getting all stores...");
             var stores = await _storeRepository.GetAllAsync();
+            _logger.LogInformation($"Found {stores.Count()} total stores in database");
+            
             var activeStores = stores.Where(s => s.Active && !s.IsDeleted).ToList();
+            _logger.LogInformation($"Found {activeStores.Count} active stores after filtering");
             
             var result = new List<object>();
             
             foreach (var store in activeStores.OrderBy(s => s.Name))
             {
-                // Check if this store has any initial stock loaded
-                var hasInitialStock = await _productStockRepository.HasStockForStoreAsync(store.Id);
+                _logger.LogInformation($"Processing store: Id={store.Id}, Code={store.Code}, Name={store.Name}, Active={store.Active}, IsDeleted={store.IsDeleted}");
                 
                 result.Add(new
                 {
@@ -44,10 +47,11 @@ public class StoresController : ControllerBase
                     Name = store.Name,
                     Address = store.Address,
                     Phone = store.Phone,
-                    HasInitialStock = hasInitialStock
+                    HasInitialStock = store.HasInitialStock // Use the actual field from Store entity
                 });
             }
 
+            _logger.LogInformation($"Returning {result.Count} stores to client");
             return Ok(result);
         }
         catch (Exception ex)

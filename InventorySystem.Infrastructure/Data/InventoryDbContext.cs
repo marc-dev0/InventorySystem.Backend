@@ -233,18 +233,105 @@ public class InventoryDbContext : DbContext
         );
 
 
-        // Seed default admin user
-        modelBuilder.Entity<User>().HasData(
-            new User 
-            { 
-                Id = 1, 
-                Username = "admin",
-                Email = "admin@inventorysystem.com",
-                FirstName = "Administrator",
-                LastName = "System",
-                Role = "Admin",
-                IsActive = true,
-                PasswordHash = "zbFyeIKv6pKbhTL3XWaVhp5xzKF6oF8Kt7lEI8MEKy0=", // Password: admin123
+        // Seed critical system configurations
+        modelBuilder.Entity<SystemConfiguration>().HasData(
+            new SystemConfiguration
+            {
+                Id = 1,
+                ConfigKey = "GLOBAL_MINIMUM_STOCK",
+                ConfigValue = "5",
+                ConfigType = "Number",
+                Category = "INVENTORY",
+                Description = "Stock mínimo global para considerar productos con stock bajo",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 2,
+                ConfigKey = "STOCK_INITIAL_VALIDATION",
+                ConfigValue = "true",
+                ConfigType = "Boolean",
+                Category = "IMPORT",
+                Description = "Validar que solo se permita una carga de stock inicial por tienda",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 3,
+                ConfigKey = "SALES_GROUPING_COLUMN",
+                ConfigValue = "SaleNumber",
+                ConfigType = "String",
+                Category = "IMPORT",
+                Description = "Columna por la cual agrupar las ventas (SaleNumber = columna F)",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 4,
+                ConfigKey = "IMPORT_COLUMNS_SALES",
+                ConfigValue = "[\"Razón Social\",\"Empleado Venta\",\"Almacén\",\"Cliente Nombre\",\"Cliente Doc.\",\"#-DOC\",\"# Doc. Relacionado\",\"Fecha\",\"Hora\",\"Tip. Doc.\",\"Unidad\",\"Cantidad\",\"Precio de Venta\",\"IGV\",\"Total\",\"Descuento aplicado (%)\",\"Conversión\",\"Moneda\",\"Codigo SKU\",\"Cod. alternativo\",\"Marca\",\"Categoría\",\"Características\",\"Nombre\",\"Descripción\",\"Proveedor\",\"Precio de costo\",\"Empleado registro\"]",
+                ConfigType = "JSON",
+                Category = "IMPORT",
+                Description = "Columnas esperadas para importación de ventas en Excel (agrupadas por Número de Venta columna F)",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 5,
+                ConfigKey = "IMPORT_MAPPING_SALES",
+                ConfigValue = "{\"RazonSocialColumn\":1,\"EmpleadoVentaColumn\":2,\"AlmacenColumn\":3,\"ClienteNombreColumn\":4,\"ClienteDocColumn\":5,\"NumDocColumn\":6,\"DocRelacionadoColumn\":7,\"FechaColumn\":8,\"HoraColumn\":9,\"TipDocColumn\":10,\"UnidadColumn\":11,\"CantidadColumn\":12,\"PrecioVentaColumn\":13,\"IgvColumn\":14,\"TotalColumn\":15,\"DescuentoColumn\":16,\"ConversionColumn\":17,\"MonedaColumn\":18,\"CodigoSkuColumn\":19,\"CodAlternativoColumn\":20,\"MarcaColumn\":21,\"CategoriaColumn\":22,\"CaracteristicasColumn\":23,\"NombreColumn\":24,\"DescripcionColumn\":25,\"ProveedorColumn\":26,\"PrecioCostoColumn\":27,\"EmpleadoRegistroColumn\":28,\"StartRow\":2}",
+                ConfigType = "Json",
+                Category = "Import",
+                Description = "Mapeo de posiciones de columnas para importación de ventas",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 6,
+                ConfigKey = "IMPORT_COLUMNS_PRODUCT",
+                ConfigValue = "[\"Tienda\",\"Código\",\"Cod. barras\",\"Nombre\",\"Descripción\",\"Categorias\",\"Marca\",\"Características\",\"Impuestos\",\"P. costo\",\"Estado\",\"Stock\",\"Stock min\",\"Ubicación\",\"P. venta\",\"Unidad\",\"Nombre de lista de precio\",\"Factor de conversión\",\"Precio al por mayor\",\"Cantidad mínima\",\"Cantidad máxima\"]",
+                ConfigType = "JSON",
+                Category = "IMPORT",
+                Description = "Columnas esperadas para importación de productos en Excel",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 7,
+                ConfigKey = "IMPORT_COLUMNS_STOCK",
+                ConfigValue = "[\"StoreCode\",\"ProductCode\",\"Stock\"]",
+                ConfigType = "JSON",
+                Category = "IMPORT",
+                Description = "Columnas esperadas para importación de stock inicial en Excel",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 8,
+                ConfigKey = "IMPORT_MAPPING_STOCK",
+                ConfigValue = "{\"StoreCode\":0,\"ProductCode\":1,\"Stock\":2}",
+                ConfigType = "JSON",
+                Category = "IMPORT",
+                Description = "Mapeo de columnas para importación de stock (números de columna)",
+                Active = true,
+                CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            },
+            new SystemConfiguration
+            {
+                Id = 9,
+                ConfigKey = "DEFAULT_STORE_CONFIG",
+                ConfigValue = "{\"Code\": \"TIETAN\", \"Name\": \"Tienda Tantamayo\", \"Address\": \"Dirección Principal\", \"Phone\": \"123456789\", \"Active\": true}",
+                ConfigType = "JSON",
+                Category = "STORE",
+                Description = "Configuración de tienda por defecto para el sistema",
+                Active = true,
                 CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc)
             }
         );

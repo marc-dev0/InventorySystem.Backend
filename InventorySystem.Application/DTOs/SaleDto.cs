@@ -14,6 +14,10 @@ public class SaleDto
     public int? CustomerId { get; set; }
     public string? CustomerName { get; set; }
     public decimal ItemCount { get; set; }
+    public int StoreId { get; set; }
+    public string StoreName { get; set; } = string.Empty;
+    public string StoreCode { get; set; } = string.Empty;
+    public string? ImportSource { get; set; }
 }
 
 public class SaleDetailsDto : SaleDto

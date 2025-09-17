@@ -64,6 +64,70 @@ public class ProductRepository : Repository<Product>, IProductRepository
         }
     }
 
+    public async Task<(IEnumerable<Product> Products, int TotalCount)> GetPaginatedAsync(int page, int pageSize, string search = "", string categoryId = "")
+    {
+        try
+        {
+            _logger.LogDebug("Getting paginated products: page={Page}, pageSize={PageSize}, search={Search}, categoryId={CategoryId}", 
+                page, pageSize, search, categoryId);
+
+            var query = _dbSet
+                .Include(p => p.Category)
+                .Include(p => p.Supplier)
+                .AsQueryable();
+
+            // Apply search filter (case-insensitive using PostgreSQL ILIKE)
+            if (!string.IsNullOrEmpty(search))
+            {
+                _logger.LogDebug("Applying search filter with term: '{SearchTerm}'", search);
+                var searchPattern = $"%{search}%";
+                query = query.Where(p =>
+                    EF.Functions.ILike(p.Code, searchPattern) ||
+                    EF.Functions.ILike(p.Name, searchPattern) ||
+                    (p.Category != null && EF.Functions.ILike(p.Category.Name, searchPattern)) ||
+                    (p.Supplier != null && EF.Functions.ILike(p.Supplier.Name, searchPattern)));
+                _logger.LogDebug("Search pattern applied: '{SearchPattern}'", searchPattern);
+            }
+
+            // Apply category filter
+            if (!string.IsNullOrEmpty(categoryId) && int.TryParse(categoryId, out var catId))
+            {
+                query = query.Where(p => p.CategoryId == catId);
+            }
+
+            // Get total count before pagination
+            var totalCount = await query.CountAsync();
+
+            // Apply pagination
+            var products = await query
+                .OrderBy(p => p.Name)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            _logger.LogInformation("Retrieved {Count} products (page {Page} of {PageSize}) with total {TotalCount}",
+                products.Count, page, pageSize, totalCount);
+
+            // Debug: if search was provided, log some sample results
+            if (!string.IsNullOrEmpty(search) && products.Any())
+            {
+                var sampleProducts = products.Take(3);
+                _logger.LogDebug("Sample search results for '{SearchTerm}':", search);
+                foreach (var product in sampleProducts)
+                {
+                    _logger.LogDebug("- {ProductCode}: {ProductName}", product.Code, product.Name);
+                }
+            }
+
+            return (products, totalCount);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error getting paginated products");
+            throw;
+        }
+    }
+
     public async Task<IEnumerable<Product>> GetByCategoryAsync(int categoryId)
     {
         try
@@ -242,13 +306,14 @@ public class ProductRepository : Repository<Product>, IProductRepository
         try
         {
             _logger.LogDebug("Searching products with term: {SearchTerm}", searchTerm);
+            var searchPattern = $"%{searchTerm}%";
             var products = await _dbSet
                 .Include(p => p.Category)
                 .Include(p => p.Supplier)
-                .Where(p => p.Active && 
-                           (p.Name.Contains(searchTerm) || 
-                            p.Code.Contains(searchTerm) || 
-                            (p.Description != null && p.Description.Contains(searchTerm))))
+                .Where(p => p.Active &&
+                           (EF.Functions.ILike(p.Name, searchPattern) ||
+                            EF.Functions.ILike(p.Code, searchPattern) ||
+                            (p.Description != null && EF.Functions.ILike(p.Description, searchPattern))))
                 .OrderBy(p => p.Name)
                 .ToListAsync();
 

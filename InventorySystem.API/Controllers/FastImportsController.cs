@@ -220,7 +220,7 @@ public class FastImportsController : ControllerBase
                         product.Name = productName;
                         product.PurchasePrice = purchasePrice;
                         product.SalePrice = salePrice;
-                        product.Stock = stock;
+                        product.Stock = 0; // Product imports should NOT set stock values - use stock import for that
                         product.Unit = unit;
                         product.CategoryId = category.Id;
                         product.ImportBatchId = importBatch.Id;
@@ -237,7 +237,7 @@ public class FastImportsController : ControllerBase
                             Name = productName,
                             PurchasePrice = purchasePrice,
                             SalePrice = salePrice,
-                            Stock = stock,
+                            Stock = 0, // Product imports should NOT set stock values - use stock import for that
                             Unit = unit,
                             CategoryId = category.Id,
                             Active = true,

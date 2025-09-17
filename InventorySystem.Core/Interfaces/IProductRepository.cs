@@ -4,6 +4,7 @@ namespace InventorySystem.Core.Interfaces;
 
 public interface IProductRepository : IRepository<Product>
 {
+    Task<(IEnumerable<Product> Products, int TotalCount)> GetPaginatedAsync(int page, int pageSize, string search = "", string categoryId = "");
     Task<IEnumerable<Product>> GetByCategoryAsync(int categoryId);
     Task<IEnumerable<Product>> GetBySupplierAsync(int supplierId);
     Task<IEnumerable<Product>> GetLowStockProductsAsync();

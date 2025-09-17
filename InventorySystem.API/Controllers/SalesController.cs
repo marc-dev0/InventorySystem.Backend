@@ -19,7 +19,42 @@ public class SalesController : BaseReportController<SaleDto>
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<SaleDto>>> GetAll()
+    public async Task<ActionResult<object>> GetAll(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 20,
+        [FromQuery] string search = "",
+        [FromQuery] string storeCode = "")
+    {
+        try
+        {
+            // Validate parameters
+            if (page < 1) page = 1;
+            if (pageSize < 1 || pageSize > 100) pageSize = 20;
+
+            var result = await _saleService.GetPaginatedAsync(page, pageSize, search, storeCode);
+
+            // Add statistics to the response like in ProductsController and InventoryController
+            var stats = await _saleService.GetSalesStatsAsync(search, storeCode);
+            var response = new
+            {
+                Data = result.Data,
+                TotalCount = result.TotalCount,
+                Page = result.Page,
+                PageSize = result.PageSize,
+                TotalPages = result.TotalPages,
+                Stats = stats
+            };
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Error = "Error interno del servidor", Details = ex.Message });
+        }
+    }
+
+    [HttpGet("all")]
+    public async Task<ActionResult<IEnumerable<SaleDto>>> GetAllSales()
     {
         var sales = await _saleService.GetAllAsync();
         return Ok(sales);

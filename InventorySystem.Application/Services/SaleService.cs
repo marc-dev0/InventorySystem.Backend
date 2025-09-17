@@ -27,6 +27,21 @@ public class SaleService : ISaleService
         return sales.Select(MapToDto);
     }
 
+    public async Task<PaginatedResponseDto<SaleDto>> GetPaginatedAsync(int page, int pageSize, string search = "", string storeCode = "")
+    {
+        var (sales, totalCount) = await _saleRepository.GetPaginatedAsync(page, pageSize, search, storeCode);
+        var salesDto = sales.Select(MapToDto).ToList();
+
+        return new PaginatedResponseDto<SaleDto>
+        {
+            Data = salesDto,
+            TotalCount = totalCount,
+            Page = page,
+            PageSize = pageSize,
+            TotalPages = (int)Math.Ceiling((double)totalCount / pageSize)
+        };
+    }
+
     public async Task<SaleDto?> GetByIdAsync(int id)
     {
         var sale = await _saleRepository.GetByIdAsync(id);
@@ -157,7 +172,11 @@ public class SaleService : ISaleService
             Notes = sale.Notes,
             CustomerId = sale.CustomerId,
             CustomerName = sale.Customer?.Name,
-            ItemCount = sale.Details?.Sum(d => d.Quantity) ?? 0
+            ItemCount = sale.Details?.Sum(d => d.Quantity) ?? 0,
+            StoreId = sale.StoreId,
+            StoreName = sale.Store?.Name ?? string.Empty,
+            StoreCode = sale.Store?.Code ?? string.Empty,
+            ImportSource = sale.ImportSource
         };
     }
 
@@ -177,6 +196,26 @@ public class SaleService : ISaleService
             ItemCount = sale.Details?.Sum(d => d.Quantity) ?? 0,
             Customer = sale.Customer != null ? MapCustomerToDto(sale.Customer) : null,
             Details = sale.Details?.Select(MapDetailToDto).ToList() ?? new List<SaleDetailDto>()
+        };
+    }
+
+    public async Task<object> GetSalesStatsAsync(string search = "", string storeCode = "")
+    {
+        // Get all sales matching the search and store filters
+        var (allSales, _) = await _saleRepository.GetPaginatedAsync(1, int.MaxValue, search, storeCode);
+        var salesDto = allSales.Select(MapToDto).ToList();
+
+        var totalSales = salesDto.Count;
+        var totalValue = salesDto.Sum(s => s.Total);
+        var totalItems = salesDto.Sum(s => s.ItemCount);
+        var averageTicket = totalSales > 0 ? totalValue / totalSales : 0;
+
+        return new
+        {
+            TotalSales = totalSales,
+            TotalValue = totalValue,
+            TotalItems = totalItems,
+            AverageTicket = averageTicket
         };
     }
 

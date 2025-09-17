@@ -121,6 +121,7 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
+builder.Services.AddScoped<IInventoryService, InventoryService>();
 builder.Services.AddScoped<ITandiaImportService, TandiaImportService>();
 builder.Services.AddScoped<IStockInitialService, StockInitialService>();
 builder.Services.AddScoped<ISalesImportTrackingService, SalesImportTrackingService>();
@@ -129,6 +130,11 @@ builder.Services.AddScoped<IStockValidationService, StockValidationService>();
 builder.Services.AddScoped<IImportLockService, ImportLockService>();
 builder.Services.AddScoped<BatchProcessingService>();
 builder.Services.AddScoped<BatchedTandiaImportService>();
+builder.Services.AddScoped<ConfigurationService>();
+builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
+
+// Register reports service
+builder.Services.AddScoped<IReportsService, ReportsService>();
 
 // Register authentication services
 builder.Services.AddScoped<IUserService, UserService>();

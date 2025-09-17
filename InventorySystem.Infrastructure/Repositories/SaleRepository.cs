@@ -12,6 +12,57 @@ public class SaleRepository : Repository<Sale>, ISaleRepository
     {
     }
 
+    public override async Task<IEnumerable<Sale>> GetAllAsync()
+    {
+        return await _dbSet
+            .Include(s => s.Customer)
+            .Include(s => s.Store)
+            .Include(s => s.Details)
+                .ThenInclude(d => d.Product)
+                    .ThenInclude(p => p.Category)
+            .Include(s => s.Details)
+                .ThenInclude(d => d.Product)
+                    .ThenInclude(p => p.Brand)
+            .ToListAsync();
+    }
+
+    public async Task<(IEnumerable<Sale> Sales, int TotalCount)> GetPaginatedAsync(int page, int pageSize, string search = "", string storeCode = "")
+    {
+        var query = _dbSet
+            .Include(s => s.Customer)
+            .Include(s => s.Store)
+            .Include(s => s.Details)
+                .ThenInclude(d => d.Product)
+            .AsQueryable();
+
+        // Apply search filter
+        if (!string.IsNullOrEmpty(search))
+        {
+            query = query.Where(s => 
+                s.SaleNumber.Contains(search) ||
+                (s.Customer != null && s.Customer.Name.Contains(search)) ||
+                (s.Store != null && s.Store.Name.Contains(search)));
+        }
+
+        // Apply store filter
+        if (!string.IsNullOrEmpty(storeCode))
+        {
+            query = query.Where(s => s.Store != null && s.Store.Code == storeCode);
+        }
+
+        // Get total count before pagination
+        var totalCount = await query.CountAsync();
+
+        // Apply pagination
+        var sales = await query
+            .OrderByDescending(s => s.SaleDate)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return (sales, totalCount);
+    }
+
     public async Task<IEnumerable<Sale>> GetSalesByDateRangeAsync(DateTime startDate, DateTime endDate)
     {
         return await _dbSet
