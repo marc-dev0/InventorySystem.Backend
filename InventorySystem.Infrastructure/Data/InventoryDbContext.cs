@@ -216,23 +216,6 @@ public class InventoryDbContext : DbContext
             entity.HasIndex(e => e.Email).IsUnique();
         });
 
-        // Seed data
-        modelBuilder.Entity<Category>().HasData(
-            new Category { Id = 1, Name = "Electronics", Description = "Electronic devices" },
-            new Category { Id = 2, Name = "Clothing", Description = "Apparel items" }
-        );
-
-        modelBuilder.Entity<Supplier>().HasData(
-            new Supplier { Id = 1, Name = "TechSupply Inc.", Phone = "555-0001" },
-            new Supplier { Id = 2, Name = "Fashion World", Phone = "555-0002" }
-        );
-
-        modelBuilder.Entity<Store>().HasData(
-            new Store { Id = 1, Code = "TANT", Name = "Tienda Tantamayo", Description = "Main Tantamayo Store", Active = true },
-            new Store { Id = 2, Code = "MAIN", Name = "Main Warehouse", Description = "Central warehouse", Active = true }
-        );
-
-
         // Seed critical system configurations
         modelBuilder.Entity<SystemConfiguration>().HasData(
             new SystemConfiguration
