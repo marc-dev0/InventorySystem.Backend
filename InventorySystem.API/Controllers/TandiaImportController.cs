@@ -18,14 +18,41 @@ public class TandiaImportController : ControllerBase
     private readonly IProductRepository _productRepository;
     private readonly IStockInitialService _stockInitialService;
     private readonly IImportLockService _importLockService;
+    private readonly IStockInitialValidationService _stockInitialValidationService;
 
-    public TandiaImportController(ITandiaImportService tandiaImportService, IImportBatchRepository importBatchRepository, IProductRepository productRepository, IStockInitialService stockInitialService, IImportLockService importLockService)
+    public TandiaImportController(ITandiaImportService tandiaImportService, IImportBatchRepository importBatchRepository, IProductRepository productRepository, IStockInitialService stockInitialService, IImportLockService importLockService, IStockInitialValidationService stockInitialValidationService)
     {
         _tandiaImportService = tandiaImportService;
         _importBatchRepository = importBatchRepository;
         _productRepository = productRepository;
         _stockInitialService = stockInitialService;
         _importLockService = importLockService;
+        _stockInitialValidationService = stockInitialValidationService;
+    }
+
+    /// <summary>
+    /// Verifica si se puede realizar carga de stock inicial para una tienda
+    /// </summary>
+    [HttpGet("stock-initial/validation/{storeCode}")]
+    [AllowAnonymous]
+    public async Task<ActionResult<object>> ValidateStockInitial(string storeCode)
+    {
+        try
+        {
+            var canPerform = await _stockInitialValidationService.CanPerformStockInitialForStoreAsync(storeCode);
+            var validationMessage = await _stockInitialValidationService.GetValidationMessageAsync(storeCode);
+
+            return Ok(new
+            {
+                canPerformStockInitial = canPerform,
+                validationMessage = validationMessage,
+                storeCode = storeCode
+            });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { error = "Error al validar carga de stock inicial", details = ex.Message });
+        }
     }
 
     /// <summary>

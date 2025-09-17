@@ -269,8 +269,11 @@ public class BackgroundJobsController : ControllerBase
         {
             var userId = User.Identity?.Name ?? "Unknown";
             var jobs = await _backgroundJobService.GetUserJobsAsync(userId);
-            
-            var result = jobs.Select(job => new
+
+            // Ordenar por fecha de inicio descendente (más reciente primero)
+            var sortedJobs = jobs.OrderByDescending(job => job.StartedAt);
+
+            var result = sortedJobs.Select(job => new
             {
                 jobId = job.JobId,
                 jobType = job.JobType,
