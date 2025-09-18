@@ -8,57 +8,45 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InventorySystem.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedSystemConfigurations : Migration
+    public partial class InitialMigration_20250916 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
-                table: "Users",
+                table: "Categories",
                 keyColumn: "Id",
                 keyValue: 1);
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.DeleteData(
                 table: "Categories",
                 keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 17, 1, 16, 41, 777, DateTimeKind.Utc).AddTicks(8033));
+                keyValue: 2);
 
-            migrationBuilder.UpdateData(
-                table: "Categories",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 17, 1, 16, 41, 777, DateTimeKind.Utc).AddTicks(9298));
-
-            migrationBuilder.UpdateData(
+            migrationBuilder.DeleteData(
                 table: "Stores",
                 keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 17, 1, 16, 41, 779, DateTimeKind.Utc).AddTicks(2058));
+                keyValue: 1);
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.DeleteData(
                 table: "Stores",
                 keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 17, 1, 16, 41, 779, DateTimeKind.Utc).AddTicks(3674));
+                keyValue: 2);
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.DeleteData(
                 table: "Suppliers",
                 keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 17, 1, 16, 41, 778, DateTimeKind.Utc).AddTicks(9447));
+                keyValue: 1);
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.DeleteData(
                 table: "Suppliers",
                 keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 17, 1, 16, 41, 779, DateTimeKind.Utc).AddTicks(573));
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 1);
 
             migrationBuilder.InsertData(
                 table: "SystemConfigurations",
@@ -125,47 +113,32 @@ namespace InventorySystem.Infrastructure.Migrations
                 keyColumn: "Id",
                 keyValue: 9);
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Categories",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 12, 3, 57, 25, 732, DateTimeKind.Utc).AddTicks(4238));
+                columns: new[] { "Id", "Active", "CreatedAt", "Description", "IsDeleted", "Name", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, true, new DateTime(2025, 9, 12, 3, 57, 25, 732, DateTimeKind.Utc).AddTicks(4238), "Electronic devices", false, "Electronics", null },
+                    { 2, true, new DateTime(2025, 9, 12, 3, 57, 25, 732, DateTimeKind.Utc).AddTicks(5840), "Apparel items", false, "Clothing", null }
+                });
 
-            migrationBuilder.UpdateData(
-                table: "Categories",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 12, 3, 57, 25, 732, DateTimeKind.Utc).AddTicks(5840));
-
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Stores",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(6719));
+                columns: new[] { "Id", "Active", "Address", "Code", "CreatedAt", "Description", "HasInitialStock", "IsDeleted", "Name", "Phone", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, true, null, "TANT", new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(6719), "Main Tantamayo Store", false, false, "Tienda Tantamayo", null, null },
+                    { 2, true, null, "MAIN", new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(8407), "Central warehouse", false, false, "Main Warehouse", null, null }
+                });
 
-            migrationBuilder.UpdateData(
-                table: "Stores",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(8407));
-
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Suppliers",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(4637));
-
-            migrationBuilder.UpdateData(
-                table: "Suppliers",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(5516));
+                columns: new[] { "Id", "Active", "Address", "CreatedAt", "Email", "IsDeleted", "Name", "Phone", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, true, null, new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(4637), null, false, "TechSupply Inc.", "555-0001", null },
+                    { 2, true, null, new DateTime(2025, 9, 12, 3, 57, 25, 733, DateTimeKind.Utc).AddTicks(5516), null, false, "Fashion World", "555-0002", null }
+                });
 
             migrationBuilder.InsertData(
                 table: "Users",

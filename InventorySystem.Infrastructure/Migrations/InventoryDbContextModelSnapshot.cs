@@ -175,26 +175,6 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Active = true,
-                            CreatedAt = new DateTime(2025, 9, 17, 1, 16, 41, 777, DateTimeKind.Utc).AddTicks(8033),
-                            Description = "Electronic devices",
-                            IsDeleted = false,
-                            Name = "Electronics"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Active = true,
-                            CreatedAt = new DateTime(2025, 9, 17, 1, 16, 41, 777, DateTimeKind.Utc).AddTicks(9298),
-                            Description = "Apparel items",
-                            IsDeleted = false,
-                            Name = "Clothing"
-                        });
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Customer", b =>
@@ -846,30 +826,6 @@ namespace InventorySystem.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Stores");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Active = true,
-                            Code = "TANT",
-                            CreatedAt = new DateTime(2025, 9, 17, 1, 16, 41, 779, DateTimeKind.Utc).AddTicks(2058),
-                            Description = "Main Tantamayo Store",
-                            HasInitialStock = false,
-                            IsDeleted = false,
-                            Name = "Tienda Tantamayo"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Active = true,
-                            Code = "MAIN",
-                            CreatedAt = new DateTime(2025, 9, 17, 1, 16, 41, 779, DateTimeKind.Utc).AddTicks(3674),
-                            Description = "Central warehouse",
-                            HasInitialStock = false,
-                            IsDeleted = false,
-                            Name = "Main Warehouse"
-                        });
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Supplier", b =>
@@ -909,26 +865,6 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Suppliers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Active = true,
-                            CreatedAt = new DateTime(2025, 9, 17, 1, 16, 41, 778, DateTimeKind.Utc).AddTicks(9447),
-                            IsDeleted = false,
-                            Name = "TechSupply Inc.",
-                            Phone = "555-0001"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Active = true,
-                            CreatedAt = new DateTime(2025, 9, 17, 1, 16, 41, 779, DateTimeKind.Utc).AddTicks(573),
-                            IsDeleted = false,
-                            Name = "Fashion World",
-                            Phone = "555-0002"
-                        });
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.SystemConfiguration", b =>
