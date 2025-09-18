@@ -24,11 +24,15 @@ public class InventoryMovement : BaseEntity
     public int? ProductStockId { get; set; }     // Reference to specific stock record
     public int? SaleId { get; set; }             // If related to a sale
     public int? PurchaseId { get; set; }         // If related to a purchase
-    
+    public int? CreditNoteId { get; set; }       // If related to a credit note
+    public int? StockTransferId { get; set; }    // If related to a stock transfer
+
     // Relationships
     public virtual Product Product { get; set; } = null!;
     public virtual Store Store { get; set; } = null!;
     public virtual ProductStock? ProductStock { get; set; }
     public virtual Sale? Sale { get; set; }
     public virtual Purchase? Purchase { get; set; }
+    public virtual CreditNote? CreditNote { get; set; }
+    public virtual StockTransfer? StockTransfer { get; set; }
 }

@@ -808,4 +808,116 @@ public class TandiaImportService : ITandiaImportService
         
         return deletedCount;
     }
+
+    // Nuevos métodos para Credit Notes, Purchases y Transfers
+    public async Task<BulkUploadResultDto> ImportCreditNotesFromExcelAsync(Stream excelStream, string fileName, string storeCode)
+    {
+        var result = new BulkUploadResultDto();
+        var startTime = DateTime.UtcNow;
+
+        try
+        {
+            // TODO: Implementar lógica de importación de credit notes
+            result.Errors.Add("ImportCreditNotesFromExcelAsync no implementado aún");
+            return result;
+        }
+        catch (Exception ex)
+        {
+            result.Errors.Add($"Error durante la importación: {ex.Message}");
+            return result;
+        }
+        finally
+        {
+            result.ProcessingTime = DateTime.UtcNow - startTime;
+        }
+    }
+
+    public async Task<BulkUploadResultDto> ImportPurchasesFromExcelAsync(Stream excelStream, string fileName, string storeCode)
+    {
+        var result = new BulkUploadResultDto();
+        var startTime = DateTime.UtcNow;
+
+        try
+        {
+            // TODO: Implementar lógica de importación de purchases
+            result.Errors.Add("ImportPurchasesFromExcelAsync no implementado aún");
+            return result;
+        }
+        catch (Exception ex)
+        {
+            result.Errors.Add($"Error durante la importación: {ex.Message}");
+            return result;
+        }
+        finally
+        {
+            result.ProcessingTime = DateTime.UtcNow - startTime;
+        }
+    }
+
+    public async Task<BulkUploadResultDto> ImportTransfersFromExcelAsync(Stream excelStream, string fileName, string originStoreCode, string destinationStoreCode)
+    {
+        var result = new BulkUploadResultDto();
+        var startTime = DateTime.UtcNow;
+
+        try
+        {
+            // TODO: Implementar lógica de importación de transfers
+            result.Errors.Add("ImportTransfersFromExcelAsync no implementado aún");
+            return result;
+        }
+        catch (Exception ex)
+        {
+            result.Errors.Add($"Error durante la importación: {ex.Message}");
+            return result;
+        }
+        finally
+        {
+            result.ProcessingTime = DateTime.UtcNow - startTime;
+        }
+    }
+
+    public async Task<List<TandiaCreditNoteDto>> ValidateCreditNotesExcelAsync(Stream excelStream)
+    {
+        var creditNotes = new List<TandiaCreditNoteDto>();
+
+        try
+        {
+            // TODO: Implementar validación de credit notes Excel
+            return creditNotes;
+        }
+        catch (Exception)
+        {
+            return creditNotes;
+        }
+    }
+
+    public async Task<List<TandiaPurchaseDto>> ValidatePurchasesExcelAsync(Stream excelStream)
+    {
+        var purchases = new List<TandiaPurchaseDto>();
+
+        try
+        {
+            // TODO: Implementar validación de purchases Excel
+            return purchases;
+        }
+        catch (Exception)
+        {
+            return purchases;
+        }
+    }
+
+    public async Task<List<TandiaTransferDto>> ValidateTransfersExcelAsync(Stream excelStream)
+    {
+        var transfers = new List<TandiaTransferDto>();
+
+        try
+        {
+            // TODO: Implementar validación de transfers Excel
+            return transfers;
+        }
+        catch (Exception)
+        {
+            return transfers;
+        }
+    }
 }

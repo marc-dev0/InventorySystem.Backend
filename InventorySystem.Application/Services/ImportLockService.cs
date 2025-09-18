@@ -219,8 +219,11 @@ public class ImportLockService : IImportLockService
             var jobTypeDisplay = firstJob.JobType switch
             {
                 "SALES_IMPORT" => "carga de ventas",
-                "PRODUCTS_IMPORT" => "carga de productos", 
+                "PRODUCTS_IMPORT" => "carga de productos",
                 "STOCK_IMPORT" => "carga de stock inicial",
+                "CREDIT_NOTES_IMPORT" => "carga de notas de crédito",
+                "PURCHASES_IMPORT" => "carga de compras",
+                "TRANSFERS_IMPORT" => "carga de transferencias",
                 _ => "carga"
             };
 
@@ -232,6 +235,9 @@ public class ImportLockService : IImportLockService
                 "SALES_IMPORT" => "carga de ventas",
                 "PRODUCTS_IMPORT" => "carga de productos",
                 "STOCK_IMPORT" => "carga de stock inicial",
+                "CREDIT_NOTES_IMPORT" => "carga de notas de crédito",
+                "PURCHASES_IMPORT" => "carga de compras",
+                "TRANSFERS_IMPORT" => "carga de transferencias",
                 _ => "carga"
             };
 
