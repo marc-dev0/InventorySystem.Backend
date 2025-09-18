@@ -8,6 +8,9 @@ public interface IBackgroundJobService
     Task<string> QueueSalesImportAsync(Stream excelStream, string fileName, string storeCode, string userId);
     Task<string> QueueStockImportAsync(Stream excelStream, string fileName, string storeCode, string userId);
     Task<string> QueueProductsImportAsync(Stream excelStream, string fileName, string userId);
+    Task<string> QueueCreditNotesImportAsync(Stream excelStream, string fileName, string storeCode, string userId);
+    Task<string> QueuePurchasesImportAsync(Stream excelStream, string fileName, string storeCode, string userId);
+    Task<string> QueueTransfersImportAsync(Stream excelStream, string fileName, string originStoreCode, string destinationStoreCode, string userId);
     
     Task<Core.Entities.BackgroundJob?> GetJobStatusAsync(string jobId);
     Task<List<Core.Entities.BackgroundJob>> GetUserJobsAsync(string userId);
@@ -17,4 +20,7 @@ public interface IBackgroundJobService
     Task ProcessSalesImportAsync(string jobId, byte[] fileData, string fileName, string storeCode);
     Task ProcessStockImportAsync(string jobId, byte[] fileData, string fileName, string storeCode);
     Task ProcessProductsImportAsync(string jobId, byte[] fileData, string fileName);
+    Task ProcessCreditNotesImportAsync(string jobId, byte[] fileData, string fileName, string storeCode);
+    Task ProcessPurchasesImportAsync(string jobId, byte[] fileData, string fileName, string storeCode);
+    Task ProcessTransfersImportAsync(string jobId, byte[] fileData, string fileName, string originStoreCode, string destinationStoreCode);
 }

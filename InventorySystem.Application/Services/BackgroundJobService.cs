@@ -73,6 +73,15 @@ public class BackgroundJobService : IBackgroundJobService
         _logger = logger;
     }
 
+    /// <summary>
+    /// Helper method to get current time in Colombia timezone (UTC-5)
+    /// </summary>
+    private DateTime GetColombianTime()
+    {
+        var colombianTimeZone = TimeZoneInfo.FindSystemTimeZoneById("America/Bogota");
+        return TimeZoneInfo.ConvertTime(DateTime.UtcNow, colombianTimeZone);
+    }
+
     public async Task<string> QueueSalesImportAsync(Stream excelStream, string fileName, string storeCode, string userId)
     {
         var jobId = Guid.NewGuid().ToString();
@@ -95,7 +104,7 @@ public class BackgroundJobService : IBackgroundJobService
             ErrorRecords = 0,
             WarningRecords = 0,
             ProgressPercentage = 0,
-            StartedAt = DateTime.UtcNow,
+            StartedAt = GetColombianTime(),
             StartedBy = userId
         };
         
@@ -137,7 +146,7 @@ public class BackgroundJobService : IBackgroundJobService
             ErrorRecords = 0,
             WarningRecords = 0,
             ProgressPercentage = 0,
-            StartedAt = DateTime.UtcNow,
+            StartedAt = GetColombianTime(),
             StartedBy = userId
         };
         
@@ -160,10 +169,10 @@ public class BackgroundJobService : IBackgroundJobService
     public async Task<string> QueueProductsImportAsync(Stream excelStream, string fileName, string userId)
     {
         var jobId = Guid.NewGuid().ToString();
-        
+
         var recordCount = await GetProductsRecordCountAsync(excelStream);
         excelStream.Position = 0;
-        
+
         var backgroundJob = new Core.Entities.BackgroundJob
         {
             JobId = jobId,
@@ -176,23 +185,143 @@ public class BackgroundJobService : IBackgroundJobService
             ErrorRecords = 0,
             WarningRecords = 0,
             ProgressPercentage = 0,
-            StartedAt = DateTime.UtcNow,
+            StartedAt = GetColombianTime(),
             StartedBy = userId
         };
-        
+
         var (success, errorMessage, createdJobId) = await _backgroundJobRepository.TryCreateJobAtomicallyAsync(backgroundJob);
-        
+
         if (!success)
         {
             throw new InvalidOperationException(errorMessage!);
         }
-        
+
         var fileData = new byte[excelStream.Length];
         excelStream.Position = 0;
         await excelStream.ReadExactlyAsync(fileData, 0, fileData.Length);
-        
+
         Hangfire.BackgroundJob.Enqueue<IBackgroundJobService>(service => service.ProcessProductsImportAsync(createdJobId!, fileData, fileName));
-        
+
+        return createdJobId!;
+    }
+
+    public async Task<string> QueueCreditNotesImportAsync(Stream excelStream, string fileName, string storeCode, string userId)
+    {
+        var jobId = Guid.NewGuid().ToString();
+
+        var recordCount = await GetCreditNotesRecordCountAsync(excelStream);
+        excelStream.Position = 0;
+
+        var backgroundJob = new Core.Entities.BackgroundJob
+        {
+            JobId = jobId,
+            JobType = "CREDIT_NOTES_IMPORT",
+            Status = "QUEUED",
+            FileName = fileName,
+            StoreCode = storeCode,
+            TotalRecords = recordCount,
+            ProcessedRecords = 0,
+            SuccessRecords = 0,
+            ErrorRecords = 0,
+            WarningRecords = 0,
+            ProgressPercentage = 0,
+            StartedAt = GetColombianTime(),
+            StartedBy = userId
+        };
+
+        var (success, errorMessage, createdJobId) = await _backgroundJobRepository.TryCreateJobAtomicallyAsync(backgroundJob);
+
+        if (!success)
+        {
+            throw new InvalidOperationException(errorMessage!);
+        }
+
+        var fileData = new byte[excelStream.Length];
+        excelStream.Position = 0;
+        await excelStream.ReadExactlyAsync(fileData, 0, fileData.Length);
+
+        Hangfire.BackgroundJob.Enqueue<IBackgroundJobService>(service => service.ProcessCreditNotesImportAsync(createdJobId!, fileData, fileName, storeCode));
+
+        return createdJobId!;
+    }
+
+    public async Task<string> QueuePurchasesImportAsync(Stream excelStream, string fileName, string storeCode, string userId)
+    {
+        var jobId = Guid.NewGuid().ToString();
+
+        var recordCount = await GetPurchasesRecordCountAsync(excelStream);
+        excelStream.Position = 0;
+
+        var backgroundJob = new Core.Entities.BackgroundJob
+        {
+            JobId = jobId,
+            JobType = "PURCHASES_IMPORT",
+            Status = "QUEUED",
+            FileName = fileName,
+            StoreCode = storeCode,
+            TotalRecords = recordCount,
+            ProcessedRecords = 0,
+            SuccessRecords = 0,
+            ErrorRecords = 0,
+            WarningRecords = 0,
+            ProgressPercentage = 0,
+            StartedAt = GetColombianTime(),
+            StartedBy = userId
+        };
+
+        var (success, errorMessage, createdJobId) = await _backgroundJobRepository.TryCreateJobAtomicallyAsync(backgroundJob);
+
+        if (!success)
+        {
+            throw new InvalidOperationException(errorMessage!);
+        }
+
+        var fileData = new byte[excelStream.Length];
+        excelStream.Position = 0;
+        await excelStream.ReadExactlyAsync(fileData, 0, fileData.Length);
+
+        Hangfire.BackgroundJob.Enqueue<IBackgroundJobService>(service => service.ProcessPurchasesImportAsync(createdJobId!, fileData, fileName, storeCode));
+
+        return createdJobId!;
+    }
+
+    public async Task<string> QueueTransfersImportAsync(Stream excelStream, string fileName, string originStoreCode, string destinationStoreCode, string userId)
+    {
+        var jobId = Guid.NewGuid().ToString();
+
+        var recordCount = await GetTransfersRecordCountAsync(excelStream);
+        excelStream.Position = 0;
+
+        var backgroundJob = new Core.Entities.BackgroundJob
+        {
+            JobId = jobId,
+            JobType = "TRANSFERS_IMPORT",
+            Status = "QUEUED",
+            FileName = fileName,
+            StoreCode = originStoreCode,
+            TotalRecords = recordCount,
+            ProcessedRecords = 0,
+            SuccessRecords = 0,
+            ErrorRecords = 0,
+            WarningRecords = 0,
+            ProgressPercentage = 0,
+            StartedAt = GetColombianTime(),
+            StartedBy = userId
+        };
+
+        var (success, errorMessage, createdJobId) = await _backgroundJobRepository.TryCreateJobAtomicallyAsync(backgroundJob);
+
+        if (!success)
+        {
+            throw new InvalidOperationException(errorMessage!);
+        }
+
+        var fileData = new byte[excelStream.Length];
+        excelStream.Position = 0;
+        await excelStream.ReadExactlyAsync(fileData, 0, fileData.Length);
+
+        Hangfire.BackgroundJob.Enqueue<IBackgroundJobService>(service => service.ProcessTransfersImportAsync(createdJobId!, fileData, fileName, originStoreCode, destinationStoreCode));
+
         return createdJobId!;
     }
 
@@ -568,7 +697,58 @@ public class BackgroundJobService : IBackgroundJobService
             using var workbook = new XLWorkbook(excelStream);
             var worksheet = workbook.Worksheets.FirstOrDefault();
             if (worksheet == null) return Task.FromResult(0);
-            
+
+            var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
+            return Task.FromResult(Math.Max(0, lastRow - 1));
+        }
+        catch
+        {
+            return Task.FromResult(0);
+        }
+    }
+
+    private Task<int> GetCreditNotesRecordCountAsync(Stream excelStream)
+    {
+        try
+        {
+            using var workbook = new XLWorkbook(excelStream);
+            var worksheet = workbook.Worksheets.FirstOrDefault();
+            if (worksheet == null) return Task.FromResult(0);
+
+            var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
+            return Task.FromResult(Math.Max(0, lastRow - 1));
+        }
+        catch
+        {
+            return Task.FromResult(0);
+        }
+    }
+
+    private Task<int> GetPurchasesRecordCountAsync(Stream excelStream)
+    {
+        try
+        {
+            using var workbook = new XLWorkbook(excelStream);
+            var worksheet = workbook.Worksheets.FirstOrDefault();
+            if (worksheet == null) return Task.FromResult(0);
+
+            var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
+            return Task.FromResult(Math.Max(0, lastRow - 1));
+        }
+        catch
+        {
+            return Task.FromResult(0);
+        }
+    }
+
+    private Task<int> GetTransfersRecordCountAsync(Stream excelStream)
+    {
+        try
+        {
+            using var workbook = new XLWorkbook(excelStream);
+            var worksheet = workbook.Worksheets.FirstOrDefault();
+            if (worksheet == null) return Task.FromResult(0);
+
             var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
             return Task.FromResult(Math.Max(0, lastRow - 1));
         }
@@ -588,10 +768,10 @@ public class BackgroundJobService : IBackgroundJobService
         var storeCache = new Dictionary<string, Store>();
         
         // Crear ImportBatch para tracking
-        var startTime = DateTime.UtcNow;
+        var startTime = GetColombianTime();
         var importBatch = new ImportBatch
         {
-            BatchCode = $"PRODUCTS-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
+            BatchCode = $"PRODUCTS-{GetColombianTime():yyyyMMdd-HHmmss}",
             BatchType = "PRODUCTS_IMPORT",
             FileName = "carga_productos.xlsx",
             TotalRecords = productsData.Count,
@@ -616,7 +796,10 @@ public class BackgroundJobService : IBackgroundJobService
             backgroundJob.ImportBatchId = importBatch.Id;
             await _backgroundJobRepository.UpdateAsync(backgroundJob);
         }
-        
+
+        int processedProducts = 0;
+        int totalProducts = productsData.Count;
+
         foreach (var productData in productsData)
         {
             try
@@ -764,17 +947,38 @@ public class BackgroundJobService : IBackgroundJobService
             {
                 _logger.LogError(ex, $"Error persisting product data: {ex.Message}");
                 importBatch.ErrorCount++;
-                
+
                 var errorMessage = $"Error en producto {productData["Code"]}: {ex.Message}";
                 if (string.IsNullOrEmpty(importBatch.Errors))
                     importBatch.Errors = errorMessage;
                 else
                     importBatch.Errors += "; " + errorMessage;
             }
+
+            // Update progress every 10 processed products or if we're at the end
+            processedProducts++;
+            if (processedProducts % 10 == 0 || processedProducts == totalProducts)
+            {
+                try
+                {
+                    var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+                    if (job != null)
+                    {
+                        job.ProcessedRecords = processedProducts;
+                        job.ProgressPercentage = (int)Math.Round((double)processedProducts / totalProducts * 100);
+                        await _backgroundJobRepository.UpdateAsync(job);
+                        _logger.LogInformation($"Progress updated for job {jobId}: {processedProducts}/{totalProducts} ({job.ProgressPercentage}%)");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to update progress for job {JobId}", jobId);
+                }
+            }
         }
         
         // Actualizar ImportBatch
-        var completedTime = DateTime.UtcNow;
+        var completedTime = GetColombianTime();
         importBatch.CompletedAt = completedTime;
         importBatch.ProcessingTimeSeconds = (completedTime - startTime).TotalSeconds;
         importBatch.IsInProgress = false;
@@ -854,10 +1058,10 @@ public class BackgroundJobService : IBackgroundJobService
             .ToDictionary(g => g.Key, g => g.First());
 
         // Create ImportBatch for tracking
-        var startTime = DateTime.UtcNow;
+        var startTime = GetColombianTime();
         var importBatch = new ImportBatch
         {
-            BatchCode = $"STOCK-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
+            BatchCode = $"STOCK-{GetColombianTime():yyyyMMdd-HHmmss}",
             BatchType = "STOCK_IMPORT",
             FileName = "carga_stock.xlsx",
             StoreCode = storeCode,
@@ -883,6 +1087,9 @@ public class BackgroundJobService : IBackgroundJobService
             backgroundJob.ImportBatchId = importBatch.Id;
             await _backgroundJobRepository.UpdateAsync(backgroundJob);
         }
+
+        int processedStockRecords = 0;
+        int totalStockRecords = stockData.Count;
 
         foreach (var stockRecord in stockData)
         {
@@ -955,10 +1162,31 @@ public class BackgroundJobService : IBackgroundJobService
                 skippedCount++;
                 _logger.LogError(ex, "Error processing stock record for job {JobId}", jobId);
             }
+
+            // Update progress every 10 processed stock records or if we're at the end
+            processedStockRecords++;
+            if (processedStockRecords % 10 == 0 || processedStockRecords == totalStockRecords)
+            {
+                try
+                {
+                    var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+                    if (job != null)
+                    {
+                        job.ProcessedRecords = processedStockRecords;
+                        job.ProgressPercentage = (int)Math.Round((double)processedStockRecords / totalStockRecords * 100);
+                        await _backgroundJobRepository.UpdateAsync(job);
+                        _logger.LogInformation($"Progress updated for job {jobId}: {processedStockRecords}/{totalStockRecords} ({job.ProgressPercentage}%)");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to update progress for job {JobId}", jobId);
+                }
+            }
         }
 
         // Update ImportBatch with final results
-        var completedTime = DateTime.UtcNow;
+        var completedTime = GetColombianTime();
         importBatch.SuccessCount = savedCount;
         importBatch.SkippedCount = skippedCount;
         importBatch.ErrorCount = warnings.Count;
@@ -968,7 +1196,22 @@ public class BackgroundJobService : IBackgroundJobService
         await _importBatchRepository.UpdateAsync(importBatch);
 
         _logger.LogInformation($"Completed persisting stock data for job {jobId}. Saved: {savedCount}, Skipped: {skippedCount}");
-        
+
+        // Marcar la tienda como que ya tiene stock inicial cargado
+        if (savedCount > 0) // Solo si se guardaron registros exitosamente
+        {
+            try
+            {
+                store.HasInitialStock = true;
+                await _storeRepository.UpdateAsync(store);
+                _logger.LogInformation($"Marked store {storeCode} as having initial stock loaded");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, $"Failed to mark store {storeCode} as having initial stock, but import was successful");
+            }
+        }
+
         return (skippedCount, warnings, savedCount);
     }
 
@@ -993,10 +1236,10 @@ public class BackgroundJobService : IBackgroundJobService
         var productCache = new Dictionary<string, Product>();
 
         // Create ImportBatch for tracking
-        var startTime = DateTime.UtcNow;
+        var startTime = GetColombianTime();
         var importBatch = new ImportBatch
         {
-            BatchCode = $"SALES-{DateTime.UtcNow:yyyyMMdd-HHmmss}",
+            BatchCode = $"SALES-{GetColombianTime():yyyyMMdd-HHmmss}",
             BatchType = "SALES",
             FileName = $"sales_import_{jobId}.xlsx",
             StoreCode = storeCode,
@@ -1019,6 +1262,8 @@ public class BackgroundJobService : IBackgroundJobService
         _logger.LogInformation($"Found {salesGrouped.Count} unique sales documents");
 
         var productStocks = await _productStockRepository.GetByStoreIdAsync(store.Id);
+        int processedSales = 0;
+        int totalSalesGroups = salesGrouped.Count();
 
         foreach (var saleGroup in salesGrouped)
         {
@@ -1093,7 +1338,7 @@ public class BackgroundJobService : IBackgroundJobService
 
                 // saleNumber already comes from the grouping key (column F)
                 // No need to read it again from firstRecord since we're already grouped by it
-                var saleDate = (DateTime)firstRecord.GetValueOrDefault("SaleDate", DateTime.UtcNow);
+                var saleDate = (DateTime)firstRecord.GetValueOrDefault("SaleDate", GetColombianTime());
                 var total = saleDetails.Sum(x => Convert.ToDecimal(x.GetValueOrDefault("Subtotal", 0)));
 
                 if (string.IsNullOrEmpty(saleNumber))
@@ -1267,10 +1512,31 @@ public class BackgroundJobService : IBackgroundJobService
                 skippedCount++;
                 _logger.LogError(ex, "Error processing sale group {SaleNumber} for job {JobId}", saleGroup.Key, jobId);
             }
+
+            // Update progress every 10 processed sales or if we're at the end
+            processedSales++;
+            if (processedSales % 10 == 0 || processedSales == totalSalesGroups)
+            {
+                try
+                {
+                    var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+                    if (job != null)
+                    {
+                        job.ProcessedRecords = processedSales;
+                        job.ProgressPercentage = (int)Math.Round((double)processedSales / totalSalesGroups * 100);
+                        await _backgroundJobRepository.UpdateAsync(job);
+                        _logger.LogInformation($"Progress updated for job {jobId}: {processedSales}/{totalSalesGroups} ({job.ProgressPercentage}%)");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to update progress for job {JobId}", jobId);
+                }
+            }
         }
 
         // Update ImportBatch with final results
-        var completedTime = DateTime.UtcNow;
+        var completedTime = GetColombianTime();
         importBatch.SuccessCount = savedCount;
         importBatch.SkippedCount = skippedCount;
         importBatch.ErrorCount = warnings.Count;
@@ -1289,5 +1555,143 @@ public class BackgroundJobService : IBackgroundJobService
         _logger.LogInformation($"Completed persisting sales data for job {jobId}. Saved: {savedCount}, Skipped: {skippedCount}");
 
         return (skippedCount, warnings, savedCount, importBatch.Id);
+    }
+
+    public async Task ProcessCreditNotesImportAsync(string jobId, byte[] fileData, string fileName, string storeCode)
+    {
+        try
+        {
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, "PROCESSING");
+            _logger.LogInformation($"Starting credit notes import job {jobId}");
+
+            using var stream = new MemoryStream(fileData);
+
+            var result = await _tandiaImportService.ImportCreditNotesFromExcelAsync(stream, fileName, storeCode);
+
+            var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+            if (job != null)
+            {
+                job.TotalRecords = result.TotalRecords;
+                job.SuccessRecords = result.SuccessCount;
+                job.ErrorRecords = result.ErrorCount;
+                job.WarningRecords = result.SkippedCount;
+                job.ProgressPercentage = 100;
+
+                if (result.Errors?.Any() == true)
+                {
+                    job.DetailedErrors = result.Errors.ToList();
+                }
+
+                if (result.Warnings?.Any() == true)
+                {
+                    job.DetailedWarnings = result.Warnings.ToList();
+                }
+
+                job.ProcessedRecords = result.SuccessCount;
+
+                await _backgroundJobRepository.UpdateAsync(job);
+            }
+
+            var finalStatus = result.ErrorCount > 0 ? "COMPLETED_WITH_WARNINGS" : "COMPLETED";
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, finalStatus);
+            _logger.LogInformation($"Completed credit notes import job {jobId} with status {finalStatus}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error in credit notes import job {jobId}");
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, "FAILED", ex.Message);
+        }
+    }
+
+    public async Task ProcessPurchasesImportAsync(string jobId, byte[] fileData, string fileName, string storeCode)
+    {
+        try
+        {
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, "PROCESSING");
+            _logger.LogInformation($"Starting purchases import job {jobId}");
+
+            using var stream = new MemoryStream(fileData);
+
+            var result = await _tandiaImportService.ImportPurchasesFromExcelAsync(stream, fileName, storeCode);
+
+            var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+            if (job != null)
+            {
+                job.TotalRecords = result.TotalRecords;
+                job.SuccessRecords = result.SuccessCount;
+                job.ErrorRecords = result.ErrorCount;
+                job.WarningRecords = result.SkippedCount;
+                job.ProgressPercentage = 100;
+
+                if (result.Errors?.Any() == true)
+                {
+                    job.DetailedErrors = result.Errors.ToList();
+                }
+
+                if (result.Warnings?.Any() == true)
+                {
+                    job.DetailedWarnings = result.Warnings.ToList();
+                }
+
+                job.ProcessedRecords = result.SuccessCount;
+
+                await _backgroundJobRepository.UpdateAsync(job);
+            }
+
+            var finalStatus = result.ErrorCount > 0 ? "COMPLETED_WITH_WARNINGS" : "COMPLETED";
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, finalStatus);
+            _logger.LogInformation($"Completed purchases import job {jobId} with status {finalStatus}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error in purchases import job {jobId}");
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, "FAILED", ex.Message);
+        }
+    }
+
+    public async Task ProcessTransfersImportAsync(string jobId, byte[] fileData, string fileName, string originStoreCode, string destinationStoreCode)
+    {
+        try
+        {
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, "PROCESSING");
+            _logger.LogInformation($"Starting transfers import job {jobId}");
+
+            using var stream = new MemoryStream(fileData);
+
+            var result = await _tandiaImportService.ImportTransfersFromExcelAsync(stream, fileName, originStoreCode, destinationStoreCode);
+
+            var job = await _backgroundJobRepository.GetByJobIdAsync(jobId);
+            if (job != null)
+            {
+                job.TotalRecords = result.TotalRecords;
+                job.SuccessRecords = result.SuccessCount;
+                job.ErrorRecords = result.ErrorCount;
+                job.WarningRecords = result.SkippedCount;
+                job.ProgressPercentage = 100;
+
+                if (result.Errors?.Any() == true)
+                {
+                    job.DetailedErrors = result.Errors.ToList();
+                }
+
+                if (result.Warnings?.Any() == true)
+                {
+                    job.DetailedWarnings = result.Warnings.ToList();
+                }
+
+                job.ProcessedRecords = result.SuccessCount;
+
+                await _backgroundJobRepository.UpdateAsync(job);
+            }
+
+            var finalStatus = result.ErrorCount > 0 ? "COMPLETED_WITH_WARNINGS" : "COMPLETED";
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, finalStatus);
+            _logger.LogInformation($"Completed transfers import job {jobId} with status {finalStatus}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error in transfers import job {jobId}");
+            await _backgroundJobRepository.UpdateStatusAsync(jobId, "FAILED", ex.Message);
+        }
     }
 }

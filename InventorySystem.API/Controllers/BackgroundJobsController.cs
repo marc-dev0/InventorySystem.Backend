@@ -216,6 +216,160 @@ public class BackgroundJobsController : ControllerBase
     }
 
     /// <summary>
+    /// Queue credit notes import as background job
+    /// </summary>
+    [HttpPost("credit-notes/queue")]
+    [AllowAnonymous] // Temporal para testing
+    public async Task<ActionResult<object>> QueueCreditNotesImport(IFormFile file, [FromForm] string storeCode)
+    {
+        var isAllowed = await _importLockService.IsImportAllowedAsync("CREDIT_NOTES_IMPORT", storeCode);
+        if (!isAllowed)
+        {
+            var blockingMessage = await _importLockService.GetBlockingJobMessageAsync("CREDIT_NOTES_IMPORT", storeCode);
+            return Conflict(new
+            {
+                error = "No se puede iniciar la carga de notas de crédito en este momento",
+                reason = blockingMessage,
+                suggestion = "Espere a que termine la carga actual o consulte el estado de los jobs activos"
+            });
+        }
+
+        if (file == null || file.Length == 0)
+            return BadRequest("No file uploaded");
+
+        if (string.IsNullOrEmpty(storeCode))
+            return BadRequest("El código de sucursal es requerido");
+
+        try
+        {
+            var userId = User.Identity?.Name ?? "Unknown";
+            using var stream = file.OpenReadStream();
+
+            var jobId = await _backgroundJobService.QueueCreditNotesImportAsync(stream, file.FileName, storeCode, userId);
+
+            return Ok(new
+            {
+                message = "Importación de notas de crédito encolada exitosamente",
+                jobId = jobId,
+                status = "QUEUED",
+                fileName = file.FileName,
+                storeCode = storeCode,
+                note = "La importación se está procesando en segundo plano. Use el jobId para consultar el progreso.",
+                warning = "⚠️ Durante esta carga no se podrán realizar NINGUNA otra importación. Solo se permite un proceso a la vez."
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Queue purchases import as background job
+    /// </summary>
+    [HttpPost("purchases/queue")]
+    [AllowAnonymous] // Temporal para testing
+    public async Task<ActionResult<object>> QueuePurchasesImport(IFormFile file, [FromForm] string storeCode)
+    {
+        var isAllowed = await _importLockService.IsImportAllowedAsync("PURCHASES_IMPORT", storeCode);
+        if (!isAllowed)
+        {
+            var blockingMessage = await _importLockService.GetBlockingJobMessageAsync("PURCHASES_IMPORT", storeCode);
+            return Conflict(new
+            {
+                error = "No se puede iniciar la carga de compras en este momento",
+                reason = blockingMessage,
+                suggestion = "Espere a que termine la carga actual o consulte el estado de los jobs activos"
+            });
+        }
+
+        if (file == null || file.Length == 0)
+            return BadRequest("No file uploaded");
+
+        if (string.IsNullOrEmpty(storeCode))
+            return BadRequest("El código de sucursal es requerido");
+
+        try
+        {
+            var userId = User.Identity?.Name ?? "Unknown";
+            using var stream = file.OpenReadStream();
+
+            var jobId = await _backgroundJobService.QueuePurchasesImportAsync(stream, file.FileName, storeCode, userId);
+
+            return Ok(new
+            {
+                message = "Importación de compras encolada exitosamente",
+                jobId = jobId,
+                status = "QUEUED",
+                fileName = file.FileName,
+                storeCode = storeCode,
+                note = "La importación se está procesando en segundo plano. Use el jobId para consultar el progreso.",
+                warning = "⚠️ Durante esta carga no se podrán realizar NINGUNA otra importación. Solo se permite un proceso a la vez."
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Queue transfers import as background job
+    /// </summary>
+    [HttpPost("transfers/queue")]
+    [AllowAnonymous] // Temporal para testing
+    public async Task<ActionResult<object>> QueueTransfersImport(IFormFile file, [FromForm] string originStoreCode, [FromForm] string destinationStoreCode)
+    {
+        var isAllowed = await _importLockService.IsImportAllowedAsync("TRANSFERS_IMPORT");
+        if (!isAllowed)
+        {
+            var blockingMessage = await _importLockService.GetBlockingJobMessageAsync("TRANSFERS_IMPORT");
+            return Conflict(new
+            {
+                error = "No se puede iniciar la carga de transferencias en este momento",
+                reason = blockingMessage,
+                suggestion = "Espere a que termine la carga actual o consulte el estado de los jobs activos"
+            });
+        }
+
+        if (file == null || file.Length == 0)
+            return BadRequest("No file uploaded");
+
+        if (string.IsNullOrEmpty(originStoreCode))
+            return BadRequest("El código de tienda de origen es requerido");
+
+        if (string.IsNullOrEmpty(destinationStoreCode))
+            return BadRequest("El código de tienda de destino es requerido");
+
+        if (originStoreCode == destinationStoreCode)
+            return BadRequest("La tienda de origen y destino no pueden ser la misma");
+
+        try
+        {
+            var userId = User.Identity?.Name ?? "Unknown";
+            using var stream = file.OpenReadStream();
+
+            var jobId = await _backgroundJobService.QueueTransfersImportAsync(stream, file.FileName, originStoreCode, destinationStoreCode, userId);
+
+            return Ok(new
+            {
+                message = "Importación de transferencias encolada exitosamente",
+                jobId = jobId,
+                status = "QUEUED",
+                fileName = file.FileName,
+                originStoreCode = originStoreCode,
+                destinationStoreCode = destinationStoreCode,
+                note = "La importación se está procesando en segundo plano. Use el jobId para consultar el progreso.",
+                warning = "⚠️ Durante esta carga no se podrán realizar NINGUNA otra importación. Solo se permite un proceso a la vez."
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+    }
+
+    /// <summary>
     /// Get job status and progress
     /// </summary>
     [HttpGet("{jobId}/status")]
@@ -269,8 +423,11 @@ public class BackgroundJobsController : ControllerBase
         {
             var userId = User.Identity?.Name ?? "Unknown";
             var jobs = await _backgroundJobService.GetUserJobsAsync(userId);
-            
-            var result = jobs.Select(job => new
+
+            // Ordenar por fecha de inicio descendente (más reciente primero)
+            var sortedJobs = jobs.OrderByDescending(job => job.StartedAt);
+
+            var result = sortedJobs.Select(job => new
             {
                 jobId = job.JobId,
                 jobType = job.JobType,

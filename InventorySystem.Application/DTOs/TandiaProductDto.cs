@@ -75,3 +75,60 @@ public class TandiaUploadSummaryDto
     public string UploadedBy { get; set; } = string.Empty;
     public DateTime UploadDate { get; set; }
 }
+
+public class TandiaCreditNoteDto
+{
+    public string Almacen { get; set; } = string.Empty; // Store
+    public string TipoDocumento { get; set; } = string.Empty;
+    public string NumeroDocumento { get; set; } = string.Empty;
+    public DateTime Fecha { get; set; }
+    public TimeSpan Hora { get; set; }
+    public string CodigoSKU { get; set; } = string.Empty;
+    public string Nombre { get; set; } = string.Empty;
+    public string? Marca { get; set; }
+    public string? Categoria { get; set; }
+    public decimal Cantidad { get; set; }
+    public decimal PrecioVenta { get; set; }
+    public decimal Descuento { get; set; }
+    public decimal Impuesto { get; set; }
+    public decimal Total { get; set; }
+    public string Cliente { get; set; } = string.Empty;
+    public string DocumentoCliente { get; set; } = string.Empty;
+    public string? Telefono { get; set; }
+    public string? Email { get; set; }
+    public string? Direccion { get; set; }
+    public string? Ciudad { get; set; }
+    public string? Departamento { get; set; }
+    public string? Pais { get; set; }
+    public string Empleado { get; set; } = string.Empty;
+    public string? Observaciones { get; set; }
+}
+
+public class TandiaPurchaseDto
+{
+    public string CodigoSKU { get; set; } = string.Empty;
+    public string Nombre { get; set; } = string.Empty;
+    public string? Marca { get; set; }
+    public string? Categoria { get; set; }
+    public decimal Cantidad { get; set; }
+    public decimal Precio { get; set; }
+    public decimal PrecioTotal { get; set; }
+    public string Proveedor { get; set; } = string.Empty;
+    public DateTime? FechaCompra { get; set; }
+    public string? NumeroFactura { get; set; }
+    public string? Observaciones { get; set; }
+    public string? Lote { get; set; } // Para tracking de lotes si se necesita
+}
+
+public class TandiaTransferDto
+{
+    public string Cod { get; set; } = string.Empty; // Product code
+    public string Nombre { get; set; } = string.Empty;
+    public string? Marca { get; set; }
+    public string? Categoria { get; set; }
+    public decimal Cant { get; set; } // Quantity
+    public decimal? Precio { get; set; }
+    public decimal? Total { get; set; }
+    public string? Observaciones { get; set; }
+    public DateTime? FechaTransferencia { get; set; }
+}

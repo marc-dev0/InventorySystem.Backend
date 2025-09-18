@@ -22,6 +22,9 @@ public enum MovementType
     // From Tandia import
     TandiaImport_Sale = 20,
     TandiaImport_Adjustment = 21,
+    TandiaImport_Purchase = 22,
+    TandiaImport_CreditNote = 23,
+    TandiaImport_Transfer = 24,
     
     // Manual adjustments
     ManualCorrection = 30

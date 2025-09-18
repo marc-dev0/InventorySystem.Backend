@@ -128,6 +128,7 @@ builder.Services.AddScoped<ISalesImportTrackingService, SalesImportTrackingServi
 builder.Services.AddScoped<IBackgroundJobService, BackgroundJobService>();
 builder.Services.AddScoped<IStockValidationService, StockValidationService>();
 builder.Services.AddScoped<IImportLockService, ImportLockService>();
+builder.Services.AddScoped<IStockInitialValidationService, StockInitialValidationService>();
 builder.Services.AddScoped<BatchProcessingService>();
 builder.Services.AddScoped<BatchedTandiaImportService>();
 builder.Services.AddScoped<ConfigurationService>();

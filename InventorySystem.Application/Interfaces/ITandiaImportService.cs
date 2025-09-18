@@ -13,4 +13,12 @@ public interface ITandiaImportService
     Task<ClearDataResultDto> ClearAllSalesAsync();
     Task<int> DeleteProductsByBatchIdAsync(int batchId);
     Task<int> DeleteSalesByBatchIdAsync(int batchId);
+
+    // New Tandia import types
+    Task<BulkUploadResultDto> ImportCreditNotesFromExcelAsync(Stream excelStream, string fileName, string storeCode);
+    Task<BulkUploadResultDto> ImportPurchasesFromExcelAsync(Stream excelStream, string fileName, string storeCode);
+    Task<BulkUploadResultDto> ImportTransfersFromExcelAsync(Stream excelStream, string fileName, string originStoreCode, string destinationStoreCode);
+    Task<List<TandiaCreditNoteDto>> ValidateCreditNotesExcelAsync(Stream excelStream);
+    Task<List<TandiaPurchaseDto>> ValidatePurchasesExcelAsync(Stream excelStream);
+    Task<List<TandiaTransferDto>> ValidateTransfersExcelAsync(Stream excelStream);
 }
