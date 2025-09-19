@@ -177,6 +177,130 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("CreditNoteDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("CreditNoteNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ImportBatchId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImportSource")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ImportedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("OriginalSaleId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Taxes")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ImportBatchId");
+
+                    b.HasIndex("OriginalSaleId");
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("CreditNote");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNoteDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("CreditNoteId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("numeric");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Taxes")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreditNoteId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CreditNoteDetail");
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -386,6 +510,9 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int?>("CreditNoteId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp without time zone");
 
@@ -422,6 +549,9 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<string>("Source")
                         .HasColumnType("text");
 
+                    b.Property<int?>("StockTransferId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("StoreId")
                         .HasColumnType("integer");
 
@@ -442,6 +572,8 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CreditNoteId");
+
                     b.HasIndex("ProductId");
 
                     b.HasIndex("ProductStockId");
@@ -449,6 +581,8 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasIndex("PurchaseId");
 
                     b.HasIndex("SaleId");
+
+                    b.HasIndex("StockTransferId");
 
                     b.HasIndex("StoreId");
 
@@ -489,9 +623,6 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<decimal>("MinimumStock")
-                        .HasColumnType("decimal(18,3)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -502,9 +633,6 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Stock")
-                        .HasColumnType("decimal(18,3)");
 
                     b.Property<int?>("SupplierId")
                         .HasColumnType("integer");
@@ -589,6 +717,15 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<int?>("ImportBatchId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImportSource")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ImportedAt")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -603,8 +740,17 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
+                    b.Property<int>("StoreId")
+                        .HasColumnType("integer");
+
                     b.Property<decimal>("SubTotal")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("SupplierId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SupplierName")
+                        .HasColumnType("text");
 
                     b.Property<decimal>("Taxes")
                         .HasColumnType("decimal(18,2)");
@@ -616,6 +762,12 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImportBatchId");
+
+                    b.HasIndex("StoreId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Purchases");
                 });
@@ -773,6 +925,112 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasIndex("SaleId");
 
                     b.ToTable("SaleDetails");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransfer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("DestinationStoreId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ImportBatchId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImportSource")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ImportedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int>("OriginStoreId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("ProcessedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ProcessedByUser")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("TransferDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("TransferNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DestinationStoreId");
+
+                    b.HasIndex("ImportBatchId");
+
+                    b.HasIndex("OriginStoreId");
+
+                    b.ToTable("StockTransfer");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransferDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("StockTransferId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal?>("TotalCost")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal?>("UnitCost")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("StockTransferId");
+
+                    b.ToTable("StockTransferDetail");
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Store", b =>
@@ -1096,6 +1354,54 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Navigation("ImportBatch");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNote", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("InventorySystem.Core.Entities.ImportBatch", "ImportBatch")
+                        .WithMany()
+                        .HasForeignKey("ImportBatchId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Sale", "OriginalSale")
+                        .WithMany()
+                        .HasForeignKey("OriginalSaleId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Store", "Store")
+                        .WithMany()
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("ImportBatch");
+
+                    b.Navigation("OriginalSale");
+
+                    b.Navigation("Store");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNoteDetail", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.CreditNote", "CreditNote")
+                        .WithMany("Details")
+                        .HasForeignKey("CreditNoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreditNote");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.Employee", b =>
                 {
                     b.HasOne("InventorySystem.Core.Entities.Store", "Store")
@@ -1115,6 +1421,10 @@ namespace InventorySystem.Infrastructure.Migrations
 
             modelBuilder.Entity("InventorySystem.Core.Entities.InventoryMovement", b =>
                 {
+                    b.HasOne("InventorySystem.Core.Entities.CreditNote", "CreditNote")
+                        .WithMany()
+                        .HasForeignKey("CreditNoteId");
+
                     b.HasOne("InventorySystem.Core.Entities.Product", "Product")
                         .WithMany("InventoryMovements")
                         .HasForeignKey("ProductId")
@@ -1134,11 +1444,17 @@ namespace InventorySystem.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("SaleId");
 
+                    b.HasOne("InventorySystem.Core.Entities.StockTransfer", "StockTransfer")
+                        .WithMany()
+                        .HasForeignKey("StockTransferId");
+
                     b.HasOne("InventorySystem.Core.Entities.Store", "Store")
                         .WithMany("InventoryMovements")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("CreditNote");
 
                     b.Navigation("Product");
 
@@ -1147,6 +1463,8 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Navigation("Purchase");
 
                     b.Navigation("Sale");
+
+                    b.Navigation("StockTransfer");
 
                     b.Navigation("Store");
                 });
@@ -1205,6 +1523,29 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Store");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.Purchase", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.ImportBatch", "ImportBatch")
+                        .WithMany()
+                        .HasForeignKey("ImportBatchId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Store", "Store")
+                        .WithMany()
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId");
+
+                    b.Navigation("ImportBatch");
+
+                    b.Navigation("Store");
+
+                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.PurchaseDetail", b =>
@@ -1281,6 +1622,50 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Navigation("Sale");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransfer", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Store", "DestinationStore")
+                        .WithMany()
+                        .HasForeignKey("DestinationStoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.ImportBatch", "ImportBatch")
+                        .WithMany()
+                        .HasForeignKey("ImportBatchId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Store", "OriginStore")
+                        .WithMany()
+                        .HasForeignKey("OriginStoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DestinationStore");
+
+                    b.Navigation("ImportBatch");
+
+                    b.Navigation("OriginStore");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransferDetail", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.StockTransfer", "StockTransfer")
+                        .WithMany("Details")
+                        .HasForeignKey("StockTransferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("StockTransfer");
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.Brand", b =>
                 {
                     b.Navigation("Products");
@@ -1289,6 +1674,11 @@ namespace InventorySystem.Infrastructure.Migrations
             modelBuilder.Entity("InventorySystem.Core.Entities.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNote", b =>
+                {
+                    b.Navigation("Details");
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Customer", b =>
@@ -1332,6 +1722,11 @@ namespace InventorySystem.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Sale", b =>
+                {
+                    b.Navigation("Details");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransfer", b =>
                 {
                     b.Navigation("Details");
                 });

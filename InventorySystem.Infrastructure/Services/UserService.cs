@@ -61,13 +61,13 @@ public class UserService : IUserService
         // Check if username already exists
         if (await _context.Users.AnyAsync(u => u.Username.ToLower() == dto.Username.ToLower()))
         {
-            throw new InvalidOperationException("Username already exists");
+            throw new InvalidOperationException("El nombre de usuario ya existe");
         }
 
         // Check if email already exists
         if (await _context.Users.AnyAsync(u => u.Email.ToLower() == dto.Email.ToLower()))
         {
-            throw new InvalidOperationException("Email already exists");
+            throw new InvalidOperationException("El correo electrónico ya existe");
         }
 
         var user = new User
@@ -99,13 +99,13 @@ public class UserService : IUserService
         // Check if username already exists (excluding current user)
         if (await _context.Users.AnyAsync(u => u.Id != id && u.Username.ToLower() == dto.Username.ToLower()))
         {
-            throw new InvalidOperationException("Username already exists");
+            throw new InvalidOperationException("El nombre de usuario ya existe");
         }
 
         // Check if email already exists (excluding current user)
         if (await _context.Users.AnyAsync(u => u.Id != id && u.Email.ToLower() == dto.Email.ToLower()))
         {
-            throw new InvalidOperationException("Email already exists");
+            throw new InvalidOperationException("El correo electrónico ya existe");
         }
 
         user.Username = dto.Username;
@@ -145,7 +145,7 @@ public class UserService : IUserService
         // Verify current password
         if (!VerifyPassword(dto.CurrentPassword, user.PasswordHash))
         {
-            throw new InvalidOperationException("Current password is incorrect");
+            throw new InvalidOperationException("La contraseña actual es incorrecta");
         }
 
         user.PasswordHash = HashPassword(dto.NewPassword);

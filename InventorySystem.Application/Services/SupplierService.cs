@@ -75,7 +75,7 @@ public class SupplierService : ISupplierService
         // Check if supplier has products
         if (await _supplierRepository.HasProductsAsync(id))
         {
-            throw new InvalidOperationException("Cannot delete supplier that has associated products");
+            throw new InvalidOperationException("No se puede eliminar el proveedor que tiene productos asociados");
         }
 
         supplier.IsDeleted = true;

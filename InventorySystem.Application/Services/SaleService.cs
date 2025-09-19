@@ -10,15 +10,21 @@ public class SaleService : ISaleService
     private readonly ISaleRepository _saleRepository;
     private readonly IProductRepository _productRepository;
     private readonly ICustomerRepository _customerRepository;
+    private readonly IStoreRepository _storeRepository;
+    private readonly IProductStockRepository _productStockRepository;
 
     public SaleService(
         ISaleRepository saleRepository,
         IProductRepository productRepository,
-        ICustomerRepository customerRepository)
+        ICustomerRepository customerRepository,
+        IStoreRepository storeRepository,
+        IProductStockRepository productStockRepository)
     {
         _saleRepository = saleRepository;
         _productRepository = productRepository;
         _customerRepository = customerRepository;
+        _storeRepository = storeRepository;
+        _productStockRepository = productStockRepository;
     }
 
     public async Task<IEnumerable<SaleDto>> GetAllAsync()
@@ -74,22 +80,35 @@ public class SaleService : ISaleService
             var customer = await _customerRepository.GetByIdAsync(dto.CustomerId.Value);
             if (customer == null)
             {
-                throw new ArgumentException("Customer not found");
+                throw new ArgumentException("Cliente no encontrado");
             }
         }
 
         // Validate products and stock
+        // TODO: CreateSaleDto needs to include storeId parameter
+        // For now, use default store (this should be fixed)
+        var stores = await _storeRepository.GetAllAsync();
+        var defaultStore = stores.FirstOrDefault();
+        if (defaultStore == null)
+        {
+            throw new InvalidOperationException("No hay tiendas configuradas en el sistema");
+        }
+
         foreach (var detail in dto.Details)
         {
             var product = await _productRepository.GetByIdAsync(detail.ProductId);
             if (product == null)
             {
-                throw new ArgumentException($"Product with ID {detail.ProductId} not found");
+                throw new ArgumentException($"Producto con ID {detail.ProductId} no encontrado");
             }
 
-            if (product.Stock < detail.Quantity)
+            // Check stock from ProductStocks table
+            var productStock = await _productStockRepository.GetByProductAndStoreAsync(product.Id, defaultStore.Id);
+            var availableStock = productStock?.CurrentStock ?? 0;
+
+            if (availableStock < detail.Quantity)
             {
-                throw new InvalidOperationException($"Insufficient stock for product {product.Name}. Available: {product.Stock}, Requested: {detail.Quantity}");
+                throw new InvalidOperationException($"Stock insuficiente para el producto {product.Name}. Disponible: {availableStock}, Solicitado: {detail.Quantity}");
             }
         }
 
@@ -118,11 +137,12 @@ public class SaleService : ISaleService
             sale.Details.Add(detail);
             subTotal += detail.Subtotal;
 
-            // Update product stock
-            var product = await _productRepository.GetByIdAsync(detailDto.ProductId);
-            if (product != null)
+            // Update product stock in ProductStocks table
+            var productStock = await _productStockRepository.GetByProductAndStoreAsync(detailDto.ProductId, defaultStore.Id);
+            if (productStock != null)
             {
-                await _productRepository.UpdateStockAsync(product.Id, product.Stock - detailDto.Quantity);
+                productStock.CurrentStock -= detailDto.Quantity;
+                await _productStockRepository.UpdateAsync(productStock);
             }
         }
 

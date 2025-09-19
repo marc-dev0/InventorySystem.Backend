@@ -220,7 +220,7 @@ public class FastImportsController : ControllerBase
                         product.Name = productName;
                         product.PurchasePrice = purchasePrice;
                         product.SalePrice = salePrice;
-                        product.Stock = 0; // Product imports should NOT set stock values - use stock import for that
+                        // Note: Product.Stock field has been removed - stock is now managed only in ProductStocks table
                         product.Unit = unit;
                         product.CategoryId = category.Id;
                         product.ImportBatchId = importBatch.Id;
@@ -237,7 +237,6 @@ public class FastImportsController : ControllerBase
                             Name = productName,
                             PurchasePrice = purchasePrice,
                             SalePrice = salePrice,
-                            Stock = 0, // Product imports should NOT set stock values - use stock import for that
                             Unit = unit,
                             CategoryId = category.Id,
                             Active = true,
@@ -766,9 +765,7 @@ public class FastImportsController : ControllerBase
                         
                         await _productStockRepository.UpdateAsync(productStock);
 
-                        // También actualizar Product.Stock para compatibilidad
-                        product.Stock -= quantity;
-                        await _productRepository.UpdateAsync(product);
+                        // Note: Product.Stock field removed - stock managed only in ProductStocks
 
                         // Registrar movimiento de inventario
                         var movement = new InventoryMovement
@@ -1317,9 +1314,7 @@ public class FastImportsController : ControllerBase
                         
                         await _productStockRepository.UpdateAsync(productStock);
 
-                        // También actualizar Product.Stock para compatibilidad
-                        product.Stock -= quantity;
-                        await _productRepository.UpdateAsync(product);
+                        // Note: Product.Stock field removed - stock managed only in ProductStocks
 
                         // Registrar movimiento de inventario
                         var movement = new InventoryMovement

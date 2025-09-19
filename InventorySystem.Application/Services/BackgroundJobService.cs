@@ -892,8 +892,7 @@ public class BackgroundJobService : IBackgroundJobService
                             Description = productData["Description"]?.ToString(),
                             PurchasePrice = Convert.ToDecimal(productData["PurchasePrice"]),
                             SalePrice = Convert.ToDecimal(productData["SalePrice"]),
-                            Stock = Convert.ToDecimal(productData["Stock"]),
-                            MinimumStock = Convert.ToDecimal(productData["MinimumStock"]),
+                            // Note: Stock and MinimumStock fields removed - now managed in ProductStocks table
                             Unit = productData["Unit"]?.ToString(),
                             Active = Convert.ToBoolean(productData["Active"]),
                             CategoryId = (!string.IsNullOrEmpty(categoryName) && categoryCache.ContainsKey(categoryName)) 
@@ -934,7 +933,7 @@ public class BackgroundJobService : IBackgroundJobService
                     {
                         _logger.LogWarning($"Product with code {productCode} already exists, skipping");
                         importBatch.SkippedCount++;
-                        
+
                         var warningMessage = $"Producto {productCode} ya existe en la base de datos";
                         if (string.IsNullOrEmpty(importBatch.Warnings))
                             importBatch.Warnings = warningMessage;
@@ -1227,7 +1226,7 @@ public class BackgroundJobService : IBackgroundJobService
         var store = await _storeRepository.GetByCodeAsync(storeCode);
         if (store == null)
         {
-            throw new InvalidOperationException($"Store not found: {storeCode}");
+            throw new InvalidOperationException($"Tienda no encontrada: {storeCode}");
         }
 
         // Caches for entities

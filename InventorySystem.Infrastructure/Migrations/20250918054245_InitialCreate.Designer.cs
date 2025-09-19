@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InventorySystem.Infrastructure.Migrations
 {
     [DbContext(typeof(InventoryDbContext))]
-    [Migration("20250818133745_AddImportBatchTimingFields")]
-    partial class AddImportBatchTimingFields
+    [Migration("20250918054245_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,10 +35,10 @@ namespace InventorySystem.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("CompletedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.PrimitiveCollection<List<string>>("DetailedErrors")
                         .IsRequired()
@@ -79,7 +79,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("numeric");
 
                     b.Property<DateTime>("StartedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("StartedBy")
                         .IsRequired()
@@ -99,7 +99,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("WarningMessage")
                         .HasColumnType("text");
@@ -114,6 +114,39 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.ToTable("BackgroundJobs");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brands");
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -126,7 +159,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -140,31 +173,135 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("character varying(100)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Active = true,
-                            CreatedAt = new DateTime(2025, 8, 18, 13, 37, 44, 556, DateTimeKind.Utc).AddTicks(1394),
-                            Description = "Electronic devices",
-                            IsDeleted = false,
-                            Name = "Electronics"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Active = true,
-                            CreatedAt = new DateTime(2025, 8, 18, 13, 37, 44, 556, DateTimeKind.Utc).AddTicks(2642),
-                            Description = "Apparel items",
-                            IsDeleted = false,
-                            Name = "Clothing"
-                        });
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("CreditNoteDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("CreditNoteNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ImportBatchId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImportSource")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ImportedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("OriginalSaleId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Taxes")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ImportBatchId");
+
+                    b.HasIndex("OriginalSaleId");
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("CreditNote");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNoteDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("CreditNoteId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("numeric");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Taxes")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreditNoteId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CreditNoteDetail");
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Customer", b =>
@@ -182,7 +319,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Document")
                         .HasColumnType("text");
@@ -202,11 +339,73 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Document")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<DateTime>("HireDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("Position")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int?>("StoreId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.ImportBatch", b =>
@@ -227,21 +426,24 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<DateTime?>("CompletedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("DeleteReason")
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("DeletedBy")
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("ErrorCount")
                         .HasColumnType("integer");
@@ -255,7 +457,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("character varying(255)");
 
                     b.Property<DateTime>("ImportDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("ImportedBy")
                         .IsRequired()
@@ -275,7 +477,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("StartedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("StoreCode")
                         .HasMaxLength(10)
@@ -288,12 +490,14 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Warnings")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("ImportBatches");
                 });
@@ -307,10 +511,13 @@ namespace InventorySystem.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int?>("CreditNoteId")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("DocumentNumber")
                         .HasColumnType("text");
@@ -345,6 +552,9 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<string>("Source")
                         .HasColumnType("text");
 
+                    b.Property<int?>("StockTransferId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("StoreId")
                         .HasColumnType("integer");
 
@@ -358,12 +568,14 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("UserName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreditNoteId");
 
                     b.HasIndex("ProductId");
 
@@ -372,6 +584,8 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasIndex("PurchaseId");
 
                     b.HasIndex("SaleId");
+
+                    b.HasIndex("StockTransferId");
 
                     b.HasIndex("StoreId");
 
@@ -389,6 +603,9 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("boolean");
 
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
@@ -398,7 +615,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -408,9 +625,6 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
-
-                    b.Property<decimal>("MinimumStock")
-                        .HasColumnType("decimal(18,3)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -423,9 +637,6 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("Stock")
-                        .HasColumnType("decimal(18,3)");
-
                     b.Property<int?>("SupplierId")
                         .HasColumnType("integer");
 
@@ -433,9 +644,11 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
 
                     b.HasIndex("CategoryId");
 
@@ -458,7 +671,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<decimal>("CurrentStock")
                         .HasColumnType("decimal(18,3)");
@@ -482,7 +695,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -505,7 +718,16 @@ namespace InventorySystem.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int?>("ImportBatchId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImportSource")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ImportedAt")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -514,15 +736,24 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("PurchaseDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("PurchaseNumber")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
+                    b.Property<int>("StoreId")
+                        .HasColumnType("integer");
+
                     b.Property<decimal>("SubTotal")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("SupplierId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SupplierName")
+                        .HasColumnType("text");
 
                     b.Property<decimal>("Taxes")
                         .HasColumnType("decimal(18,2)");
@@ -531,9 +762,15 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ImportBatchId");
+
+                    b.HasIndex("StoreId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Purchases");
                 });
@@ -547,7 +784,7 @@ namespace InventorySystem.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -571,7 +808,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -593,9 +830,12 @@ namespace InventorySystem.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int?>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("integer");
 
                     b.Property<int?>("ImportBatchId")
@@ -605,7 +845,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("ImportedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -614,7 +854,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("SaleDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("SaleNumber")
                         .IsRequired()
@@ -634,11 +874,13 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("ImportBatchId");
 
@@ -656,7 +898,7 @@ namespace InventorySystem.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -677,7 +919,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -686,6 +928,112 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasIndex("SaleId");
 
                     b.ToTable("SaleDetails");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransfer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("DestinationStoreId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ImportBatchId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImportSource")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ImportedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int>("OriginStoreId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("ProcessedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("ProcessedByUser")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("TransferDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("TransferNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DestinationStoreId");
+
+                    b.HasIndex("ImportBatchId");
+
+                    b.HasIndex("OriginStoreId");
+
+                    b.ToTable("StockTransfer");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransferDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("text");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("StockTransferId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal?>("TotalCost")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal?>("UnitCost")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("StockTransferId");
+
+                    b.ToTable("StockTransferDetail");
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Store", b =>
@@ -708,10 +1056,13 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("character varying(10)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
+
+                    b.Property<bool>("HasInitialStock")
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -725,7 +1076,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
@@ -736,28 +1087,6 @@ namespace InventorySystem.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Stores");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Active = true,
-                            Code = "TANT",
-                            CreatedAt = new DateTime(2025, 8, 18, 13, 37, 44, 557, DateTimeKind.Utc).AddTicks(3962),
-                            Description = "Main Tantamayo Store",
-                            IsDeleted = false,
-                            Name = "Tienda Tantamayo"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Active = true,
-                            Code = "MAIN",
-                            CreatedAt = new DateTime(2025, 8, 18, 13, 37, 44, 557, DateTimeKind.Utc).AddTicks(5549),
-                            Description = "Central warehouse",
-                            IsDeleted = false,
-                            Name = "Main Warehouse"
-                        });
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Supplier", b =>
@@ -775,7 +1104,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Email")
                         .HasColumnType("text");
@@ -792,30 +1121,170 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
                     b.ToTable("Suppliers");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.SystemConfiguration", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ConfigKey")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ConfigType")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ConfigValue")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SystemConfigurations");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Active = true,
-                            CreatedAt = new DateTime(2025, 8, 18, 13, 37, 44, 557, DateTimeKind.Utc).AddTicks(1888),
-                            IsDeleted = false,
-                            Name = "TechSupply Inc.",
-                            Phone = "555-0001"
+                            Category = "INVENTORY",
+                            ConfigKey = "GLOBAL_MINIMUM_STOCK",
+                            ConfigType = "Number",
+                            ConfigValue = "5",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Stock mínimo global para considerar productos con stock bajo",
+                            IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
-                            CreatedAt = new DateTime(2025, 8, 18, 13, 37, 44, 557, DateTimeKind.Utc).AddTicks(2774),
-                            IsDeleted = false,
-                            Name = "Fashion World",
-                            Phone = "555-0002"
+                            Category = "IMPORT",
+                            ConfigKey = "STOCK_INITIAL_VALIDATION",
+                            ConfigType = "Boolean",
+                            ConfigValue = "true",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Validar que solo se permita una carga de stock inicial por tienda",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Active = true,
+                            Category = "IMPORT",
+                            ConfigKey = "SALES_GROUPING_COLUMN",
+                            ConfigType = "String",
+                            ConfigValue = "SaleNumber",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Columna por la cual agrupar las ventas (SaleNumber = columna F)",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Active = true,
+                            Category = "IMPORT",
+                            ConfigKey = "IMPORT_COLUMNS_SALES",
+                            ConfigType = "JSON",
+                            ConfigValue = "[\"Razón Social\",\"Empleado Venta\",\"Almacén\",\"Cliente Nombre\",\"Cliente Doc.\",\"#-DOC\",\"# Doc. Relacionado\",\"Fecha\",\"Hora\",\"Tip. Doc.\",\"Unidad\",\"Cantidad\",\"Precio de Venta\",\"IGV\",\"Total\",\"Descuento aplicado (%)\",\"Conversión\",\"Moneda\",\"Codigo SKU\",\"Cod. alternativo\",\"Marca\",\"Categoría\",\"Características\",\"Nombre\",\"Descripción\",\"Proveedor\",\"Precio de costo\",\"Empleado registro\"]",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Columnas esperadas para importación de ventas en Excel (agrupadas por Número de Venta columna F)",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Active = true,
+                            Category = "Import",
+                            ConfigKey = "IMPORT_MAPPING_SALES",
+                            ConfigType = "Json",
+                            ConfigValue = "{\"RazonSocialColumn\":1,\"EmpleadoVentaColumn\":2,\"AlmacenColumn\":3,\"ClienteNombreColumn\":4,\"ClienteDocColumn\":5,\"NumDocColumn\":6,\"DocRelacionadoColumn\":7,\"FechaColumn\":8,\"HoraColumn\":9,\"TipDocColumn\":10,\"UnidadColumn\":11,\"CantidadColumn\":12,\"PrecioVentaColumn\":13,\"IgvColumn\":14,\"TotalColumn\":15,\"DescuentoColumn\":16,\"ConversionColumn\":17,\"MonedaColumn\":18,\"CodigoSkuColumn\":19,\"CodAlternativoColumn\":20,\"MarcaColumn\":21,\"CategoriaColumn\":22,\"CaracteristicasColumn\":23,\"NombreColumn\":24,\"DescripcionColumn\":25,\"ProveedorColumn\":26,\"PrecioCostoColumn\":27,\"EmpleadoRegistroColumn\":28,\"StartRow\":2}",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Mapeo de posiciones de columnas para importación de ventas",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Active = true,
+                            Category = "IMPORT",
+                            ConfigKey = "IMPORT_COLUMNS_PRODUCT",
+                            ConfigType = "JSON",
+                            ConfigValue = "[\"Tienda\",\"Código\",\"Cod. barras\",\"Nombre\",\"Descripción\",\"Categorias\",\"Marca\",\"Características\",\"Impuestos\",\"P. costo\",\"Estado\",\"Stock\",\"Stock min\",\"Ubicación\",\"P. venta\",\"Unidad\",\"Nombre de lista de precio\",\"Factor de conversión\",\"Precio al por mayor\",\"Cantidad mínima\",\"Cantidad máxima\"]",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Columnas esperadas para importación de productos en Excel",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Active = true,
+                            Category = "IMPORT",
+                            ConfigKey = "IMPORT_COLUMNS_STOCK",
+                            ConfigType = "JSON",
+                            ConfigValue = "[\"StoreCode\",\"ProductCode\",\"Stock\"]",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Columnas esperadas para importación de stock inicial en Excel",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Active = true,
+                            Category = "IMPORT",
+                            ConfigKey = "IMPORT_MAPPING_STOCK",
+                            ConfigType = "JSON",
+                            ConfigValue = "{\"StoreCode\":0,\"ProductCode\":1,\"Stock\":2}",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Mapeo de columnas para importación de stock (números de columna)",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Active = true,
+                            Category = "STORE",
+                            ConfigKey = "DEFAULT_STORE_CONFIG",
+                            ConfigType = "JSON",
+                            ConfigValue = "{\"Code\": \"TIETAN\", \"Name\": \"Tienda Tantamayo\", \"Address\": \"Dirección Principal\", \"Phone\": \"123456789\", \"Active\": true}",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Description = "Configuración de tienda por defecto para el sistema",
+                            IsDeleted = false
                         });
                 });
 
@@ -828,7 +1297,7 @@ namespace InventorySystem.Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -844,7 +1313,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("LastLoginAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -861,7 +1330,7 @@ namespace InventorySystem.Infrastructure.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -877,20 +1346,6 @@ namespace InventorySystem.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Email = "admin@inventorysystem.com",
-                            FirstName = "Administrator",
-                            IsActive = true,
-                            LastName = "System",
-                            PasswordHash = "zbFyeIKv6pKbhTL3XWaVhp5xzKF6oF8Kt7lEI8MEKy0=",
-                            Role = "Admin",
-                            Username = "admin"
-                        });
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.BackgroundJob", b =>
@@ -902,8 +1357,77 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Navigation("ImportBatch");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNote", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("InventorySystem.Core.Entities.ImportBatch", "ImportBatch")
+                        .WithMany()
+                        .HasForeignKey("ImportBatchId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Sale", "OriginalSale")
+                        .WithMany()
+                        .HasForeignKey("OriginalSaleId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Store", "Store")
+                        .WithMany()
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("ImportBatch");
+
+                    b.Navigation("OriginalSale");
+
+                    b.Navigation("Store");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNoteDetail", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.CreditNote", "CreditNote")
+                        .WithMany("Details")
+                        .HasForeignKey("CreditNoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreditNote");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.Employee", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Store", "Store")
+                        .WithMany()
+                        .HasForeignKey("StoreId");
+
+                    b.Navigation("Store");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.ImportBatch", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Employee", null)
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.InventoryMovement", b =>
                 {
+                    b.HasOne("InventorySystem.Core.Entities.CreditNote", "CreditNote")
+                        .WithMany()
+                        .HasForeignKey("CreditNoteId");
+
                     b.HasOne("InventorySystem.Core.Entities.Product", "Product")
                         .WithMany("InventoryMovements")
                         .HasForeignKey("ProductId")
@@ -923,11 +1447,17 @@ namespace InventorySystem.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("SaleId");
 
+                    b.HasOne("InventorySystem.Core.Entities.StockTransfer", "StockTransfer")
+                        .WithMany()
+                        .HasForeignKey("StockTransferId");
+
                     b.HasOne("InventorySystem.Core.Entities.Store", "Store")
                         .WithMany("InventoryMovements")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("CreditNote");
 
                     b.Navigation("Product");
 
@@ -937,11 +1467,17 @@ namespace InventorySystem.Infrastructure.Migrations
 
                     b.Navigation("Sale");
 
+                    b.Navigation("StockTransfer");
+
                     b.Navigation("Store");
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Product", b =>
                 {
+                    b.HasOne("InventorySystem.Core.Entities.Brand", "Brand")
+                        .WithMany("Products")
+                        .HasForeignKey("BrandId");
+
                     b.HasOne("InventorySystem.Core.Entities.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
@@ -956,6 +1492,8 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.HasOne("InventorySystem.Core.Entities.Supplier", "Supplier")
                         .WithMany("Products")
                         .HasForeignKey("SupplierId");
+
+                    b.Navigation("Brand");
 
                     b.Navigation("Category");
 
@@ -990,6 +1528,29 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Navigation("Store");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.Purchase", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.ImportBatch", "ImportBatch")
+                        .WithMany()
+                        .HasForeignKey("ImportBatchId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Store", "Store")
+                        .WithMany()
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId");
+
+                    b.Navigation("ImportBatch");
+
+                    b.Navigation("Store");
+
+                    b.Navigation("Supplier");
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.PurchaseDetail", b =>
                 {
                     b.HasOne("InventorySystem.Core.Entities.Product", "Product")
@@ -1021,6 +1582,10 @@ namespace InventorySystem.Infrastructure.Migrations
                         .WithMany("Sales")
                         .HasForeignKey("CustomerId");
 
+                    b.HasOne("InventorySystem.Core.Entities.Employee", "Employee")
+                        .WithMany("Sales")
+                        .HasForeignKey("EmployeeId");
+
                     b.HasOne("InventorySystem.Core.Entities.ImportBatch", "ImportBatch")
                         .WithMany("Sales")
                         .HasForeignKey("ImportBatchId")
@@ -1033,6 +1598,8 @@ namespace InventorySystem.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Employee");
 
                     b.Navigation("ImportBatch");
 
@@ -1058,12 +1625,71 @@ namespace InventorySystem.Infrastructure.Migrations
                     b.Navigation("Sale");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransfer", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Store", "DestinationStore")
+                        .WithMany()
+                        .HasForeignKey("DestinationStoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.ImportBatch", "ImportBatch")
+                        .WithMany()
+                        .HasForeignKey("ImportBatchId");
+
+                    b.HasOne("InventorySystem.Core.Entities.Store", "OriginStore")
+                        .WithMany()
+                        .HasForeignKey("OriginStoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DestinationStore");
+
+                    b.Navigation("ImportBatch");
+
+                    b.Navigation("OriginStore");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransferDetail", b =>
+                {
+                    b.HasOne("InventorySystem.Core.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("InventorySystem.Core.Entities.StockTransfer", "StockTransfer")
+                        .WithMany("Details")
+                        .HasForeignKey("StockTransferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("StockTransfer");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.Brand", b =>
+                {
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("InventorySystem.Core.Entities.CreditNote", b =>
+                {
+                    b.Navigation("Details");
+                });
+
             modelBuilder.Entity("InventorySystem.Core.Entities.Customer", b =>
+                {
+                    b.Navigation("Sales");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.Employee", b =>
                 {
                     b.Navigation("Sales");
                 });
@@ -1099,6 +1725,11 @@ namespace InventorySystem.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("InventorySystem.Core.Entities.Sale", b =>
+                {
+                    b.Navigation("Details");
+                });
+
+            modelBuilder.Entity("InventorySystem.Core.Entities.StockTransfer", b =>
                 {
                     b.Navigation("Details");
                 });

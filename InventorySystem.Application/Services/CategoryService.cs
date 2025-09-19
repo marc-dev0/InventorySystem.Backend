@@ -38,7 +38,7 @@ public class CategoryService : ICategoryService
         var existingCategory = await _categoryRepository.GetByNameAsync(dto.Name);
         if (existingCategory != null)
         {
-            throw new ArgumentException($"Category with name '{dto.Name}' already exists");
+            throw new ArgumentException($"Ya existe una categoría con el nombre '{dto.Name}'");
         }
 
         var category = new Category
@@ -64,7 +64,7 @@ public class CategoryService : ICategoryService
         var existingCategory = await _categoryRepository.GetByNameAsync(dto.Name);
         if (existingCategory != null && existingCategory.Id != id)
         {
-            throw new ArgumentException($"Another category with name '{dto.Name}' already exists");
+            throw new ArgumentException($"Ya existe otra categoría con el nombre '{dto.Name}'");
         }
 
         category.Name = dto.Name;
@@ -85,7 +85,7 @@ public class CategoryService : ICategoryService
         // Check if category has products
         if (await _categoryRepository.HasProductsAsync(id))
         {
-            throw new InvalidOperationException("Cannot delete category that has associated products");
+            throw new InvalidOperationException("No se puede eliminar la categoría que tiene productos asociados");
         }
 
         category.IsDeleted = true;

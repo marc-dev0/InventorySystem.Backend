@@ -285,9 +285,7 @@ public class ProductRepository : Repository<Product>, IProductRepository
                     _logger.LogWarning("No ProductStock records found for product ID {ProductId}", productId);
                 }
                 
-                // Also update the deprecated Products.Stock field for backward compatibility
-                product.Stock = newStock;
-                await UpdateAsync(product);
+                // Note: Product.Stock field has been removed - stock is now managed only in ProductStocks table
             }
             else
             {

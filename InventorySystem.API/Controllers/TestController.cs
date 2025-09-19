@@ -239,12 +239,11 @@ public class TestController : ControllerBase
             }
             
             // Create test product
-            var product = new Product 
-            { 
-                Code = "PROD001", 
-                Name = "Producto Test", 
+            var product = new Product
+            {
+                Code = "PROD001",
+                Name = "Producto Test",
                 SalePrice = 10.50m,
-                Stock = 100,
                 Active = true,
                 CategoryId = category.Id
             };
@@ -437,39 +436,24 @@ public class TestController : ControllerBase
                     {
                         ProductId = product.Id,
                         StoreId = store.Id,
-                        CurrentStock = product.Stock,
-                        MinimumStock = product.MinimumStock,
+                        CurrentStock = 0, // Start with 0 stock
+                        MinimumStock = 0, // Default minimum stock
                         MaximumStock = 1000, // Default max stock
                         AverageCost = product.PurchasePrice
                     };
                     _context.ProductStocks.Add(productStock);
                     created++;
                     
-                    results.Add(new { 
-                        Action = "CREATED", 
+                    results.Add(new {
+                        Action = "CREATED",
                         ProductId = product.Id,
                         ProductName = product.Name,
-                        ProductStock = product.Stock,
+                        ProductStock = 0, // Always starts with 0
                         NewCurrentStock = productStock.CurrentStock
                     });
                 }
-                else if (Math.Abs(productStock.CurrentStock - product.Stock) > 0.001m)
-                {
-                    // Sync desynchronized stock
-                    var oldStock = productStock.CurrentStock;
-                    productStock.CurrentStock = product.Stock;
-                    productStock.UpdatedAt = DateTime.UtcNow;
-                    synced++;
-                    
-                    results.Add(new { 
-                        Action = "SYNCED", 
-                        ProductId = product.Id,
-                        ProductName = product.Name,
-                        ProductStock = product.Stock,
-                        OldCurrentStock = oldStock,
-                        NewCurrentStock = productStock.CurrentStock
-                    });
-                }
+                // Note: Stock sync logic removed since Product.Stock field no longer exists
+                // Stock is now managed exclusively through ProductStocks table
             }
             
             await _context.SaveChangesAsync();

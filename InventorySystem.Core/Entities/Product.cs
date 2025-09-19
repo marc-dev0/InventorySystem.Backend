@@ -9,8 +9,6 @@ public class Product : BaseEntity
     public string? Description { get; set; }
     public decimal PurchasePrice { get; set; }
     public decimal SalePrice { get; set; }
-    public decimal Stock { get; set; } // Deprecated - use ProductStocks instead
-    public decimal MinimumStock { get; set; } // Deprecated - use ProductStocks instead
     public string? Unit { get; set; } // Ex: "unit", "kg", "liter"
     public bool Active { get; set; } = true;
     

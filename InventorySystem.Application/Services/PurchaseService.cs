@@ -10,15 +10,21 @@ public class PurchaseService : IPurchaseService
     private readonly IPurchaseRepository _purchaseRepository;
     private readonly IProductRepository _productRepository;
     private readonly ISupplierRepository _supplierRepository;
+    private readonly IStoreRepository _storeRepository;
+    private readonly IProductStockRepository _productStockRepository;
 
     public PurchaseService(
         IPurchaseRepository purchaseRepository,
         IProductRepository productRepository,
-        ISupplierRepository supplierRepository)
+        ISupplierRepository supplierRepository,
+        IStoreRepository storeRepository,
+        IProductStockRepository productStockRepository)
     {
         _purchaseRepository = purchaseRepository;
         _productRepository = productRepository;
         _supplierRepository = supplierRepository;
+        _storeRepository = storeRepository;
+        _productStockRepository = productStockRepository;
     }
 
     public async Task<IEnumerable<PurchaseDto>> GetAllAsync()
@@ -62,10 +68,10 @@ public class PurchaseService : IPurchaseService
         foreach (var detailDto in dto.Details)
         {
             var product = await _productRepository.GetByIdAsync(detailDto.ProductId)
-                ?? throw new InvalidOperationException($"Product with ID {detailDto.ProductId} not found");
+                ?? throw new InvalidOperationException($"Producto con ID {detailDto.ProductId} no encontrado");
 
             var supplier = await _supplierRepository.GetByIdAsync(detailDto.SupplierId)
-                ?? throw new InvalidOperationException($"Supplier with ID {detailDto.SupplierId} not found");
+                ?? throw new InvalidOperationException($"Proveedor con ID {detailDto.SupplierId} no encontrado");
 
             var detail = new PurchaseDetail
             {
@@ -79,9 +85,17 @@ public class PurchaseService : IPurchaseService
             purchase.Details.Add(detail);
             subTotal += detail.Subtotal;
 
-            // Update product stock
-            product.Stock += detailDto.Quantity;
-            await _productRepository.UpdateAsync(product);
+            // Update product stock in ProductStocks table
+            // TODO: This method needs to be updated to receive storeId parameter
+            // For now, get the first store (this should be fixed)
+            var stores = await _storeRepository.GetAllAsync();
+            var defaultStore = stores.FirstOrDefault();
+            if (defaultStore != null)
+            {
+                var productStock = await GetOrCreateProductStockAsync(product.Id, defaultStore.Id);
+                productStock.CurrentStock += detailDto.Quantity;
+                await _productStockRepository.UpdateAsync(productStock);
+            }
         }
 
         purchase.SubTotal = subTotal;
@@ -146,5 +160,27 @@ public class PurchaseService : IPurchaseService
                 Subtotal = d.Subtotal
             }).ToList() ?? new List<PurchaseDetailDto>()
         };
+    }
+
+    private async Task<ProductStock> GetOrCreateProductStockAsync(int productId, int storeId)
+    {
+        var productStock = await _productStockRepository.GetByProductAndStoreAsync(productId, storeId);
+
+        if (productStock == null)
+        {
+            productStock = new ProductStock
+            {
+                ProductId = productId,
+                StoreId = storeId,
+                CurrentStock = 0,
+                MinimumStock = 0,
+                MaximumStock = 0,
+                AverageCost = 0
+            };
+
+            await _productStockRepository.AddAsync(productStock);
+        }
+
+        return productStock;
     }
 }

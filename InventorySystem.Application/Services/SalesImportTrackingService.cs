@@ -117,12 +117,10 @@ public class SalesImportTrackingService : ISalesImportTrackingService
                     productStock.CurrentStock += Math.Abs(movement.Quantity);
                     await _productStockRepository.UpdateAsync(productStock);
                     
-                    // También actualizar el Product.Stock legacy
+                    // Product.Stock field removed - stock managed only in ProductStocks
                     var product = await _productRepository.GetByIdAsync(productStock.ProductId);
                     if (product != null)
                     {
-                        product.Stock += Math.Abs(movement.Quantity);
-                        await _productRepository.UpdateAsync(product);
                         affectedProductCodes.Add(product.Code);
                     }
                 }

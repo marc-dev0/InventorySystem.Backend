@@ -61,11 +61,11 @@ namespace InventorySystem.Application.Services
                 StoreCode = ps.Store.Code,
                 StoreName = ps.Store.Name,
                 CurrentStock = ps.CurrentStock,
-                MinimumStock = ps.Product.MinimumStock > 0 ? ps.Product.MinimumStock : globalMinimumStock,
+                MinimumStock = ps.MinimumStock > 0 ? ps.MinimumStock : globalMinimumStock,
                 PurchasePrice = ps.Product.PurchasePrice,
                 SalePrice = ps.Product.SalePrice,
                 TotalValue = ps.CurrentStock * ps.Product.PurchasePrice,
-                IsLowStock = ps.CurrentStock <= (ps.Product.MinimumStock > 0 ? ps.Product.MinimumStock : globalMinimumStock),
+                IsLowStock = ps.CurrentStock <= (ps.MinimumStock > 0 ? ps.MinimumStock : globalMinimumStock),
                 IsOutOfStock = ps.CurrentStock <= 0
             }).ToList();
 
@@ -207,7 +207,7 @@ namespace InventorySystem.Application.Services
                     StoreCode = ps.Store.Code,
                     StoreName = ps.Store.Name,
                     CurrentStock = ps.CurrentStock,
-                    MinimumStock = ps.Product.MinimumStock,
+                    MinimumStock = ps.MinimumStock,
                     PurchasePrice = ps.Product.PurchasePrice,
                     SalePrice = ps.Product.SalePrice,
                     TotalValue = ps.CurrentStock * ps.Product.PurchasePrice,

@@ -8,9 +8,8 @@ public class ProductDto
     public string? Description { get; set; }
     public decimal PurchasePrice { get; set; }
     public decimal SalePrice { get; set; }
-    public decimal Stock { get; set; } // Original stock from Products table (for reference)
     public decimal CurrentStock { get; set; } // Real-time stock from ProductStocks (sum across stores)
-    public decimal MinimumStock { get; set; }
+    public decimal MinimumStock { get; set; } // From ProductStocks (min across stores or first store)
     public string? Unit { get; set; }
     public bool Active { get; set; }
     public int CategoryId { get; set; }
@@ -28,7 +27,6 @@ public class CreateProductDto
     public string? Description { get; set; }
     public decimal PurchasePrice { get; set; }
     public decimal SalePrice { get; set; }
-    public decimal Stock { get; set; }
     public decimal MinimumStock { get; set; }
     public string? Unit { get; set; }
     public int CategoryId { get; set; }

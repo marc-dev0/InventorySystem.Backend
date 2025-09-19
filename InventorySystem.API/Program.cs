@@ -17,7 +17,7 @@ using Hangfire.PostgreSql;
 // Configure Serilog
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .WriteTo.File("logs/api-.log", 
+    .WriteTo.File("logs/api-.log",
         rollingInterval: RollingInterval.Day,
         retainedFileCountLimit: 30)
     .CreateLogger();

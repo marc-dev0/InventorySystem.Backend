@@ -49,7 +49,7 @@ public class TandiaImportService : ITandiaImportService
         var worksheet = workbook.Worksheets.FirstOrDefault();
         
         if (worksheet == null)
-            throw new InvalidOperationException("No worksheet found in Excel file");
+            throw new InvalidOperationException("No se encontró hoja de cálculo en el archivo Excel");
 
         var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
         
@@ -96,7 +96,7 @@ public class TandiaImportService : ITandiaImportService
         var worksheet = workbook.Worksheets.FirstOrDefault();
         
         if (worksheet == null)
-            throw new InvalidOperationException("No worksheet found in Excel file");
+            throw new InvalidOperationException("No se encontró hoja de cálculo en el archivo Excel");
 
         var lastRow = worksheet.LastRowUsed()?.RowNumber() ?? 1;
 
@@ -193,25 +193,55 @@ public class TandiaImportService : ITandiaImportService
             
             var tandiaProducts = await ValidateProductsExcelAsync(excelStream);
             result.TotalRecords = tandiaProducts.Count;
-            
+
             // Actualizar total records
             importBatch.TotalRecords = tandiaProducts.Count;
-            
+
+
             foreach (var tandiaProduct in tandiaProducts)
             {
                 try
                 {
                     // Check if product already exists
                     var existingProduct = await _productRepository.FirstOrDefaultAsync(p => p.Code == tandiaProduct.Code);
-                    
+
                     if (existingProduct != null)
                     {
-                        // Skip existing product - no update
-                        result.SkippedCount++;
-                        importBatch.SkippedCount++;
+                        // Product exists, but check if ProductStock exists for this store
+                        var productStore = await GetOrCreateStoreAsync(tandiaProduct.Store);
+                        var productStockExists = await _productStockRepository.GetByProductAndStoreAsync(existingProduct.Id, productStore.Id);
+
+                        if (productStockExists == null)
+                        {
+                            // Create ProductStock for this product-store combination
+                            var productStock = new ProductStock
+                            {
+                                ProductId = existingProduct.Id,
+                                StoreId = productStore.Id,
+                                CurrentStock = 0, // Start with 0 stock - stock will be set via stock import
+                                MinimumStock = tandiaProduct.MinStock,
+                                MaximumStock = 0,
+                                AverageCost = 0,
+                                ImportBatchId = importBatch.Id
+                            };
+                            await _productStockRepository.AddAsync(productStock);
+
+                            // Count as success because we created the ProductStock relationship
+                            result.SuccessCount++;
+                            importBatch.SuccessCount++;
+
+                        }
+                        else
+                        {
+                            // ProductStock already exists for this product-store combination
+                            result.SkippedCount++;
+                            importBatch.SkippedCount++;
+
+                        }
+
                         continue;
                     }
-                    
+
                     // Get or create category
                     var category = await GetOrCreateCategoryAsync(tandiaProduct.Categories);
                     
@@ -230,16 +260,34 @@ public class TandiaImportService : ITandiaImportService
                         Description = tandiaProduct.Description,
                         PurchasePrice = tandiaProduct.CostPrice,
                         SalePrice = tandiaProduct.SalePrice,
-                        Stock = 0, // Product imports should NOT set stock values - use stock import for that
-                        MinimumStock = tandiaProduct.MinStock,
                         Unit = tandiaProduct.Unit,
                         CategoryId = category.Id,
                         SupplierId = supplier?.Id,
                         Active = tandiaProduct.Status.ToUpper() == "ACTIVO",
                         ImportBatchId = importBatch.Id
                     };
-                    
+
                     await _productRepository.AddAsync(newProduct);
+
+                    // Get or create the specific store for this product
+                    var store = await GetOrCreateStoreAsync(tandiaProduct.Store);
+
+                    // Create ProductStock only for the specific store from the Excel file
+                    var existingStock = await _productStockRepository.GetByProductAndStoreAsync(newProduct.Id, store.Id);
+                    if (existingStock == null)
+                    {
+                        var productStock = new ProductStock
+                        {
+                            ProductId = newProduct.Id,
+                            StoreId = store.Id,
+                            CurrentStock = 0, // Start with 0 stock - stock will be set via stock import
+                            MinimumStock = tandiaProduct.MinStock,
+                            MaximumStock = 0,
+                            AverageCost = 0,
+                            ImportBatchId = importBatch.Id
+                        };
+                        await _productStockRepository.AddAsync(productStock);
+                    }
                     
                     result.SuccessCount++;
                     importBatch.SuccessCount++;
@@ -251,7 +299,8 @@ public class TandiaImportService : ITandiaImportService
                     result.Errors.Add($"Row {result.SuccessCount + result.ErrorCount}: {ex.Message}");
                 }
             }
-            
+
+
             // Actualizar ImportBatch con resultados finales
             importBatch.Errors = result.Errors.Any() ? System.Text.Json.JsonSerializer.Serialize(result.Errors) : null;
             importBatch.Warnings = result.Warnings.Any() ? System.Text.Json.JsonSerializer.Serialize(result.Warnings) : null;
@@ -402,10 +451,6 @@ public class TandiaImportService : ITandiaImportService
                         var previousStock = productStock.CurrentStock;
                         productStock.CurrentStock -= saleDetail.Quantity;
                         await _productStockRepository.UpdateAsync(productStock);
-                        
-                        // Also update legacy Product.Stock for backward compatibility
-                        product.Stock -= saleDetail.Quantity;
-                        await _productRepository.UpdateAsync(product);
                         
                         // Register inventory movement with correct SaleId
                         var movement = new InventoryMovement
@@ -920,4 +965,5 @@ public class TandiaImportService : ITandiaImportService
             return transfers;
         }
     }
+
 }

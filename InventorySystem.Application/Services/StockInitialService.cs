@@ -254,15 +254,8 @@ public class StockInitialService : IStockInitialService
             await _productStockRepository.DeleteAsync(stock.Id);
         }
 
-        // Resetear stock en Products (campo legacy)
-        var products = await _productRepository.GetAllAsync();
-        foreach (var product in products)
-        {
-            product.Stock = 0;
-            await _productRepository.UpdateAsync(product);
-        }
-
-        result.ResetProducts = products.Count();
+        // Note: Product.Stock field has been removed - stock is now managed only in ProductStocks table
+        result.ResetProducts = 0;
 
         return result;
     }

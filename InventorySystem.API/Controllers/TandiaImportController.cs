@@ -228,8 +228,9 @@ public class TandiaImportController : ControllerBase
                 }).OrderByDescending(x => x.Count).ToList(),
                 ActiveProducts = products.Count(p => p.Status.ToUpper() == "ACTIVO"),
                 InactiveProducts = products.Count(p => p.Status.ToUpper() != "ACTIVO"),
-                ProductsWithStock = products.Count(p => p.Stock > 0),
-                ProductsWithoutStock = products.Count(p => p.Stock == 0),
+                // Note: Stock statistics removed - stock is now managed in ProductStocks table
+                ProductsWithStock = 0, // TODO: Calculate from ProductStocks if needed
+                ProductsWithoutStock = 0, // TODO: Calculate from ProductStocks if needed
                 Sample = products.Take(5).ToList()
             };
             

@@ -26,13 +26,13 @@ public class AuthController : ControllerBase
         try
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+                return BadRequest(new { message = "Datos de entrada inválidos", errors = ModelState });
 
             var result = await _authService.LoginAsync(loginDto);
             if (result == null)
             {
                 _logger.LogWarning("Failed login attempt for username: {Username}", loginDto.Username);
-                return Unauthorized("Invalid username or password");
+                return Unauthorized(new { message = "Nombre de usuario o contraseña incorrectos" });
             }
 
             _logger.LogInformation("Successful login for username: {Username}", loginDto.Username);
@@ -41,7 +41,7 @@ public class AuthController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error during login for username: {Username}", loginDto.Username);
-            return StatusCode(500, "Error interno del servidor");
+            return StatusCode(500, new { message = "Error interno del servidor" });
         }
     }
 

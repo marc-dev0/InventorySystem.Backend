@@ -194,14 +194,14 @@ public class ProductService : IProductService
         // Validate that code doesn't exist
         if (await _productRepository.CodeExistsAsync(dto.Code))
         {
-            throw new ArgumentException($"Product with code {dto.Code} already exists");
+            throw new ArgumentException($"Ya existe un producto con el código {dto.Code}");
         }
 
         // Validate that category exists
         var category = await _categoryRepository.GetByIdAsync(dto.CategoryId);
         if (category == null)
         {
-            throw new ArgumentException("The specified category does not exist");
+            throw new ArgumentException("La categoría especificada no existe");
         }
 
         var product = new Product
@@ -211,8 +211,6 @@ public class ProductService : IProductService
             Description = dto.Description,
             PurchasePrice = dto.PurchasePrice,
             SalePrice = dto.SalePrice,
-            Stock = dto.Stock,
-            MinimumStock = dto.MinimumStock,
             Unit = dto.Unit,
             CategoryId = dto.CategoryId,
             SupplierId = dto.SupplierId,
@@ -234,7 +232,7 @@ public class ProductService : IProductService
         // Validate unique code
         if (await _productRepository.CodeExistsAsync(dto.Code, id))
         {
-            throw new ArgumentException($"Another product with code {dto.Code} already exists");
+            throw new ArgumentException($"Ya existe otro producto con el código {dto.Code}");
         }
 
         product.Code = dto.Code;
@@ -242,7 +240,6 @@ public class ProductService : IProductService
         product.Description = dto.Description;
         product.PurchasePrice = dto.PurchasePrice;
         product.SalePrice = dto.SalePrice;
-        product.MinimumStock = dto.MinimumStock;
         product.Unit = dto.Unit;
         product.Active = dto.Active;
         product.CategoryId = dto.CategoryId;
@@ -309,6 +306,10 @@ public class ProductService : IProductService
         // Calculate real-time stock from ProductStocks across all stores
         var currentStock = await _productStockRepository.GetTotalStockForProductAsync(product.Id);
 
+        // Get minimum stock from ProductStocks (use the minimum across all stores)
+        var productStocks = await _productStockRepository.GetByProductIdAsync(product.Id);
+        var minimumStock = productStocks.Any() ? productStocks.Min(ps => ps.MinimumStock) : 0;
+
         return new ProductDto
         {
             Id = product.Id,
@@ -317,9 +318,8 @@ public class ProductService : IProductService
             Description = product.Description,
             PurchasePrice = product.PurchasePrice,
             SalePrice = product.SalePrice,
-            Stock = product.Stock, // Original stock for reference
             CurrentStock = currentStock, // Real-time stock from ProductStocks
-            MinimumStock = product.MinimumStock,
+            MinimumStock = minimumStock, // From ProductStocks
             Unit = product.Unit,
             Active = product.Active,
             CategoryId = product.CategoryId,

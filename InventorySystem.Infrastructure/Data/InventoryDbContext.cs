@@ -66,8 +66,6 @@ public class InventoryDbContext : DbContext
             entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
             entity.Property(e => e.PurchasePrice).HasColumnType("decimal(18,2)");
             entity.Property(e => e.SalePrice).HasColumnType("decimal(18,2)");
-            entity.Property(e => e.Stock).HasColumnType("decimal(18,3)");
-            entity.Property(e => e.MinimumStock).HasColumnType("decimal(18,3)");
         });
 
         modelBuilder.Entity<Customer>(entity =>
